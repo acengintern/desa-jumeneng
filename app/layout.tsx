@@ -15,7 +15,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#064e3b',
+  themeColor: '#14532d',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -23,7 +23,11 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Profil Padukuhan Jumeneng Kidul - Sumberadi, Mlati, Sleman',
+  metadataBase: new URL('https://desa-jumeneng.vercel.app'),
+  title: {
+    default: 'Profil Padukuhan Jumeneng Kidul - Sumberadi, Mlati, Sleman',
+    template: '%s - Padukuhan Jumeneng Kidul',
+  },
   description:
     'Portal Resmi Profil dan Informasi Padukuhan Jumeneng Kidul, Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta.',
   keywords: [
@@ -36,6 +40,20 @@ export const metadata: Metadata = {
     'Profil Dusun',
     'Yogyakarta',
   ],
+  manifest: '/manifest.webmanifest',
+  icons: {
+    icon: '/icon',
+    apple: '/apple-icon',
+  },
+  openGraph: {
+    siteName: 'Padukuhan Jumeneng Kidul',
+    title: 'Profil Padukuhan Jumeneng Kidul - Sumberadi, Mlati, Sleman',
+    description:
+      'Portal Resmi Profil dan Informasi Padukuhan Jumeneng Kidul, Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta.',
+    url: 'https://desa-jumeneng.vercel.app',
+    locale: 'id_ID',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
@@ -49,7 +67,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
       </head>
-      <body className="font-sans antialiased text-slate-800 bg-slate-50 min-h-screen selection:bg-emerald-800 selection:text-white">
+      <body className="font-sans antialiased text-stone-900 bg-stone-50 min-h-screen selection:bg-emerald-800 selection:text-white">
         {children}
       </body>
     </html>

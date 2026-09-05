@@ -2,28 +2,23 @@
 
 import React, { useState, useMemo } from 'react';
 import {
-  Sparkles,
   ChevronRight,
   Briefcase,
   TrendingUp,
   AlertCircle,
   BadgeCheck,
   Search,
-  Filter,
-  CheckCircle2,
   ArrowRight,
   Info,
 } from 'lucide-react';
 import { PotensiWilayah } from '@/lib/types';
 import { PotensiModal } from './PotensiModal';
-import { renderPotensiVectorIcon } from './potensi-icons';
 import { ScrollReveal } from './ScrollReveal';
 
 interface PotensiPageContentProps {
   potensi: PotensiWilayah[];
 }
 
-// Fallback data otentik jika database belum terisi atau kosong
 const FALLBACK_POTENSI: PotensiWilayah[] = [
   {
     id: 'e5000000-0000-0000-0000-000000000001',
@@ -31,10 +26,12 @@ const FALLBACK_POTENSI: PotensiWilayah[] = [
     icon: 'sprout',
     deskripsi_singkat:
       'Lahan sawah dan tegalan produktif penghasil komoditas jagung, padi, serta kacang tanah sebagai penopang pangan utama dusun.',
-    kegiatan_utama: 'Jagung, Padi, kacang tanah',
-    keunggulan_hasil: 'lahan jagung luas',
-    tantangan_kendala: 'Kekeringan banyak terjadi',
-    sumber_data: 'Pak dukuh',
+    kegiatan_utama: 'Jagung, Padi, Kacang Tanah',
+    keunggulan_hasil: 'Lahan jagung luas dan kesuburan tanah terjaga',
+    tantangan_kendala: 'Kekeringan pada puncak musim kemarau',
+    sumber_data: 'Pak Dukuh',
+    gambar_url:
+      'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80',
     urutan: 1,
   },
   {
@@ -42,11 +39,13 @@ const FALLBACK_POTENSI: PotensiWilayah[] = [
     judul: 'Sentra UMKM Kripik Melinjo',
     icon: 'store',
     deskripsi_singkat:
-      'Industri rumahan emping melinjo tradisional berkualitas tinggi yang digerakkan oleh para ibu rumah tangga warga padukuhan.',
-    kegiatan_utama: 'Kripik Melinjo',
-    keunggulan_hasil: 'produksi cepat',
-    tantangan_kendala: 'Pohon melinjo di dusun sedikit',
-    sumber_data: 'Pak dukuh',
+      'Industri rumahan emping melinjo tradisional berkualitas tinggi yang digerakkan oleh para perajin dan ibu rumah tangga warga padukuhan.',
+    kegiatan_utama: 'Kripik & Emping Melinjo Tradisional',
+    keunggulan_hasil: 'Produksi terampil, rasa gurih renyah tanpa bahan pengawet',
+    tantangan_kendala: 'Keterbatasan pasokan bahan baku melinjo lokal',
+    sumber_data: 'Pak Dukuh',
+    gambar_url:
+      'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80',
     urutan: 2,
   },
   {
@@ -54,11 +53,13 @@ const FALLBACK_POTENSI: PotensiWilayah[] = [
     judul: 'Kehidupan Keagamaan & Budaya',
     icon: 'landmark',
     deskripsi_singkat:
-      'Tradisi dan kegiatan keagamaan Islam warisan Kyai Nur Jumeneng yang senantiasa guyub, khusyuk, dan terjaga kelestariannya.',
-    kegiatan_utama: 'Pengajian Rutin, Tarian Badui',
-    keunggulan_hasil: "Masih melestarikan tradisi adzan Jum'at 4 orang",
-    tantangan_kendala: 'Belum ada kendala signifikan, antusiasme warga senantiasa terjaga',
-    sumber_data: 'Pak dukuh',
+      'Tradisi dan kegiatan keagamaan Islam warisan Kyai Nur Jumeneng yang senantiasa guyub, khusyuk, serta kesenian tari Badui yang lestari.',
+    kegiatan_utama: 'Pengajian Rutin, Seni Tari Badui, Adzan 4 Muadzin',
+    keunggulan_hasil: "Pelestarian tradisi adzan Jum'at 4 orang dan kerukunan warga",
+    tantangan_kendala: 'Regenerasi generasi penerus pelaku seni tradisional',
+    sumber_data: 'Pak Dukuh',
+    gambar_url:
+      'https://images.unsplash.com/photo-1590076215667-875d4ef2d7ee?auto=format&fit=crop&w=800&q=80',
     urutan: 3,
   },
   {
@@ -66,14 +67,33 @@ const FALLBACK_POTENSI: PotensiWilayah[] = [
     judul: 'Peternakan Rakyat Mandiri',
     icon: 'beef',
     deskripsi_singkat:
-      'Peternakan skala rumah tangga mandiri meliputi sapi, domba/kambing, dan ayam kampung yang terintegrasi pupuk kompos organik.',
-    kegiatan_utama: 'Beternak Sapi, Kambing, Ayam',
-    keunggulan_hasil: 'Kotoran Ternak Banyak sehingga untuk kompos mudah dilakukan',
-    tantangan_kendala: 'Rumput bagus berkurang karena kekeringan',
-    sumber_data: 'Pak dukuh',
+      'Peternakan skala rumah tangga mandiri meliputi sapi, kambing/domba, dan unggas kampung yang terintegrasi pembuatan pupuk kandang kompos.',
+    kegiatan_utama: 'Budidaya Sapi, Kambing, dan Ayam Kampung',
+    keunggulan_hasil: 'Kotoran ternak diolah mandiri menjadi pupuk organik untuk sawah',
+    tantangan_kendala: 'Ketersediaan hijauan pakan ternak segar di musim kemarau',
+    sumber_data: 'Pak Dukuh',
+    gambar_url:
+      'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=800&q=80',
     urutan: 4,
   },
 ];
+
+const POTENSI_IMAGES: Record<string, string> = {
+  'Pertanian & Tanaman Pangan':
+    'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80',
+  'Sentra UMKM Kripik Melinjo':
+    'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80',
+  'UMKM Kripik Melinjo':
+    'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80',
+  'Kehidupan Keagamaan & Budaya':
+    'https://images.unsplash.com/photo-1590076215667-875d4ef2d7ee?auto=format&fit=crop&w=800&q=80',
+  'Keagamaan & Tradisi Budaya':
+    'https://images.unsplash.com/photo-1590076215667-875d4ef2d7ee?auto=format&fit=crop&w=800&q=80',
+  'Peternakan Rakyat Mandiri':
+    'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=800&q=80',
+  'Peternakan Rakyat':
+    'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=800&q=80',
+};
 
 type CategoryFilter = 'semua' | 'pertanian' | 'umkm' | 'keagamaan' | 'peternakan';
 
@@ -107,42 +127,32 @@ function getSectorKey(item: PotensiWilayah): CategoryFilter {
   return 'semua';
 }
 
-function getSectorBadges(sector: CategoryFilter) {
+function getSectorMeta(sector: CategoryFilter) {
   switch (sector) {
     case 'pertanian':
       return {
-        badge: 'Ketahanan Pangan Agraris',
-        tagBg: 'bg-emerald-50 text-emerald-800 border-emerald-200/70',
-        borderColor: 'hover:border-emerald-500/50',
-        accentBg: 'bg-emerald-50',
+        label: 'Pertanian & Ketahanan Pangan',
+        badgeClass: 'bg-emerald-100/90 text-emerald-900 border-emerald-300/80',
       };
     case 'umkm':
       return {
-        badge: 'Industri Kreatif Rumahan',
-        tagBg: 'bg-amber-50 text-amber-900 border-amber-200/70',
-        borderColor: 'hover:border-amber-500/50',
-        accentBg: 'bg-amber-50',
+        label: 'Sentra Industri Rumahan',
+        badgeClass: 'bg-amber-100/90 text-amber-950 border-amber-300/80',
       };
     case 'keagamaan':
       return {
-        badge: 'Warisan Tradisi Luhur',
-        tagBg: 'bg-teal-50 text-teal-800 border-teal-200/70',
-        borderColor: 'hover:border-teal-500/50',
-        accentBg: 'bg-teal-50',
+        label: 'Tradisi & Keagamaan Luhur',
+        badgeClass: 'bg-teal-100/90 text-teal-950 border-teal-300/80',
       };
     case 'peternakan':
       return {
-        badge: 'Sirkular Ekonomi Rakyat',
-        tagBg: 'bg-orange-50 text-orange-900 border-orange-200/70',
-        borderColor: 'hover:border-orange-500/50',
-        accentBg: 'bg-orange-50',
+        label: 'Peternakan Mandiri Warga',
+        badgeClass: 'bg-stone-200/90 text-stone-900 border-stone-300/80',
       };
     default:
       return {
-        badge: 'Potensi Unggulan',
-        tagBg: 'bg-stone-50 text-stone-800 border-stone-200/70',
-        borderColor: 'hover:border-emerald-500/50',
-        accentBg: 'bg-stone-50',
+        label: 'Sektor Unggulan Dusun',
+        badgeClass: 'bg-emerald-100/90 text-emerald-900 border-emerald-300/80',
       };
   }
 }
@@ -153,7 +163,6 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>('semua');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Pastikan data yang digunakan selalu lengkap
   const rawItems = potensi && potensi.length > 0 ? potensi : FALLBACK_POTENSI;
 
   const items = useMemo(() => {
@@ -185,7 +194,7 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
   return (
     <div className="space-y-8">
       {/* Search & Filter Header Bar */}
-      <div className="bg-white rounded-xl p-4 sm:p-6 border border-stone-200 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+      <div className="bg-white rounded-lg p-4 sm:p-5 border border-stone-200 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
         {/* Category Tabs */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
           {CATEGORY_TABS.map((tab) => {
@@ -195,10 +204,10 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
                 key={tab.key}
                 type="button"
                 onClick={() => setActiveCategory(tab.key)}
-                className={`px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer min-h-[40px] ${
+                className={`px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-colors cursor-pointer min-h-[40px] ${
                   isActive
                     ? 'bg-emerald-800 text-white shadow-xs'
-                    : 'bg-stone-100/80 text-stone-600 hover:text-stone-900 hover:bg-stone-200/70'
+                    : 'bg-stone-100 text-stone-700 hover:text-stone-900 hover:bg-stone-200/80'
                 }`}
               >
                 {tab.label}
@@ -216,13 +225,13 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Cari komoditas atau sektor..."
             aria-label="Cari potensi dusun"
-            className="w-full pl-9.5 pr-4 py-2 text-xs sm:text-sm rounded-lg bg-stone-50 border border-stone-200 focus:outline-hidden focus:border-emerald-600 focus:bg-white text-stone-900 placeholder:text-stone-400 transition-colors"
+            className="w-full pl-9.5 pr-14 py-2.5 text-base sm:text-sm min-h-[44px] rounded-lg bg-stone-50 border border-stone-200 focus:outline-hidden focus:border-emerald-700 focus:bg-white text-stone-900 placeholder:text-stone-400 transition-colors"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-stone-400 hover:text-stone-700"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-stone-500 hover:text-stone-800 font-medium px-1.5 py-0.5 rounded cursor-pointer"
             >
               Reset
             </button>
@@ -232,14 +241,14 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
 
       {/* Directory Grid */}
       {items.length === 0 ? (
-        <div className="bg-white rounded-xl border border-stone-200 p-12 text-center">
+        <div className="bg-white rounded-lg border border-stone-200 p-12 text-center">
           <div className="w-12 h-12 rounded-lg bg-stone-100 flex items-center justify-center mx-auto mb-3 text-stone-400">
             <Info className="w-6 h-6" />
           </div>
           <h3 className="font-heading text-lg font-bold text-stone-900 mb-1">
             Tidak Ada Data Potensi yang Cocok
           </h3>
-          <p className="text-xs sm:text-sm text-stone-500 max-w-md mx-auto mb-4">
+          <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto mb-4">
             Tidak ditemukan potensi yang sesuai dengan kata kunci pencarian atau filter kategori saat ini.
           </p>
           <button
@@ -248,19 +257,23 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
               setActiveCategory('semua');
               setSearchQuery('');
             }}
-            className="px-4 py-2 rounded-lg bg-emerald-800 text-white text-xs font-semibold hover:bg-emerald-700 transition-colors cursor-pointer"
+            className="px-4 py-2 rounded-lg bg-emerald-800 text-white text-xs font-semibold hover:bg-emerald-900 transition-colors cursor-pointer min-h-[40px]"
           >
             Tampilkan Semua Potensi
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {items.map((item, idx) => {
             const sector = getSectorKey(item);
-            const style = getSectorBadges(sector);
+            const meta = getSectorMeta(sector);
+            const fallbackImage =
+              POTENSI_IMAGES[item.judul] ||
+              'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80';
+            const imageUrl = item.gambar_url || fallbackImage;
 
             return (
-              <ScrollReveal key={item.id} delay={idx * 70} direction="up">
+              <ScrollReveal key={item.id} delay={idx * 60} direction="up">
                 <article
                   onClick={() => handleOpenDetail(item)}
                   role="button"
@@ -271,90 +284,81 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
                       handleOpenDetail(item);
                     }
                   }}
-                  className={`group bg-white rounded-xl border border-stone-200 shadow-xs ${style.borderColor} hover:shadow-lg hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between p-6 sm:p-8 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-emerald-600 text-left`}
+                  className="group bg-white rounded-lg border border-stone-200 shadow-xs hover:border-emerald-700/60 hover:shadow-md transition-all duration-200 flex flex-col justify-between overflow-hidden cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-emerald-700 text-left"
                 >
                   <div>
-                    {/* Header Bar: Icon, Badge, Arrow Indicator */}
-                    <div className="flex items-start justify-between gap-3 mb-5">
-                      <div className="flex items-center gap-3.5">
-                        <div
-                          className={`w-14 h-14 rounded-lg ${style.accentBg} border border-stone-200/60 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform duration-200`}
-                        >
-                          {renderPotensiVectorIcon(item.judul, item.icon, 'w-7 h-7')}
-                        </div>
-                        <div>
-                          <span
-                            className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md border ${style.tagBg}`}
-                          >
-                            <Sparkles className="w-3 h-3" />
-                            <span>{style.badge}</span>
-                          </span>
-                          <h3 className="font-heading text-xl sm:text-2xl font-bold text-stone-900 group-hover:text-emerald-900 transition-colors mt-1">
-                            {item.judul}
-                          </h3>
-                        </div>
-                      </div>
+                    {/* Image Header with Photography */}
+                    <div className="relative aspect-[16/10] bg-stone-100 overflow-hidden">
+                      <img
+                        src={imageUrl}
+                        alt={item.judul}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent pointer-events-none" />
 
-                      <div className="w-8 h-8 rounded-md bg-stone-100 group-hover:bg-emerald-800 group-hover:text-white text-stone-500 flex items-center justify-center transition-colors shrink-0">
-                        <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                      {/* Top Corner Category Label */}
+                      <div className="absolute top-3 left-3 z-10">
+                        <span
+                          className={`inline-block text-[11px] font-bold px-2.5 py-1 rounded-md border backdrop-blur-xs ${meta.badgeClass}`}
+                        >
+                          {meta.label}
+                        </span>
                       </div>
                     </div>
 
-                    {/* Short Description */}
-                    <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mb-6 line-clamp-3">
-                      {item.deskripsi_singkat}
-                    </p>
-
-                    {/* 4 Structured Information Snippets */}
-                    <div className="space-y-2.5 pt-4 border-t border-stone-100 text-xs">
-                      {/* 1. Kegiatan Utama */}
-                      <div className="p-3 rounded-lg bg-stone-50/80 border border-stone-100 flex items-start gap-2.5">
-                        <Briefcase className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
-                        <div className="min-w-0">
-                          <span className="font-bold text-stone-500 uppercase tracking-wider text-[10px] block">
-                            Kegiatan Utama:
-                          </span>
-                          <p className="text-stone-800 font-semibold truncate">
-                            {item.kegiatan_utama || 'Belum ada data'}
-                          </p>
+                    {/* Content Section */}
+                    <div className="p-5 sm:p-6 pb-2">
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <h3 className="font-heading text-lg sm:text-xl font-bold text-stone-900 group-hover:text-emerald-900 transition-colors leading-snug">
+                          {item.judul}
+                        </h3>
+                        <div className="w-7 h-7 rounded-md bg-stone-100 group-hover:bg-emerald-800 group-hover:text-white text-stone-500 flex items-center justify-center transition-colors shrink-0 mt-0.5">
+                          <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                         </div>
                       </div>
 
-                      {/* 2. Keunggulan Hasil */}
-                      <div className="p-3 rounded-lg bg-stone-50/80 border border-stone-100 flex items-start gap-2.5">
-                        <TrendingUp className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
-                        <div className="min-w-0">
-                          <span className="font-bold text-stone-500 uppercase tracking-wider text-[10px] block">
-                            Potensi & Keunggulan:
-                          </span>
-                          <p className="text-stone-800 font-semibold truncate">
-                            {item.keunggulan_hasil || 'Belum ada data'}
-                          </p>
-                        </div>
-                      </div>
+                      <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mb-4 line-clamp-2">
+                        {item.deskripsi_singkat}
+                      </p>
 
-                      {/* 3. Tantangan & Kendala */}
-                      <div className="p-3 rounded-lg bg-stone-50/80 border border-stone-100 flex items-start gap-2.5">
-                        <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-                        <div className="min-w-0">
-                          <span className="font-bold text-stone-500 uppercase tracking-wider text-[10px] block">
-                            Tantangan Lapangan:
-                          </span>
-                          <p className="text-stone-800 font-medium truncate">
-                            {item.tantangan_kendala || 'Tidak ada kendala berarti'}
-                          </p>
+                      {/* 3 Structured Information Snippets */}
+                      <div className="space-y-2 text-xs border-t border-stone-100 pt-3">
+                        <div className="flex items-start gap-2 text-stone-700">
+                          <Briefcase className="w-3.5 h-3.5 text-emerald-800 shrink-0 mt-0.5" />
+                          <div>
+                            <span className="font-semibold text-stone-900">Kegiatan: </span>
+                            <span>{item.kegiatan_utama || 'Belum ada data'}</span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-2 text-stone-700">
+                          <TrendingUp className="w-3.5 h-3.5 text-amber-700 shrink-0 mt-0.5" />
+                          <div>
+                            <span className="font-semibold text-stone-900">Keunggulan: </span>
+                            <span>{item.keunggulan_hasil || 'Belum ada data'}</span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-2 text-stone-700">
+                          <AlertCircle className="w-3.5 h-3.5 text-stone-500 shrink-0 mt-0.5" />
+                          <div>
+                            <span className="font-semibold text-stone-900">Tantangan: </span>
+                            <span>{item.tantangan_kendala || 'Tidak ada kendala berarti'}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Card Bottom CTA Trigger */}
-                  <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-semibold text-emerald-800 group-hover:text-emerald-950">
-                    <span className="inline-flex items-center gap-1.5">
-                      <BadgeCheck className="w-4 h-4 text-emerald-700" />
+                  {/* Card Bottom Bar */}
+                  <div className="px-5 sm:px-6 py-3.5 bg-stone-50/70 border-t border-stone-100 flex items-center justify-between text-xs font-semibold text-stone-600 mt-4">
+                    <span className="inline-flex items-center gap-1.5 text-[11px] text-stone-500">
+                      <BadgeCheck className="w-3.5 h-3.5 text-emerald-800" />
                       <span>Sumber: {item.sumber_data || 'Pemerintah Dusun'}</span>
                     </span>
-                    <span className="inline-flex items-center gap-1 text-emerald-800 group-hover:text-emerald-900 group-hover:translate-x-1 transition-transform">
+                    <span className="inline-flex items-center gap-1 text-emerald-800 group-hover:text-emerald-900 group-hover:translate-x-0.5 transition-transform font-bold">
                       <span>Rincian Lengkap</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </span>
@@ -375,3 +379,4 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
     </div>
   );
 }
+

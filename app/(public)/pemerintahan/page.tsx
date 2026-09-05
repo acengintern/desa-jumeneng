@@ -4,29 +4,20 @@ import Link from 'next/link';
 import {
   Building2,
   Users,
-  UserCheck,
   ShieldCheck,
-  Award,
-  Crown,
-  CheckCircle2,
-  MapPin,
   Home,
   ChevronRight,
   ArrowRight,
-  Sparkles,
   Landmark,
   GraduationCap,
   HeartPulse,
   Trophy,
   Phone,
-  Sprout,
-  BookOpen,
-  FileText,
+  CheckCircle2,
   Clock,
-  HeartHandshake,
+  MapPin,
   Check,
-  Compass,
-  Layers,
+  Sparkles,
 } from 'lucide-react';
 import { getPengurus, getSarana } from '@/lib/data-service';
 import { ScrollReveal } from '@/components/public/ScrollReveal';
@@ -37,7 +28,6 @@ export const metadata: Metadata = {
     'Struktur organisasi aparatur pamong dusun, ketua RW/RT, dan fasilitas sarana prasarana publik Padukuhan Jumeneng Kidul, Sumberadi, Mlati, Sleman.',
 };
 
-// Revalidasi data secara berkala (ISR)
 export const revalidate = 60;
 
 export default async function PemerintahanPage() {
@@ -46,7 +36,6 @@ export default async function PemerintahanPage() {
     getSarana(),
   ]);
 
-  // Helper untuk format nama berhuruf kapital rapi
   const formatName = (str: string) => {
     return str
       .split(' ')
@@ -69,7 +58,7 @@ export default async function PemerintahanPage() {
     dukuh.foto_url ||
     'https://info-jumenengkidul.site.je/uploads/struktur/img_20260824_025758_61818482.png';
 
-  // 2. Jajaran Ketua RW (4 Wilayah)
+  // 2. Jajaran Ketua RW
   const defaultRwList = [
     { id: 'rw-19', nama: 'Ngabidi', jabatan: 'Ketua RW 19', kategori: 'rw' as const, urutan: 2 },
     { id: 'rw-20', nama: 'Moh Idris', jabatan: 'Ketua RW 20', kategori: 'rw' as const, urutan: 5 },
@@ -83,27 +72,26 @@ export default async function PemerintahanPage() {
 
   const effectiveRw = rwList.length > 0 ? rwList : defaultRwList;
 
-  // Metadata detail untuk 4 RW
   const rwDescriptions: Record<string, { desc: string; focus: string }> = {
     'RW 19': {
-      desc: 'Mengkoordinasikan kerukunan warga, ketertiban lingkungan pemukiman, serta mengawal kegiatan gotong royong terpadu.',
+      desc: 'Koordinasi ketertiban lingkungan pemukiman dan kerja bakti gotong royong terpadu.',
       focus: 'Ketertiban & Gotong Royong',
     },
     'RW 20': {
-      desc: 'Membina keharmonisan sosial warga, memfasilitasi musyawarah kewilayahan, dan menyelaraskan agenda keagamaan.',
+      desc: 'Harmoni sosial warga, fasilitasi musyawarah kewilayahan, dan agenda keagamaan.',
       focus: 'Harmoni & Keagamaan',
     },
     'RW 21': {
-      desc: 'Mengawal ketahanan lingkungan, pemberdayaan keluarga posyandu, serta kegiatan pemuda di wilayah rukun warga.',
+      desc: 'Ketahanan lingkungan, posyandu balita/lansia, serta pembinaan pemuda wilayah.',
       focus: 'Posyandu & Pemuda',
     },
     'RW 39': {
-      desc: 'Mengoordinasikan pemeliharaan sarana prasarana lingkungan, program kebersihan, dan silaturahmi antar-RT.',
+      desc: 'Pemeliharaan fasilitas lingkungan, kebersihan sanitasi, dan silaturahmi antar-RT.',
       focus: 'Infrastruktur Lingkungan',
     },
   };
 
-  // 3. Jajaran Ketua RT (9 Unit RT)
+  // 3. Jajaran Ketua RT (9 RT)
   const defaultRtList = [
     { id: 'rt-01', nama: 'Fastabiq Ahmad', jabatan: 'Ketua RT 01', kategori: 'rt' as const, urutan: 3 },
     { id: 'rt-02', nama: 'Usman Slamet', jabatan: 'Ketua RT 02', kategori: 'rt' as const, urutan: 4 },
@@ -129,28 +117,16 @@ export default async function PemerintahanPage() {
       namaDefault: 'Masjid Dusun',
       jumlahDefault: '1 buah',
       deskripsi:
-        'Pusat kegiatan ibadah shalat berjamaah lima waktu, pengajian berkala, majelis taklim, dan pelestarian tradisi adzan 4 orang muadzin serentak pada shalat Jumat.',
-      fasilitasUtama: ['Ruang shalat utama', 'Serambi pengajian', 'Tempat wudhu terpisah', 'Sound system adzan'],
+        'Pusat ibadah shalat berjamaah lima waktu, pengajian berkala, serta pelestarian tradisi adzan 4 muadzin serentak pada shalat Jumat.',
       icon: Landmark,
-      color: {
-        badge: 'bg-emerald-50 text-emerald-800 border-emerald-200/80',
-        iconBg: 'bg-emerald-100 text-emerald-800',
-        borderHover: 'hover:border-emerald-300',
-      },
     },
     {
       kategori: 'Pendidikan',
       namaDefault: 'Sekolah Dasar (SD) Jumeneng',
       jumlahDefault: '1 buah',
       deskripsi:
-        'Institusi pendidikan dasar formal yang mencerdaskan generasi penerus dusun dengan fasilitas belajar lengkap, pembinaan budi pekerti, dan karakter luhur.',
-      fasilitasUtama: ['Ruang kelas memadai', 'Perpustakaan sekolah', 'Halaman upacara & bermain', 'Area olahraga'],
+        'Institusi pendidikan dasar formal yang mencerdaskan generasi penerus dusun dengan fasilitas belajar lengkap dan pembinaan karakter luhur.',
       icon: GraduationCap,
-      color: {
-        badge: 'bg-blue-50 text-blue-800 border-blue-200/80',
-        iconBg: 'bg-blue-100 text-blue-800',
-        borderHover: 'hover:border-blue-300',
-      },
     },
     {
       kategori: 'Kesehatan',
@@ -158,69 +134,39 @@ export default async function PemerintahanPage() {
       jumlahDefault: '1 tempat',
       deskripsi:
         'Layanan kesehatan terpadu berkala bagi balita dan lansia bersama bidan desa Kalurahan Sumberadi dan kader posyandu padukuhan.',
-      fasilitasUtama: ['Timbangan balita & stadiometer', 'Tensimeter lansia', 'Pemberian Makanan Tambahan (PMT)', 'Buku register KMS'],
       icon: HeartPulse,
-      color: {
-        badge: 'bg-rose-50 text-rose-800 border-rose-200/80',
-        iconBg: 'bg-rose-100 text-rose-800',
-        borderHover: 'hover:border-rose-300',
-      },
     },
     {
       kategori: 'Umum',
       namaDefault: 'Balai Dusun Jumeneng Kidul',
       jumlahDefault: '1 buah',
       deskripsi:
-        'Sentra pertemuan serbaguna untuk musyawarah padukuhan (Musdus), koordinasi pengurus RT/RW, pelatihan warga, sosialisasi program kalurahan, serta hajatan warga.',
-      fasilitasUtama: ['Pendopo pertemuan luas', 'Panggung serbaguna', 'Perlengkapan rapat', 'Halaman parkir warga'],
+        'Sentra musyawarah padukuhan (Musdus), koordinasi pengurus RT/RW, pelatihan warga, dan kegiatan kemasyarakatan.',
       icon: Building2,
-      color: {
-        badge: 'bg-amber-50 text-amber-800 border-amber-200/80',
-        iconBg: 'bg-amber-100 text-amber-800',
-        borderHover: 'hover:border-amber-300',
-      },
     },
     {
-      kategori: 'Olahraga & Ekonomi',
-      namaDefault: 'Lapangan Olahraga Warga',
+      kategori: 'Olahraga & Seni',
+      namaDefault: 'Lapangan Warga',
       jumlahDefault: '1 buah',
       deskripsi:
-        'Ruang terbuka aktif untuk kegiatan olahraga pemuda, turnamen bola voli dusun, senam kebugaran lansia/PKK, dan panggung perayaan hari kemerdekaan 17 Agustus.',
-      fasilitasUtama: ['Lapangan terbuka rumput', 'Tiang gawang & net olahraga', 'Penerangan malam', 'Akses mudah warga'],
+        'Ruang terbuka aktif untuk kegiatan olahraga pemuda, turnamen voli dusun, senam kebugaran lansia/PKK, dan panggung perayaan warga.',
       icon: Trophy,
-      color: {
-        badge: 'bg-orange-50 text-orange-800 border-orange-200/80',
-        iconBg: 'bg-orange-100 text-orange-800',
-        borderHover: 'hover:border-orange-300',
-      },
     },
     {
-      kategori: 'Keamanan & Lingkungan',
+      kategori: 'Keamanan',
       namaDefault: 'Pos Ronda & Siskamling',
-      jumlahDefault: 'Tersedia di RT/RW',
+      jumlahDefault: 'Tersedia di RT',
       deskripsi:
-        'Pos pengamanan swakarsa warga dengan jadwal ronda malam bergiliran demi menjaga keamanan, ketentraman lingkungan, dan kesiapsiagaan darurat.',
-      fasilitasUtama: ['Kentongan kayu tradisi', 'Jadwal ronda bergilir warga', 'Senter patroli malam', 'Kotak P3K darurat'],
+        'Pos pengamanan swakarsa warga dengan jadwal ronda malam bergiliran demi menjaga keamanan dan ketentraman lingkungan.',
       icon: ShieldCheck,
-      color: {
-        badge: 'bg-teal-50 text-teal-800 border-teal-200/80',
-        iconBg: 'bg-teal-100 text-teal-800',
-        borderHover: 'hover:border-teal-300',
-      },
     },
     {
-      kategori: 'Lembaga Kemasyarakatan',
+      kategori: 'Kelembagaan',
       namaDefault: 'PKK & Karang Taruna',
       jumlahDefault: 'Aktif di tiap unit',
       deskripsi:
-        'Wadah kelembagaan pemberdayaan wanita keluarga (PKK) dalam ketahanan keluarga serta organisasi pemuda (Karang Taruna) dalam kegiatan sosial dan kemasyarakatan.',
-      fasilitasUtama: ['Kelompok kerja PKK', 'Kegiatan pemuda & seni', 'Pemberdayaan UMKM wanita', 'Program kepemudaan'],
+        'Kelembagaan pemberdayaan wanita keluarga (PKK) dan wadah kepemudaan (Karang Taruna) dalam kegiatan sosial kemasyarakatan.',
       icon: Users,
-      color: {
-        badge: 'bg-purple-50 text-purple-800 border-purple-200/80',
-        iconBg: 'bg-purple-100 text-purple-800',
-        borderHover: 'hover:border-purple-300',
-      },
     },
   ];
 
@@ -237,17 +183,16 @@ export default async function PemerintahanPage() {
   });
 
   return (
-    <div className="bg-stone-50/50 min-h-screen">
-      {/* 1. HEADER & BREADCRUMB SECTION */}
-      <section className="bg-white border-b border-stone-200/80 pt-8 pb-12 sm:pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex items-center gap-2 text-xs sm:text-sm text-stone-500 font-medium">
+    <div className="bg-stone-50/40 min-h-screen">
+      {/* 1. HEADER & BREADCRUMB */}
+      <section className="bg-white border-b border-stone-200/80 pt-6 sm:pt-8 pb-10 sm:pb-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav aria-label="Breadcrumb" className="mb-4 sm:mb-6">
+            <ol className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-stone-500 font-medium">
               <li>
                 <Link
                   href="/"
-                  className="flex items-center gap-1.5 text-stone-600 hover:text-emerald-800 transition-colors"
+                  className="flex items-center gap-1 text-stone-600 hover:text-emerald-800 transition-colors"
                 >
                   <Home className="w-3.5 h-3.5" />
                   <span>Beranda</span>
@@ -262,148 +207,62 @@ export default async function PemerintahanPage() {
             </ol>
           </nav>
 
-          {/* Page Heading & Regional Descriptor */}
-          <div className="max-w-4xl">
-            <p className="text-xs sm:text-sm font-medium text-emerald-800 tracking-wide mb-2">
-              Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, D.I. Yogyakarta
+          <div className="max-w-3xl">
+            <p className="text-xs sm:text-sm font-medium text-emerald-800 mb-1.5">
+              Kalurahan Sumberadi, Kapanewon Mlati, Sleman, D.I. Yogyakarta
             </p>
-
-            <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-950 tracking-tight leading-tight">
+            <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-stone-950 tracking-tight leading-tight">
               Pemerintahan Dusun & Sarana Wilayah
             </h1>
-
-            <p className="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed max-w-3xl">
-              Struktur organisasi aparatur pamong dusun, ketua lingkungan RW & RT, serta fasilitas publik yang mendukung kesejahteraan warga Padukuhan Jumeneng Kidul.
+            <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
+              Struktur aparatur pamong padukuhan, jajaran pengurus 4 RW, 9 ketua RT,
+              serta sarana prasarana publik yang melayani warga Padukuhan Jumeneng Kidul.
             </p>
-
-            {/* Quick Navigation Anchor Bar */}
-            <div className="mt-8 pt-6 border-t border-stone-200 flex flex-wrap items-center gap-2 text-xs font-semibold">
-              <span className="text-stone-400 uppercase tracking-wider text-[11px] mr-1">
-                Lompat ke:
-              </span>
-              <a
-                href="#kepala-dukuh"
-                className="px-3 py-1.5 rounded-lg bg-stone-100 hover:bg-emerald-50 text-stone-700 hover:text-emerald-800 border border-stone-200 hover:border-emerald-200 transition-colors"
-              >
-                Kepala Dukuh
-              </a>
-              <a
-                href="#jajaran-rw"
-                className="px-3 py-1.5 rounded-lg bg-stone-100 hover:bg-emerald-50 text-stone-700 hover:text-emerald-800 border border-stone-200 hover:border-emerald-200 transition-colors"
-              >
-                Ketua RW (4 Wilayah)
-              </a>
-              <a
-                href="#jajaran-rt"
-                className="px-3 py-1.5 rounded-lg bg-stone-100 hover:bg-emerald-50 text-stone-700 hover:text-emerald-800 border border-stone-200 hover:border-emerald-200 transition-colors"
-              >
-                Ketua RT (9 Unit)
-              </a>
-              <a
-                href="#sarana-prasarana"
-                className="px-3 py-1.5 rounded-lg bg-stone-100 hover:bg-emerald-50 text-stone-700 hover:text-emerald-800 border border-stone-200 hover:border-emerald-200 transition-colors"
-              >
-                Sarana & Prasarana
-              </a>
-              <a
-                href="#alur-pelayanan"
-                className="px-3 py-1.5 rounded-lg bg-stone-100 hover:bg-emerald-50 text-stone-700 hover:text-emerald-800 border border-stone-200 hover:border-emerald-200 transition-colors"
-              >
-                Alur Layanan Warga
-              </a>
-            </div>
           </div>
         </div>
       </section>
 
       {/* MAIN CONTENT CONTAINER */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-16 sm:space-y-20">
-        {/* 2. PROFIL KEPALA DUKUH (Centerpiece Card) */}
-        <section id="kepala-dukuh" className="scroll-mt-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-12 sm:space-y-16">
+        {/* 2. PROFIL KEPALA DUKUH */}
+        <section id="kepala-dukuh" className="scroll-mt-20">
           <ScrollReveal direction="up">
-            <div className="bg-white rounded-xl border border-stone-200 shadow-xs overflow-hidden p-6 sm:p-10 lg:p-12">
-              <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
-                <Crown className="w-4 h-4 text-emerald-700" />
-                <span>Pimpinan Wilayah Padukuhan</span>
-              </div>
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-950 mb-8">
-                Profil & Kepemimpinan Kepala Dukuh
-              </h2>
-
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-                {/* Kolom Kiri: Foto Resmi & Ringkasan Pamong */}
+            <div className="bg-white rounded-xl border border-stone-200/90 shadow-2xs p-6 sm:p-9 lg:p-11">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+                {/* Kolom Foto Dukuh */}
                 <div className="lg:col-span-4 flex flex-col items-center">
-                  <div className="relative w-full max-w-xs">
-                    {/* Frame Foto dengan Fallback Elegan di Layer Bawah */}
-                    <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-stone-100 border-4 border-white shadow-md flex items-center justify-center">
-                      {/* Fallback layer: Aktif jika gambar lambat/gagal termuat */}
-                      <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-stone-100">
-                        <div className="w-20 h-20 rounded-2xl bg-emerald-800 text-amber-300 flex items-center justify-center font-heading font-extrabold text-2xl shadow-inner mb-3">
-                          EP
-                        </div>
-                        <span className="font-heading font-bold text-stone-900 text-base">
-                          {dukuh.nama}
-                        </span>
-                        <span className="text-xs text-stone-500 font-medium">
-                          Kepala Dukuh Jumeneng Kidul
-                        </span>
-                      </div>
-
-                      {/* Foto Asli Kepala Dukuh */}
-                      <img
-                        src={dukuhPhotoUrl}
-                        alt={`Bapak ${dukuh.nama} - Kepala Dukuh Jumeneng Kidul`}
-                        loading="lazy"
-                        decoding="async"
-                        className="relative z-10 w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
-                      />
-                    </div>
-
-                    {/* Badge Status Pamong */}
-                    <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-20 px-3 py-1 bg-emerald-800 text-amber-300 text-xs font-bold rounded-lg shadow-md flex items-center gap-1.5 whitespace-nowrap border border-emerald-700">
-                      <ShieldCheck className="w-3.5 h-3.5" />
-                      <span>Pamong Padukuhan</span>
-                    </div>
+                  <div className="w-full max-w-[240px] sm:max-w-[260px] rounded-lg overflow-hidden border border-stone-200 bg-stone-100 aspect-[4/5] shadow-xs">
+                    <img
+                      src={dukuhPhotoUrl}
+                      alt={`Bapak ${dukuh.nama} - Kepala Dukuh Jumeneng Kidul`}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-top"
+                    />
                   </div>
 
-                  {/* Ringkasan Administrasi Dukuh */}
-                  <div className="w-full max-w-xs mt-6 p-4 rounded-xl bg-stone-50 border border-stone-200/80 text-xs text-stone-600 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-stone-500">Nama Lengkap:</span>
-                      <span className="font-bold text-stone-900">{dukuh.nama}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-stone-500">Jabatan:</span>
-                      <span className="font-semibold text-emerald-800">Kepala Dukuh</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-stone-500">Wilayah Binaan:</span>
-                      <span className="font-semibold text-stone-800">4 RW & 9 RT</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-stone-500">Kalurahan:</span>
-                      <span className="font-semibold text-stone-800">Sumberadi, Mlati</span>
-                    </div>
+                  <div className="w-full max-w-[260px] mt-4 p-3 rounded-lg bg-stone-50 border border-stone-200/70 text-xs text-stone-600 space-y-1.5 text-center">
+                    <div className="font-bold text-stone-950 text-sm">{dukuh.nama}</div>
+                    <div className="text-emerald-800 font-semibold">Kepala Dukuh Jumeneng Kidul</div>
+                    <div className="text-[11px] text-stone-500">Masa Bakti Aktif Pamong Dusun</div>
                   </div>
                 </div>
 
-                {/* Kolom Kanan: Narasi Tugas, Wewenang, & 4 Nilai Kepemimpinan */}
-                <div className="lg:col-span-8 space-y-6">
+                {/* Kolom Narasi Tugas & Wewenang */}
+                <div className="lg:col-span-8 space-y-4">
                   <div>
-                    <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-50 border border-amber-200/80 text-amber-900 text-xs font-semibold mb-2">
-                      <Award className="w-3.5 h-3.5 text-amber-700" />
-                      <span>Amanah Mengabdi untuk Warga Dusun</span>
-                    </div>
-                    <h3 className="font-heading text-2xl sm:text-3xl font-extrabold text-stone-950">
+                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-800 block mb-1">
+                      Pamong Pimpinan Dusun
+                    </span>
+                    <h2 className="font-heading text-xl sm:text-2xl lg:text-3xl font-bold text-stone-950">
                       Bapak {dukuh.nama}
-                    </h3>
-                    <p className="text-sm font-semibold text-emerald-800">
-                      Kepala Dukuh Jumeneng Kidul, Sumberadi, Mlati, Sleman
+                    </h2>
+                    <p className="text-xs sm:text-sm text-stone-500 mt-0.5">
+                      Kepala Dukuh Padukuhan Jumeneng Kidul, Sumberadi, Mlati
                     </p>
                   </div>
 
-                  {/* Narasi Wewenang & Tugas Pokok */}
-                  <div className="space-y-3.5 text-stone-700 text-sm sm:text-base leading-relaxed">
+                  <div className="space-y-3 text-xs sm:text-sm text-stone-700 leading-relaxed pt-1">
                     <p>
                       Sebagai kepala dukuh, Bapak Edhy Purwanta mengemban amanah memimpin tata kelola kemasyarakatan,
                       menjaga ketentraman lingkungan, serta mengkoordinasikan kegiatan kelembagaan 4 Rukun Warga (RW)
@@ -414,65 +273,29 @@ export default async function PemerintahanPage() {
                       Kalurahan Sumberadi dan Kapanewon Mlati, memastikan setiap program pembangunan, penyaluran bantuan
                       sosial, serta pelayanan administrasi kependudukan terselenggara secara tepat sasaran, adil, dan transparan.
                     </p>
-                    <p>
-                      Melanjutkan keteladanan pendiri dusun Kyai Nur Jumeneng, kepemimpinan beliau senantiasa mengedepankan
-                      pendekatan musyawarah mufakat, mendorong partisipasi pemuda dan kaum wanita, serta merawat
-                      kearifan lokal gotong royong warga.
-                    </p>
                   </div>
 
-                  {/* 4 Nilai Kepemimpinan Dusun */}
+                  {/* Nilai Kepemimpinan Ringkas (Text-first, no bubble icons) */}
                   <div className="pt-4 border-t border-stone-100">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500 mb-3">
-                      4 Nilai Utama Kepemimpinan Pamong:
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                      <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200/80">
-                        <div className="flex items-center gap-2 font-bold text-stone-950 text-sm mb-1">
-                          <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center text-xs">
-                            <ShieldCheck className="w-3.5 h-3.5" />
-                          </div>
-                          <span>Amanah & Tanggung Jawab</span>
-                        </div>
-                        <p className="text-xs text-stone-600 leading-relaxed">
-                          Menjalankan mandat kepercayaan warga dengan ketulusan hati, integritas moral, dan kedisiplinan penuh.
-                        </p>
+                    <h3 className="text-xs font-bold text-stone-700 uppercase tracking-wider mb-2.5">
+                      Prinsip Pelayanan Pamong:
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-stone-600">
+                      <div className="flex items-center gap-2 py-1">
+                        <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                        <span>Amanah & bertanggung jawab melayani warga</span>
                       </div>
-
-                      <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200/80">
-                        <div className="flex items-center gap-2 font-bold text-stone-950 text-sm mb-1">
-                          <div className="w-6 h-6 rounded-md bg-amber-100 text-amber-900 flex items-center justify-center text-xs">
-                            <HeartHandshake className="w-3.5 h-3.5" />
-                          </div>
-                          <span>Guyub Rukun</span>
-                        </div>
-                        <p className="text-xs text-stone-600 leading-relaxed">
-                          Merawat persaudaraan dan keharmonisan sosial antarkeluarga dan antarlingkungan tanpa membeda-bedakan.
-                        </p>
+                      <div className="flex items-center gap-2 py-1">
+                        <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                        <span>Merawat persaudaraan & guyub rukun</span>
                       </div>
-
-                      <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200/80">
-                        <div className="flex items-center gap-2 font-bold text-stone-950 text-sm mb-1">
-                          <div className="w-6 h-6 rounded-md bg-teal-100 text-teal-800 flex items-center justify-center text-xs">
-                            <Layers className="w-3.5 h-3.5" />
-                          </div>
-                          <span>Transparan & Akuntabel</span>
-                        </div>
-                        <p className="text-xs text-stone-600 leading-relaxed">
-                          Keterbukaan informasi program kerja padukuhan, musyawarah anggaran, dan keputusan pembangunan warga.
-                        </p>
+                      <div className="flex items-center gap-2 py-1">
+                        <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                        <span>Keterbukaan informasi & musyawarah mufakat</span>
                       </div>
-
-                      <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200/80">
-                        <div className="flex items-center gap-2 font-bold text-stone-950 text-sm mb-1">
-                          <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center text-xs">
-                            <CheckCircle2 className="w-3.5 h-3.5" />
-                          </div>
-                          <span>Melayani Warga</span>
-                        </div>
-                        <p className="text-xs text-stone-600 leading-relaxed">
-                          Senantiasa hadir tanggap, ramah, dan solutif membantu kebutuhan administrasi dan sosial masyarakat.
-                        </p>
+                      <div className="flex items-center gap-2 py-1">
+                        <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                        <span>Tanggap terhadap kebutuhan sosial warga</span>
                       </div>
                     </div>
                   </div>
@@ -482,65 +305,47 @@ export default async function PemerintahanPage() {
           </ScrollReveal>
         </section>
 
-        {/* 3. JAJARAN KETUA RW (Rukun Warga - 4 Wilayah) */}
-        <section id="jajaran-rw" className="scroll-mt-24">
+        {/* 3. JAJARAN KETUA RW (4 WILAYAH) */}
+        <section id="jajaran-rw" className="scroll-mt-20">
           <ScrollReveal direction="up">
-            <div className="mb-8 max-w-3xl">
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
-                <Users className="w-4 h-4 text-emerald-700" />
-                <span>Pamong Wilayah Antar-RT</span>
-              </div>
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-950 tracking-tight">
+            <div className="mb-5 max-w-2xl">
+              <h2 className="font-heading text-xl sm:text-2xl font-bold text-stone-950 tracking-tight">
                 Jajaran Ketua Rukun Warga (RW)
               </h2>
-              <p className="text-sm sm:text-base text-stone-600 mt-2">
-                Empat koordinator wilayah Rukun Warga yang mengampu koordinasi ketertiban, keharmonisan sosial, dan sinkronisasi program padukuhan di masing-masing teritori.
+              <p className="text-xs sm:text-sm text-stone-600 mt-1">
+                Empat koordinator wilayah Rukun Warga yang membina keharmonisan dan program kemasyarakatan dusun.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {effectiveRw.map((rw, idx) => {
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+              {effectiveRw.map((rw) => {
                 const rwCode = rw.jabatan.replace(/[^0-9]/g, '');
                 const rwKey = `RW ${rwCode}`;
                 const rwMeta = rwDescriptions[rwKey] || {
-                  desc: 'Membina kerukunan dan mengkoordinasikan kegiatan lingkungan kemasyarakatan.',
+                  desc: 'Membina kerukunan dan koordinasi kemasyarakatan.',
                   focus: 'Pelayanan Wilayah',
                 };
 
                 return (
                   <div
                     key={rw.id}
-                    className="bg-white rounded-lg p-6 border border-stone-200 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                    className="bg-white rounded-lg p-4 sm:p-5 border border-stone-200/90 shadow-2xs flex flex-col justify-between"
                   >
                     <div>
-                      {/* Header Badge RW */}
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="px-3 py-1 rounded-md text-xs font-bold bg-teal-50 text-teal-800 border border-teal-200">
-                          {rw.jabatan}
-                        </span>
-                        <div className="w-8 h-8 rounded-md bg-stone-100 text-stone-600 flex items-center justify-center text-xs font-bold">
-                          0{idx + 1}
-                        </div>
-                      </div>
-
-                      {/* Nama Ketua RW */}
-                      <h3 className="font-heading text-lg sm:text-xl font-bold text-stone-950 mb-1 leading-snug">
+                      <span className="text-[11px] font-bold text-emerald-800 uppercase tracking-wider block mb-1">
+                        {rw.jabatan}
+                      </span>
+                      <h3 className="font-heading text-base font-bold text-stone-950 mb-1">
                         Bapak {formatName(rw.nama)}
                       </h3>
-                      <p className="text-xs font-semibold text-emerald-800 mb-3">
-                        Ketua Rukun Warga {rwCode}
-                      </p>
-
-                      <p className="text-xs text-stone-600 leading-relaxed mb-4">
+                      <p className="text-xs text-stone-600 leading-relaxed mb-3">
                         {rwMeta.desc}
                       </p>
                     </div>
 
-                    <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
-                      <span className="flex items-center gap-1 text-[11px] font-medium text-emerald-800">
-                        <MapPin className="w-3 h-3 text-emerald-600" />
-                        <span>Fokus: {rwMeta.focus}</span>
-                      </span>
+                    <div className="pt-2.5 border-t border-stone-100 flex items-center gap-1 text-[11px] text-emerald-800 font-medium">
+                      <MapPin className="w-3 h-3 text-emerald-600" />
+                      <span>Fokus: {rwMeta.focus}</span>
                     </div>
                   </div>
                 );
@@ -549,253 +354,179 @@ export default async function PemerintahanPage() {
           </ScrollReveal>
         </section>
 
-        {/* 4. JAJARAN KETUA RT (RT 01 s/d RT 09) */}
-        <section id="jajaran-rt" className="scroll-mt-24">
+        {/* 4. JAJARAN KETUA RT (STRUCTURED DIRECTORY LIST, NO SAAS CARDS) */}
+        <section id="jajaran-rt" className="scroll-mt-20">
           <ScrollReveal direction="up">
-            <div className="mb-8 max-w-3xl">
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
-                <UserCheck className="w-4 h-4 text-emerald-700" />
-                <span>Garda Terdepan Pelayanan Warga</span>
-              </div>
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-950 tracking-tight">
-                Jajaran Ketua Rukun Tetangga (RT 01 - RT 09)
+            <div className="mb-5 max-w-2xl">
+              <h2 className="font-heading text-xl sm:text-2xl font-bold text-stone-950 tracking-tight">
+                Jajaran Ketua Rukun Tetangga (RT 01 – RT 09)
               </h2>
-              <p className="text-sm sm:text-base text-stone-600 mt-2">
-                Sembilan ketua unit RT yang mengabdi langsung di tengah permukiman warga, melayani administrasi pengantar kependudukan, serta memimpin kerukunan lingkungan harian.
+              <p className="text-xs sm:text-sm text-stone-600 mt-1">
+                Garda terdepan pelayanan warga yang mendampingi administrasi kependudukan dan kerukunan lingkungan RT.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-              {effectiveRt.map((rt) => {
-                const rtNumber = rt.jabatan.replace(/[^0-9]/g, '');
-
-                return (
-                  <div
-                    key={rt.id}
-                    className="bg-white rounded-lg p-5 border border-stone-200 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all duration-200 flex items-start gap-4"
-                  >
-                    {/* Badge Nomor RT Elegan */}
-                    <div className="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200/80 flex flex-col items-center justify-center shrink-0 shadow-xs">
-                      <span className="text-[10px] font-bold uppercase tracking-wider leading-none">
-                        RT
-                      </span>
-                      <span className="font-heading font-extrabold text-base leading-none mt-0.5">
-                        {rtNumber || rt.urutan}
-                      </span>
-                    </div>
-
-                    {/* Identitas Ketua RT & Informasi Layanan */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-2 mb-0.5">
-                        <span className="text-[11px] font-semibold text-emerald-800 block uppercase tracking-wide">
-                          {rt.jabatan}
+            {/* Structured Directory List with clean dividers */}
+            <div className="bg-white rounded-xl border border-stone-200/90 shadow-2xs p-5 sm:p-7">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-1">
+                {effectiveRt.map((rt) => {
+                  const numMatch = rt.jabatan.match(/\d+/);
+                  const rtLabel = numMatch
+                    ? `RT ${numMatch[0].padStart(2, '0')}`
+                    : rt.jabatan;
+                  return (
+                    <div
+                      key={rt.id}
+                      className="py-3 border-b border-stone-100 flex items-start justify-between gap-3"
+                    >
+                      <div>
+                        <span className="text-[11px] font-bold text-emerald-800 uppercase tracking-wider block">
+                          {rtLabel}
                         </span>
-                        <span className="text-[10px] font-semibold text-stone-500 bg-stone-100 px-2 py-0.5 rounded">
-                          Aktif
-                        </span>
+                        <h3 className="font-heading font-bold text-sm sm:text-base text-stone-900 mt-0.5">
+                          Bapak {formatName(rt.nama)}
+                        </h3>
+                        <p className="text-[11px] text-stone-500 mt-0.5">
+                          Layanan pengantar & rukun warga
+                        </p>
                       </div>
-
-                      <h3 className="font-heading font-bold text-base text-stone-900 truncate">
-                        Bapak {formatName(rt.nama)}
-                      </h3>
-
-                      <p className="text-xs text-stone-500 mt-1 leading-relaxed">
-                        Layanan pengantar administrasi, ronda siskamling, dan kerja bakti kebersihan unit RT.
-                      </p>
+                      <span className="text-[10px] font-medium text-stone-500 bg-stone-100 px-2 py-0.5 rounded shrink-0 mt-1">
+                        Aktif
+                      </span>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </ScrollReveal>
         </section>
 
-        {/* 5. SARANA & PRASARANA PUBLIK DUSUN (7 Kategori) */}
-        <section id="sarana-prasarana" className="scroll-mt-24">
+        {/* 5. SARANA & PRASARANA PUBLIK (7 KATEGORI) */}
+        <section id="sarana-prasarana" className="scroll-mt-20">
           <ScrollReveal direction="up">
-            <div className="mb-8 max-w-3xl">
-              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
-                <Landmark className="w-4 h-4 text-emerald-700" />
-                <span>Infrastruktur & Layanan Publik</span>
-              </div>
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-950 tracking-tight">
-                Sarana & Prasarana Dusun (7 Kategori)
+            <div className="mb-5 max-w-2xl">
+              <h2 className="font-heading text-xl sm:text-2xl font-bold text-stone-950 tracking-tight">
+                Sarana & Prasarana Publik Dusun
               </h2>
-              <p className="text-sm sm:text-base text-stone-600 mt-2">
-                Fasilitas umum penunjang kebutuhan peribadatan, pendidikan dasar, kesehatan, olahraga, keamanan lingkungan, dan kelembagaan warga Padukuhan Jumeneng Kidul.
+              <p className="text-xs sm:text-sm text-stone-600 mt-1">
+                Fasilitas publik penunjang ibadah, pendidikan dasar, posyandu kesehatan, dan ruang komunal warga.
               </p>
             </div>
 
-            {/* Grid 7 Kategori Fasilitas + 1 Kartu Pemeliharaan Swadaya */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {effectiveSarana.map((item) => {
                 const Icon = item.icon;
                 return (
                   <div
                     key={item.id}
-                    className={`bg-white rounded-xl p-6 sm:p-7 border border-stone-200 ${item.color.borderHover} shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between`}
+                    className="bg-white rounded-lg p-5 border border-stone-200/90 shadow-2xs flex flex-col justify-between"
                   >
                     <div>
-                      {/* Top Header: Icon & Quantity Badge */}
-                      <div className="flex items-start justify-between gap-3 mb-5">
-                        <div
-                          className={`w-12 h-12 rounded-lg ${item.color.iconBg} flex items-center justify-center shadow-xs`}
-                        >
-                          <Icon className="w-6 h-6" />
+                      <div className="flex items-center justify-between gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200/60 flex items-center justify-center shrink-0">
+                          <Icon className="w-4 h-4" />
                         </div>
-
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-2xs whitespace-nowrap">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                          <span>{item.jumlah}</span>
+                        <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/70">
+                          {item.jumlah}
                         </span>
                       </div>
 
-                      {/* Kategori Label */}
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block mb-1">
+                      <span className="text-[10px] text-stone-500 uppercase tracking-wider font-semibold block">
                         Kategori {item.kategori}
                       </span>
-
-                      {/* Nama Fasilitas */}
-                      <h3 className="font-heading text-xl font-bold text-stone-950 mb-3">
+                      <h3 className="font-heading text-base font-bold text-stone-950 mb-1.5">
                         {item.nama_fasilitas}
                       </h3>
-
-                      {/* Deskripsi Fasilitas */}
-                      <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mb-4">
+                      <p className="text-xs text-stone-600 leading-relaxed">
                         {item.deskripsi}
                       </p>
-
-                      {/* Fitur Utama Sarana */}
-                      <div className="space-y-1.5 pt-3 border-t border-stone-100">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">
-                          Fasilitas / Aktivitas:
-                        </span>
-                        {item.fasilitasUtama.slice(0, 3).map((f, fIdx) => (
-                          <div
-                            key={fIdx}
-                            className="flex items-center gap-1.5 text-xs text-stone-600"
-                          >
-                            <span className="text-emerald-700 font-bold text-xs shrink-0 select-none">–</span>
-                            <span className="truncate">{f}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="mt-5 pt-4 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
-                      <span className="text-[11px] text-emerald-800 font-semibold">
-                        Fasilitas Aktif
-                      </span>
-                      <span className="text-[11px] text-stone-500">Jumeneng Kidul</span>
                     </div>
                   </div>
                 );
               })}
 
-              {/* Kartu Pemeliharaan & Gotong Royong Swadaya */}
-              <div className="rounded-xl p-6 sm:p-7 bg-gradient-to-br from-emerald-900 to-stone-950 text-white flex flex-col justify-between shadow-md border border-emerald-800/80">
+              {/* Pemeliharaan Swadaya Dusun Card */}
+              <div className="bg-emerald-900 text-white rounded-lg p-5 flex flex-col justify-between shadow-2xs">
                 <div>
-                  <div className="w-12 h-12 rounded-lg bg-white/10 text-amber-300 flex items-center justify-center mb-5">
-                    <Sparkles className="w-6 h-6" />
+                  <div className="flex items-center gap-1.5 text-xs font-bold text-amber-300 uppercase tracking-wider mb-2">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Kearifan Lokal</span>
                   </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-300 block mb-1">
-                    Kearifan Lokal
-                  </span>
-                  <h3 className="font-heading text-xl font-bold mb-3 text-white">
-                    Pemeliharaan Swadaya Dusun
+                  <h3 className="font-heading text-base font-bold text-white mb-1.5">
+                    Pemeliharaan Gotong Royong
                   </h3>
-                  <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed mb-4">
-                    Seluruh sarana prasarana publik dipelihara secara rutin melalui tradisi kerja bakti gotong royong dan iuran swadaya warga agar senantiasa bersih, aman, dan nyaman digunakan bersama.
+                  <p className="text-xs text-emerald-100 leading-relaxed">
+                    Seluruh sarana dusun dipelihara secara berkala melalui kerja bakti swadaya warga
+                    agar senantiasa bersih, aman, dan nyaman dimanfaatkan bersama.
                   </p>
-
-                  <div className="space-y-2 text-xs text-emerald-200">
-                    <div className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-amber-300 shrink-0" />
-                      <span>Kerja bakti selapanan (tiap 35 hari)</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-amber-300 shrink-0" />
-                      <span>Pemeliharaan berkala sarana ibadah & balai</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-amber-300 shrink-0" />
-                      <span>Piket siskamling ronda malam warga</span>
-                    </div>
-                  </div>
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-emerald-800/70 flex items-center gap-1.5 text-xs text-emerald-300">
-                  <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Milik Bersama Warga Dusun</span>
+                <div className="pt-3 border-t border-emerald-800 text-[11px] text-emerald-200">
+                  <span>Milik & Tanggung Jawab Bersama Warga</span>
                 </div>
               </div>
             </div>
           </ScrollReveal>
         </section>
 
-        {/* 6. PANDUAN ALUR LAYANAN ADMINISTRASI WARGA */}
-        <section id="alur-pelayanan" className="scroll-mt-24">
+        {/* 6. ALUR LAYANAN ADMINISTRASI WARGA */}
+        <section id="alur-pelayanan" className="scroll-mt-20">
           <ScrollReveal direction="up">
-            <div className="bg-white rounded-xl border border-stone-200 shadow-xs p-6 sm:p-10 lg:p-12">
-              <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
-                <FileText className="w-4 h-4 text-emerald-700" />
-                <span>Pelayanan Administrasi Terpadu</span>
-              </div>
-              <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-stone-950 mb-4">
+            <div className="bg-white rounded-xl border border-stone-200/90 shadow-2xs p-6 sm:p-8">
+              <h2 className="font-heading text-xl sm:text-2xl font-bold text-stone-950 mb-2">
                 Alur Pengurusan Administrasi Warga
               </h2>
-              <p className="text-sm sm:text-base text-stone-600 max-w-3xl mb-8 leading-relaxed">
-                Untuk kemudahan pengurusan surat pengantar kependudukan (KTP, Kartu Keluarga, Surat Keterangan Domisili, dll), warga dapat mengikuti 3 langkah berjenjang berikut:
+              <p className="text-xs sm:text-sm text-stone-600 max-w-2xl mb-6 leading-relaxed">
+                Pengurusan surat pengantar kependudukan (KTP, KK, Surat Keterangan) dapat dilakukan melalui 3 tahapan berikut:
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="p-6 rounded-lg bg-stone-50 border border-stone-200/80">
-                  <div className="w-10 h-10 rounded-md bg-emerald-800 text-amber-300 font-heading font-extrabold text-base flex items-center justify-center mb-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="p-4 rounded-lg bg-stone-50 border border-stone-200/70">
+                  <div className="w-7 h-7 rounded-md bg-emerald-800 text-amber-200 text-xs font-bold flex items-center justify-center mb-2.5">
                     1
                   </div>
-                  <h3 className="font-heading font-bold text-lg text-stone-950 mb-2">
+                  <h3 className="font-heading font-bold text-sm text-stone-950 mb-1">
                     Surat Pengantar RT
                   </h3>
-                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                    Menghubungi Ketua RT setempat sesuai domisili dengan membawa salinan KTP & KK untuk mendapatkan Surat Pengantar RT.
+                  <p className="text-xs text-stone-600 leading-relaxed">
+                    Menghubungi Ketua RT setempat dengan membawa fotokopi KTP & Kartu Keluarga.
                   </p>
                 </div>
 
-                <div className="p-6 rounded-lg bg-stone-50 border border-stone-200/80">
-                  <div className="w-10 h-10 rounded-md bg-emerald-800 text-amber-300 font-heading font-extrabold text-base flex items-center justify-center mb-4">
+                <div className="p-4 rounded-lg bg-stone-50 border border-stone-200/70">
+                  <div className="w-7 h-7 rounded-md bg-emerald-800 text-amber-200 text-xs font-bold flex items-center justify-center mb-2.5">
                     2
                   </div>
-                  <h3 className="font-heading font-bold text-lg text-stone-950 mb-2">
+                  <h3 className="font-heading font-bold text-sm text-stone-950 mb-1">
                     Verifikasi Wilayah RW
                   </h3>
-                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                    Membawa berkas pengantar RT kepada Ketua RW untuk ditandatangani dan dicatat dalam buku registrasi kewilayahan.
+                  <p className="text-xs text-stone-600 leading-relaxed">
+                    Meneruskan berkas pengantar RT kepada Ketua RW untuk ditandatangani.
                   </p>
                 </div>
 
-                <div className="p-6 rounded-lg bg-stone-50 border border-stone-200/80">
-                  <div className="w-10 h-10 rounded-md bg-emerald-800 text-amber-300 font-heading font-extrabold text-base flex items-center justify-center mb-4">
+                <div className="p-4 rounded-lg bg-stone-50 border border-stone-200/70">
+                  <div className="w-7 h-7 rounded-md bg-emerald-800 text-amber-200 text-xs font-bold flex items-center justify-center mb-2.5">
                     3
                   </div>
-                  <h3 className="font-heading font-bold text-lg text-stone-950 mb-2">
-                    Pengesahan Dukuh & Kalurahan
+                  <h3 className="font-heading font-bold text-sm text-stone-950 mb-1">
+                    Pengesahan Dukuh / Kalurahan
                   </h3>
-                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                    Menghadap Kepala Dukuh atau langsung ke loket pelayanan Kantor Kalurahan Sumberadi untuk penerbitan dokumen resmi final.
+                  <p className="text-xs text-stone-600 leading-relaxed">
+                    Menghadap Kepala Dukuh atau langsung ke loket pelayanan Kantor Kalurahan Sumberadi.
                   </p>
                 </div>
               </div>
 
-              <div className="mt-8 p-4 rounded-lg bg-emerald-50/70 border border-emerald-200/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-                <div className="flex items-center gap-2 text-emerald-950 font-medium">
-                  <Clock className="w-4 h-4 text-emerald-700 shrink-0" />
-                  <span>Pelayanan ramah, cepat, dan mengedepankan prinsip keterbukaan bagi seluruh warga dusun.</span>
+              <div className="mt-6 pt-4 border-t border-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                <div className="flex items-center gap-2 text-stone-600">
+                  <Clock className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
+                  <span>Pengurusan surat pengantar tidak dipungut biaya (bebas biaya/gratis).</span>
                 </div>
                 <Link
                   href="/kontak"
-                  className="inline-flex items-center gap-1.5 font-bold text-emerald-800 hover:text-emerald-950 underline shrink-0"
+                  className="inline-flex items-center gap-1 font-semibold text-emerald-800 hover:text-emerald-950 shrink-0"
                 >
-                  <span>Hubungi Kontak Sekretariat</span>
+                  <span>Formulir Kontak Sekretariat</span>
                   <ChevronRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -803,78 +534,48 @@ export default async function PemerintahanPage() {
           </ScrollReveal>
         </section>
 
-        {/* 7. BOTTOM NAVIGATION CARDS */}
-        <section className="pt-4 border-t border-stone-200/80">
-          <div className="mb-6">
-            <h3 className="font-heading text-lg sm:text-xl font-bold text-stone-950">
-              Jelajahi Informasi Dusun Lainnya
+        {/* 7. BOTTOM NAVIGATION */}
+        <section className="pt-4 border-t border-stone-200">
+          <div className="mb-4">
+            <h3 className="font-heading text-base sm:text-lg font-bold text-stone-950">
+              Navigasi Halaman Terkait
             </h3>
-            <p className="text-xs sm:text-sm text-stone-600">
-              Lanjutkan membaca potensi unggulan serta layanan kontak Padukuhan Jumeneng Kidul.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-            <Link
-              href="/potensi"
-              className="group p-6 rounded-xl bg-white border border-stone-200 shadow-xs hover:border-emerald-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between min-h-[44px]"
-            >
-              <div>
-                <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-                  <Sprout className="w-5 h-5" />
-                </div>
-                <h4 className="font-heading font-bold text-base text-stone-900 group-hover:text-emerald-800 transition-colors mb-1">
-                  Potensi & UMKM Unggulan
-                </h4>
-                <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                  Eksplorasi sentra industri emping melinjo, areal pertanian padi subur lereng Merapi, dan peternakan domba warga.
-                </p>
-              </div>
-              <div className="mt-6 pt-3 border-t border-stone-100 flex items-center gap-1.5 text-xs font-semibold text-emerald-800 group-hover:text-emerald-900">
-                <span>Eksplorasi Potensi Dusun</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
-
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Link
               href="/profil"
-              className="group p-6 rounded-xl bg-white border border-stone-200 shadow-xs hover:border-amber-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between min-h-[44px]"
+              className="p-5 rounded-lg bg-white border border-stone-200 hover:border-emerald-300 shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between min-h-[44px]"
             >
               <div>
-                <div className="w-10 h-10 rounded-lg bg-amber-50 text-amber-900 border border-amber-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-                  <BookOpen className="w-5 h-5" />
-                </div>
-                <h4 className="font-heading font-bold text-base text-stone-900 group-hover:text-amber-800 transition-colors mb-1">
+                <h4 className="font-heading font-bold text-sm sm:text-base text-stone-900 mb-1">
                   Profil & Sejarah Dusun
                 </h4>
-                <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                  Kisah sejarah ketokohan Kyai Nur Jumeneng, asal-usul pemekaran wilayah, visi pembangunan, dan demografi warga.
+                <p className="text-xs text-stone-600 leading-relaxed">
+                  Riwayat Kyai Nur Jumeneng, asal-usul pemekaran, visi misi, dan demografi penduduk.
                 </p>
               </div>
-              <div className="mt-6 pt-3 border-t border-stone-100 flex items-center gap-1.5 text-xs font-semibold text-amber-900 group-hover:text-amber-950">
-                <span>Baca Riwayat Sejarah</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <div className="mt-4 pt-2 border-t border-stone-100 flex items-center gap-1 text-xs font-semibold text-emerald-800">
+                <span>Buka Profil Dusun</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </Link>
 
             <Link
               href="/kontak"
-              className="group p-6 rounded-xl bg-white border border-stone-200 shadow-xs hover:border-teal-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between min-h-[44px]"
+              className="p-5 rounded-lg bg-white border border-stone-200 hover:border-emerald-300 shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between min-h-[44px]"
             >
               <div>
-                <div className="w-10 h-10 rounded-lg bg-teal-50 text-teal-800 border border-teal-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <h4 className="font-heading font-bold text-base text-stone-900 group-hover:text-teal-800 transition-colors mb-1">
+                <h4 className="font-heading font-bold text-sm sm:text-base text-stone-900 mb-1">
                   Layanan Warga & Kontak
                 </h4>
-                <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                  Hubungi kontak resmi pamong dusun, sampaikan aspirasi warga secara digital, atau cek rute peta lokasi padukuhan.
+                <p className="text-xs text-stone-600 leading-relaxed">
+                  Konsultasi WhatsApp resmi Kepala Dukuh, jam pelayanan balai, dan peta lokasi dusun.
                 </p>
               </div>
-              <div className="mt-6 pt-3 border-t border-stone-100 flex items-center gap-1.5 text-xs font-semibold text-teal-800 group-hover:text-teal-900">
-                <span>Hubungi Pengurus Dusun</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <div className="mt-4 pt-2 border-t border-stone-100 flex items-center gap-1 text-xs font-semibold text-emerald-800">
+                <span>Akses Layanan & Kontak</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </Link>
           </div>

@@ -30,19 +30,19 @@ export function StatistikBarSection({ statistik }: StatistikBarSectionProps) {
   ];
 
   return (
-    <section className="py-10 sm:py-14 bg-stone-50/70 border-y border-stone-200 mt-10 sm:mt-14">
+    <section className="py-8 sm:py-12 bg-emerald-50/40 border-y border-stone-200/80 mt-8 sm:mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="sr-only">Statistik Demografi Padukuhan Jumeneng Kidul</h2>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-4 sm:gap-x-6 lg:divide-x lg:divide-stone-200">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-4 sm:gap-x-6 lg:divide-x lg:divide-stone-200/70">
           {stats.map((stat, idx) => (
             <div key={idx} className="text-center lg:px-4">
-              <div className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-emerald-950 tracking-tight leading-none mb-1.5">
+              <div className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-emerald-950 tracking-tight leading-none mb-1">
                 {stat.value}
               </div>
-              <div className="font-bold text-sm sm:text-base text-stone-900">
+              <div className="font-bold text-xs sm:text-sm text-stone-900">
                 {stat.label}
               </div>
-              <div className="text-xs text-stone-500 mt-0.5 font-normal">
+              <div className="text-[11px] sm:text-xs text-stone-500 mt-0.5 font-normal">
                 {stat.sub}
               </div>
             </div>

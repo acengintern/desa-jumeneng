@@ -31,7 +31,7 @@ export function Footer() {
           {/* Col 1 (5/12): Identitas Padukuhan */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-700 to-emerald-900 flex items-center justify-center text-white font-heading font-extrabold text-base shadow-xs border border-emerald-500/30 shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-emerald-900 flex items-center justify-center text-white font-heading font-extrabold text-base shadow-xs border border-emerald-700/50 shrink-0">
                 <span className="text-amber-300">JK</span>
               </div>
               <div>

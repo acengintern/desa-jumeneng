@@ -4,10 +4,35 @@
 
 @layer base {
   :root {
+    /* 1. Core Palette: Forest Green Village Identity */
+    --color-primary: #14532d;
+    --color-primary-hover: #052e16;
+    --color-primary-soft: #f0fdf4;
+    --color-primary-border: #bbf7d0;
+
+    /* 2. Warm Earth & Muted Olive Secondary */
+    --color-earth: #854d0e;
+    --color-earth-soft: #fefce8;
+
+    /* 3. Warm Accent: Amber / Gold Earth */
+    --color-accent: #b45309;
+    --color-accent-soft: #fef3c7;
+
+    /* 4. Canvas & Surfaces */
     --background: #ffffff;
-    --foreground: #091e14;
-    --surface-warm: #fcfdfc;
-    --surface-tint: #f3f8f4;
+    --foreground: #1c1917;
+    --surface-warm: #fafaf9;
+    --surface-tint: #f4f8f5;
+    --surface-muted: #f5f5f4;
+
+    /* 5. Hairline Borders */
+    --color-border: #e7e5e4;
+    --color-border-subtle: #f5f5f4;
+
+    /* 6. Text Tokens */
+    --color-text-main: #0c0a09;
+    --color-text-body: #44403c;
+    --color-text-muted: #78716c;
   }
 
   html {
@@ -24,34 +49,32 @@
   }
 
   ::selection {
-    background-color: #064e3b;
-    color: #ecfdf5;
+    background-color: #14532d;
+    color: #f0fdf4;
   }
 
   /* Custom subtle scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #f1f5f2;
+    background: #f5f5f4;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #cbd5cb;
+    background: #d6d3d1;
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #94a896;
+    background: #a8a29e;
   }
-}
 
-@layer base {
   /* Prevent sticky navbar from overlapping anchor scroll targets */
   [id] {
-    scroll-margin-top: 6rem;
+    scroll-margin-top: 5rem;
   }
 }
 
@@ -60,11 +83,16 @@
     text-wrap: balance;
   }
 
+  /* Editorial reading width (60-75 characters per line) */
+  .prose-editorial {
+    max-width: 68ch;
+  }
+
   /* Smooth scroll reveal animation utilities */
   .reveal-init {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(16px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
   }
 
@@ -73,7 +101,16 @@
     transform: translateY(0);
   }
 
+  /* Comprehensive Prefers-Reduced-Motion Enforcement */
   @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
     .reveal-init {
       opacity: 1 !important;
       transform: none !important;
@@ -81,7 +118,7 @@
     }
   }
 
-  /* Modal touch scrolling for mobile browsers */
+  /* Mobile touch scrolling for overlays & modals */
   .modal-scroll {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;

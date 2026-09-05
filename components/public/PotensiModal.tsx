@@ -3,7 +3,6 @@
 import React, { useEffect, useCallback } from 'react';
 import {
   X,
-  Sparkles,
   Briefcase,
   TrendingUp,
   AlertCircle,
@@ -48,37 +47,36 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6 overflow-y-auto bg-slate-950/80 backdrop-blur-sm transition-opacity duration-300"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6 overflow-y-auto bg-stone-950/80 backdrop-blur-xs transition-opacity duration-300"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-potensi-title"
     >
       <div
-        className="relative w-full max-w-2xl bg-white rounded-t-2xl sm:rounded-xl shadow-2xl border-t sm:border border-stone-200 overflow-hidden transform transition-all duration-300 max-h-[88vh] sm:max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-2xl bg-white rounded-t-xl sm:rounded-lg shadow-2xl border-t sm:border border-stone-200 overflow-hidden transform transition-all duration-300 max-h-[88vh] sm:max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Mobile Pull-Down Handle Indicator */}
-        <div className="w-12 h-1.5 bg-slate-300 rounded-full mx-auto mt-3 mb-1 sm:hidden shrink-0" />
+        <div className="w-12 h-1 bg-stone-300 rounded-full mx-auto mt-2.5 mb-1 sm:hidden shrink-0" />
 
         {/* Modal Header */}
-        <div className="px-5 py-3 sm:p-8 pb-3 sm:pb-6 flex items-start justify-between gap-3 border-b border-slate-100 shrink-0">
+        <div className="px-5 py-4 sm:p-6 pb-3 sm:pb-5 flex items-start justify-between gap-3 border-b border-stone-100 shrink-0">
           <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-            <div className="w-11 h-11 sm:w-16 sm:h-16 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center shadow-xs shrink-0">
-              {renderPotensiVectorIcon(potensi.judul, potensi.icon, 'w-6 h-6 sm:w-10 sm:h-10')}
+            <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-lg bg-emerald-50 border border-emerald-200/70 flex items-center justify-center shadow-xs shrink-0 text-emerald-800">
+              {renderPotensiVectorIcon(potensi.judul, potensi.icon, 'w-6 h-6 sm:w-8 sm:h-8')}
             </div>
             <div className="min-w-0">
-              <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md mb-1">
-                <Sparkles className="w-3 h-3 text-emerald-600" />
-                Potensi Wilayah Dusun
+              <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block mb-0.5">
+                Rincian Potensi Dusun
               </span>
               <h3
                 id="modal-potensi-title"
-                className="font-heading text-lg sm:text-2xl lg:text-3xl font-extrabold text-emerald-950 truncate"
+                className="font-heading text-lg sm:text-2xl font-bold text-stone-950 truncate"
               >
                 {potensi.judul}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-500 mt-0.5 line-clamp-1 sm:line-clamp-none">
+              <p className="text-xs sm:text-sm text-stone-600 mt-0.5 line-clamp-1 sm:line-clamp-none">
                 {potensi.deskripsi_singkat}
               </p>
             </div>
