@@ -5,8 +5,8 @@
 - **Branch:** main
 
 ## Progress
-- [ ] Task 1: Next.js Project Scaffolding & Configuration
-- [ ] Task 2: Data Repository, Supabase Client & Seed Data
+- [x] Task 1: Next.js Project Scaffolding & Configuration (commits f44da15..33c5915, clean)
+- [x] Task 2: Data Repository, Supabase Client & Seed Data (verified: 22/22 tests pass, build 0 errors)
 - [ ] Task 3: Portal Publik - Header, Hero, and Profil & Demografi
 - [ ] Task 4: Portal Publik - Pemerintahan, Sarana Prasarana & Potensi (Modal Pop-up)
 - [ ] Task 5: Portal Publik - Berita, Galeri (Lightbox), Kontak & Footer
