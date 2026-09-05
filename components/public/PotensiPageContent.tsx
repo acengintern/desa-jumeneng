@@ -372,11 +372,18 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
         </div>
       )}
 
-      {/* Modal Interaktif 4 Butir Spesifikasi */}
+      {/* Modal Interaktif 4 Butir Spesifikasi dengan Foto & Lightbox */}
       <PotensiModal
         potensi={selectedPotensi}
         isOpen={isModalOpen}
         onClose={handleCloseDetail}
+        imageUrl={
+          selectedPotensi
+            ? (selectedPotensi.gambar_url ||
+               POTENSI_IMAGES[selectedPotensi.judul] ||
+               'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80')
+            : undefined
+        }
       />
     </div>
   );
