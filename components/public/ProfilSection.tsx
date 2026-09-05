@@ -76,8 +76,7 @@ export function ProfilSection({ profil, statistik }: ProfilSectionProps) {
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
             Profil & Demografi Padukuhan
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mt-4 mb-4 rounded-full" />
-          <p className="text-base sm:text-lg text-slate-600">
+          <p className="text-base sm:text-lg text-slate-600 mt-4 max-w-2xl mx-auto">
             Mengenal lebih dekat warisan sejarah, falsafah visi misi, dan gambaran demografi
             masyarakat Padukuhan Jumeneng Kidul.
           </p>
@@ -119,14 +118,14 @@ export function ProfilSection({ profil, statistik }: ProfilSectionProps) {
             </div>
 
             {/* Quote Highlight Box */}
-            <div className="mt-6 p-4 sm:p-5 rounded-2xl bg-white border-l-4 border-amber-500 shadow-xs">
-              <p className="text-xs sm:text-sm font-medium italic text-slate-800 leading-relaxed">
+            <div className="mt-6 p-5 rounded-2xl bg-amber-50/80 border border-amber-200/80 shadow-xs">
+              <p className="text-xs sm:text-sm font-medium italic text-amber-950 leading-relaxed">
                 &ldquo;Semangat kerukunan dan kemandirian yang diwariskan Kyai Nur Jumeneng tetap
                 menjadi pondasi teguh gotong royong masyarakat Jumeneng Kidul.&rdquo;
               </p>
-              <div className="mt-2 flex items-center justify-between text-[11px] text-slate-500 font-semibold">
+              <div className="mt-2.5 flex items-center justify-between text-[11px] text-amber-900/80 font-semibold">
                 <span>Nilai Luhur Leluhur Dusun</span>
-                <span className="text-emerald-700">Sumberadi, Mlati</span>
+                <span className="text-emerald-800 font-bold">Sumberadi, Mlati</span>
               </div>
             </div>
           </div>

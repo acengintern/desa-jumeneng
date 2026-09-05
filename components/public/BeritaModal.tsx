@@ -158,7 +158,7 @@ export function BeritaModal({ berita, isOpen, onClose }: BeritaModalProps) {
           )}
 
           {/* Ringkasan Berita Callout Box */}
-          <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border-l-4 border-emerald-600 border-emerald-200/80 text-emerald-950">
+          <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50/80 border border-emerald-200/80 text-emerald-950">
             <p className="text-xs uppercase font-bold tracking-wider text-emerald-800 mb-1">
               Ringkasan Kegiatan
             </p>

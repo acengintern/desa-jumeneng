@@ -63,8 +63,7 @@ export function GaleriSection({ galeri = [] }: GaleriSectionProps) {
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
             Galeri Kegiatan Dusun
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mt-4 mb-4 rounded-full" />
-          <p className="text-base sm:text-lg text-slate-600">
+          <p className="text-base sm:text-lg text-slate-600 mt-4 max-w-2xl mx-auto">
             Kumpulan potret momen kebersamaan, gotong royong warga, layanan kemasyarakatan,
             serta kehangatan tradisi sosial di Padukuhan Jumeneng Kidul.
           </p>

@@ -54,12 +54,9 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
       aria-labelledby="modal-potensi-title"
     >
       <div
-        className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-emerald-100 overflow-hidden transform transition-all duration-300 max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-emerald-100/90 overflow-hidden transform transition-all duration-300 max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Top Decorative Gradient Accent Bar */}
-        <div className="h-2 bg-gradient-to-r from-emerald-600 via-teal-500 to-amber-500 shrink-0" />
-
         {/* Modal Header */}
         <div className="p-6 sm:p-8 pb-4 sm:pb-6 flex items-start justify-between gap-4 border-b border-slate-100 shrink-0">
           <div className="flex items-center gap-4">

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Sparkles, ArrowRight, CheckCircle2, ChevronRight } from 'lucide-react';
+import { Sparkles, ArrowRight, CheckCircle2, ChevronRight, Sprout, Store, Moon, Beef } from 'lucide-react';
 import { PotensiWilayah } from '@/lib/types';
 import { PotensiModal } from './PotensiModal';
 
@@ -84,8 +84,7 @@ export function PotensiSection({ potensi = [] }: PotensiSectionProps) {
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
             Potensi Unggulan Wilayah
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mt-4 mb-4 rounded-full" />
-          <p className="text-base sm:text-lg text-slate-600">
+          <p className="text-base sm:text-lg text-slate-600 mt-4 max-w-2xl mx-auto">
             Kekayaan sumber daya agraris, ekonomi rumahan, tradisi keagamaan, dan peternakan
             yang menjadi penggerak roda kesejahteraan warga.
           </p>
@@ -143,16 +142,13 @@ export function PotensiSection({ potensi = [] }: PotensiSectionProps) {
               <div>
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-emerald-800 group-hover:text-emerald-700">
                   <span className="inline-flex items-center gap-1.5">
-                    <span>Klik untuk detail potensi</span>
+                    <span>Lihat Rincian Potensi</span>
                   </span>
                   <div className="w-7 h-7 rounded-full bg-emerald-50 group-hover:bg-emerald-800 group-hover:text-white flex items-center justify-center transition-all duration-300">
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   </div>
                 </div>
               </div>
-
-              {/* Decorative Hover Glow Line */}
-              <div className="absolute bottom-0 left-6 right-6 h-1 bg-gradient-to-r from-emerald-500 via-amber-400 to-emerald-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           ))}
         </div>

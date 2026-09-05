@@ -82,8 +82,7 @@ export function PemdesSection({ pengurus = [] }: PemdesSectionProps) {
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
             Struktur Pengurus Wilayah
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mt-4 mb-4 rounded-full" />
-          <p className="text-base sm:text-lg text-slate-600">
+          <p className="text-base sm:text-lg text-slate-600 mt-4 max-w-2xl mx-auto">
             Aparatur pamong dan jajaran ketua lingkungan yang berdedikasi melayani serta
             menjaga keharmonisan warga Padukuhan Jumeneng Kidul.
           </p>
@@ -91,10 +90,7 @@ export function PemdesSection({ pengurus = [] }: PemdesSectionProps) {
 
         {/* 1. HIERARKI UTAMA: KEPALA DUKUH (Centerpiece Card) */}
         <div className="max-w-3xl mx-auto mb-16 lg:mb-20">
-          <div className="relative rounded-3xl bg-white border-2 border-emerald-300/80 shadow-xl shadow-emerald-950/5 overflow-hidden p-6 sm:p-10 transition-all duration-300 hover:shadow-2xl hover:border-emerald-500">
-            {/* Decorative Top Accent Bar */}
-            <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-emerald-700 via-emerald-500 to-amber-500" />
-
+          <div className="relative rounded-3xl bg-white border border-emerald-200/90 shadow-xl shadow-emerald-950/5 overflow-hidden p-6 sm:p-10 transition-all duration-300 hover:shadow-2xl hover:border-emerald-400">
             <div className="flex flex-col md:flex-row items-center gap-8">
               {/* Foto Kepala Dukuh dengan Frame Menarik */}
               <div className="relative shrink-0">
@@ -188,7 +184,7 @@ export function PemdesSection({ pengurus = [] }: PemdesSectionProps) {
                     <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-teal-50 text-teal-800 border border-teal-200 group-hover:bg-teal-700 group-hover:text-white transition-colors duration-200">
                       {rw.jabatan}
                     </span>
-                    <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-xs font-semibold group-hover:bg-teal-100 group-hover:text-teal-800 transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-teal-50 text-teal-800 border border-teal-200/60 flex items-center justify-center text-xs font-semibold group-hover:bg-teal-800 group-hover:text-white transition-colors">
                       RW
                     </div>
                   </div>

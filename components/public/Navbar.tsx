@@ -131,10 +131,10 @@ export function Navbar() {
                     e.preventDefault();
                     handleLinkClick(item.href);
                   }}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
+                  className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
                     isActive
-                      ? 'text-emerald-900 bg-emerald-50/80 font-semibold shadow-xs'
-                      : 'text-slate-600 hover:text-emerald-800 hover:bg-emerald-50/50'
+                      ? 'text-emerald-950 bg-emerald-100/80 font-semibold shadow-xs'
+                      : 'text-stone-700 hover:text-stone-950 hover:bg-stone-100'
                   }`}
                 >
                   {item.label}
@@ -151,7 +151,7 @@ export function Navbar() {
                 e.preventDefault();
                 handleLinkClick('#kontak');
               }}
-              className="inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 rounded-lg shadow-sm shadow-emerald-950/10 transition-all hover:shadow-md hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 rounded-lg shadow-sm shadow-emerald-950/10 transition-all hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98]"
             >
               <Phone className="w-3.5 h-3.5" />
               <span>Hubungi Kami</span>
@@ -161,7 +161,7 @@ export function Navbar() {
               href="/admin/login"
               title="Portal Admin Dusun"
               aria-label="Masuk ke Halaman Admin"
-              className="p-2 text-slate-400 hover:text-emerald-800 hover:bg-emerald-50 rounded-lg transition-colors"
+              className="p-2 text-emerald-800/70 hover:text-emerald-950 hover:bg-emerald-100/60 rounded-lg transition-colors"
             >
               <Lock className="w-4 h-4" />
             </Link>
@@ -173,14 +173,14 @@ export function Navbar() {
               href="/admin/login"
               title="Login Admin"
               aria-label="Masuk Admin"
-              className="p-2 text-slate-500 hover:text-emerald-800 rounded-lg"
+              className="p-2 text-emerald-800/70 hover:text-emerald-950 hover:bg-emerald-100/60 rounded-lg transition-colors"
             >
               <Lock className="w-4 h-4" />
             </Link>
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2.5 rounded-xl text-slate-700 hover:text-emerald-800 hover:bg-emerald-50 focus:outline-hidden focus:ring-2 focus:ring-emerald-600 transition-colors"
+              className="p-2.5 rounded-xl text-emerald-950 hover:bg-emerald-100/60 focus:outline-hidden focus:ring-2 focus:ring-emerald-700 transition-colors"
               aria-expanded={isOpen}
               aria-label={isOpen ? 'Tutup menu' : 'Buka menu'}
             >
@@ -229,23 +229,23 @@ export function Navbar() {
                 }}
                 className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                   isActive
-                    ? 'text-emerald-950 bg-emerald-100/70 font-semibold'
-                    : 'text-slate-700 hover:text-emerald-900 hover:bg-emerald-50'
+                    ? 'text-emerald-950 bg-emerald-100 font-semibold'
+                    : 'text-stone-800 hover:text-stone-950 hover:bg-stone-100'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <div
                     className={`p-1.5 rounded-lg ${
                       isActive
-                        ? 'bg-emerald-700 text-white'
-                        : 'bg-emerald-50 text-emerald-700'
+                        ? 'bg-emerald-800 text-white'
+                        : 'bg-emerald-100/70 text-emerald-800'
                     }`}
                   >
                     <Icon className="w-4 h-4" />
                   </div>
                   <span>{item.label}</span>
                 </div>
-                <ChevronRight className="w-4 h-4 text-slate-400" />
+                <ChevronRight className="w-4 h-4 text-emerald-700/60" />
               </a>
             );
           })}
@@ -258,7 +258,7 @@ export function Navbar() {
               e.preventDefault();
               handleLinkClick('#kontak');
             }}
-            className="flex items-center justify-center gap-2 w-full py-2.5 text-sm font-semibold text-white bg-emerald-800 hover:bg-emerald-700 rounded-xl shadow-xs transition-colors"
+            className="flex items-center justify-center gap-2 w-full py-2.5 text-sm font-semibold text-white bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 rounded-xl shadow-xs transition-colors active:scale-[0.98]"
           >
             <Phone className="w-4 h-4" />
             <span>Hubungi Pengurus Dusun</span>
@@ -267,7 +267,7 @@ export function Navbar() {
           <Link
             href="/admin/login"
             onClick={() => setIsOpen(false)}
-            className="flex items-center justify-center gap-2 w-full py-2 text-xs font-medium text-slate-600 hover:text-emerald-800 rounded-lg transition-colors"
+            className="flex items-center justify-center gap-2 w-full py-2 text-xs font-medium text-emerald-900 hover:text-emerald-950 rounded-lg transition-colors"
           >
             <Lock className="w-3.5 h-3.5" />
             <span>Masuk Portal Admin / Pengurus</span>

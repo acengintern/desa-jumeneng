@@ -20,13 +20,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-slate-950 text-slate-300 relative overflow-hidden border-t border-emerald-900/40">
-      {/* Decorative Gradient Top Line */}
-      <div className="h-1.5 bg-gradient-to-r from-emerald-600 via-teal-500 to-amber-500" />
-
-      {/* Background Subtle Accent Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px] opacity-5 pointer-events-none" />
-
+    <footer className="bg-slate-950 text-slate-300 relative overflow-hidden border-t border-emerald-900/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-slate-800/80">
           {/* Col 1 (5/12): Identitas Padukuhan */}

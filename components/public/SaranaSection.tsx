@@ -179,8 +179,7 @@ export function SaranaSection({ sarana = [] }: SaranaSectionProps) {
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
               Sarana & Prasarana Dusun
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-emerald-600 to-amber-500 mx-auto mt-4 mb-4 rounded-full" />
-            <p className="text-base sm:text-lg text-slate-600">
+            <p className="text-base sm:text-lg text-slate-600 mt-4 max-w-2xl mx-auto">
               Fasilitas publik dan kelembagaan penunjang kegiatan sosial, pendidikan,
               kesehatan, serta keagamaan masyarakat Padukuhan Jumeneng Kidul.
             </p>
@@ -230,14 +229,11 @@ export function SaranaSection({ sarana = [] }: SaranaSectionProps) {
                   {/* Card Bottom Meta */}
                   <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
                     <span className="flex items-center gap-1.5 text-emerald-700 font-medium text-[11px]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                       Fasilitas Aktif
                     </span>
                     <span className="text-[11px] text-slate-400">Dusun Jumeneng Kidul</span>
                   </div>
-
-                  {/* Hover Bottom Accent Bar */}
-                  <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-emerald-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               );
             })}

@@ -154,7 +154,7 @@ export default function AdminSidebar({
                 onClick={onClose}
                 className={`group flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 ${
                   active
-                    ? 'bg-emerald-800 text-white font-semibold shadow-sm shadow-emerald-950/40 border-l-4 border-emerald-400'
+                    ? 'bg-emerald-800 text-white font-semibold shadow-sm shadow-emerald-950/40 border border-emerald-700/60'
                     : 'text-emerald-100/75 hover:bg-emerald-900/60 hover:text-white'
                 }`}
               >
@@ -171,7 +171,7 @@ export default function AdminSidebar({
 
                 {/* Badges / Indicators */}
                 {item.hasBadge && unreadCount > 0 && (
-                  <span className="ml-2 inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold leading-none text-slate-950 bg-amber-400 rounded-full shadow-xs animate-pulse">
+                  <span className="ml-2 inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold leading-none text-amber-950 bg-amber-400 rounded-full shadow-xs">
                     {unreadCount > 99 ? '99+' : unreadCount}
                   </span>
                 )}
