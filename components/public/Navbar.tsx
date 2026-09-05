@@ -80,9 +80,10 @@ export function Navbar() {
             className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 rounded-lg py-1"
             onClick={() => setIsOpen(false)}
           >
-            <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-emerald-900 flex items-center justify-center text-white shadow-2xs group-hover:scale-105 transition-transform duration-200 border border-emerald-800 shrink-0">
-              <VillageEmblem className="w-5 h-5 sm:w-6 sm:h-6" />
-            </div>
+            <VillageEmblem
+              className="w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 group-hover:scale-105 transition-transform duration-200 shrink-0"
+              variant="light"
+            />
             <span className="font-heading font-bold text-base sm:text-lg lg:text-xl text-stone-950 group-hover:text-emerald-900 transition-colors tracking-tight">
               Jumeneng Kidul
             </span>
