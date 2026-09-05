@@ -10,7 +10,7 @@ export default function PublicLayout({
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 animate-in fade-in duration-300">{children}</main>
       <Footer />
     </div>
   );

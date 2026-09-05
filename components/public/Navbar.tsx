@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Phone } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
 import { VillageEmblem } from './VillageEmblem';
 
 const NAV_LINKS = [
@@ -125,53 +125,21 @@ export function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Right Bar: Minimal Custom Animated Hamburger */}
+          {/* Mobile Right Bar: Clean Lucide Toggle */}
           <div className="flex items-center gap-2 lg:hidden">
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="w-11 h-11 min-h-[44px] min-w-[44px] rounded-lg text-stone-800 bg-stone-100/70 hover:bg-stone-200/70 active:bg-stone-200 border border-stone-200/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-800 transition-colors flex items-center justify-center cursor-pointer"
+              className="w-10 h-10 min-h-[44px] min-w-[44px] rounded-lg text-stone-700 hover:text-stone-950 bg-stone-50 hover:bg-stone-100 active:bg-stone-200 border border-stone-200/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-800 transition-colors flex items-center justify-center cursor-pointer"
               aria-expanded={isOpen}
               aria-controls="mobile-nav-drawer"
               aria-label={isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
             >
-              {/* Minimalist 2-line Hamburger Morphing to X (20x20px, stroke 1.8px, natural 200ms ease) */}
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="transition-transform duration-200 ease-in-out"
-                aria-hidden="true"
-              >
-                {/* Top line -> Diagonal X bar 1 */}
-                <line
-                  x1="3"
-                  y1={isOpen ? '10' : '6.5'}
-                  x2="17"
-                  y2={isOpen ? '10' : '6.5'}
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  className={`origin-center transition-all duration-200 ease-in-out ${
-                    isOpen ? 'rotate-45' : ''
-                  }`}
-                />
-                {/* Bottom line -> Diagonal X bar 2 */}
-                <line
-                  x1="3"
-                  y1={isOpen ? '10' : '13.5'}
-                  x2="17"
-                  y2={isOpen ? '10' : '13.5'}
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  className={`origin-center transition-all duration-200 ease-in-out ${
-                    isOpen ? '-rotate-45' : ''
-                  }`}
-                />
-              </svg>
+              {isOpen ? (
+                <X className="w-5 h-5 text-stone-800 animate-in fade-in zoom-in-75 duration-150" />
+              ) : (
+                <Menu className="w-5 h-5 text-stone-800 animate-in fade-in zoom-in-75 duration-150" />
+              )}
             </button>
           </div>
         </div>

@@ -167,7 +167,7 @@ export default async function ProfilPage() {
                 <div className="lg:col-span-5 space-y-3">
                   <div className="rounded-lg overflow-hidden border border-stone-200 bg-stone-100 aspect-[4/3] relative">
                     <Image
-                      src="https://info-jumenengkidul.site.je/img/jumeneng.jpg"
+                      src={profil.gambar_profil_url || 'https://info-jumenengkidul.site.je/uploads/galeri/img_20260903_090702_36036d62.jpg'}
                       alt="Pemandangan dan gerbang Padukuhan Jumeneng Kidul"
                       fill
                       sizes="(max-width: 1024px) 100vw, 50vw"

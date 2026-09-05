@@ -19,12 +19,9 @@ interface PotensiModalProps {
 }
 
 export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
-  // Tutup dengan tombol ESC
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
+      if (e.key === 'Escape') onClose();
     },
     [onClose]
   );
@@ -34,11 +31,10 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
       document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     }
-
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, handleKeyDown]);
@@ -46,133 +42,127 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
   if (!isOpen || !potensi) return null;
 
   return (
+    /* Backdrop — centered on semua ukuran layar */
     <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 md:p-6 overflow-y-auto bg-stone-950/80 backdrop-blur-xs transition-opacity duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+      style={{ background: 'rgba(12,10,9,0.82)', backdropFilter: 'blur(4px)' }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-potensi-title"
     >
+      {/* Modal Panel */}
       <div
-        className="relative w-full max-w-2xl bg-white rounded-t-xl sm:rounded-lg shadow-2xl border-t sm:border border-stone-200 overflow-hidden transform transition-all duration-300 max-h-[88vh] sm:max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-lg bg-white rounded-xl shadow-2xl border border-stone-200 flex flex-col"
+        style={{ maxHeight: 'min(90vh, 640px)' }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Mobile Pull-Down Handle Indicator */}
-        <div className="w-12 h-1 bg-stone-300 rounded-full mx-auto mt-2.5 mb-1 sm:hidden shrink-0" />
-
-        {/* Modal Header */}
-        <div className="px-5 py-4 sm:p-6 pb-3 sm:pb-5 flex items-start justify-between gap-3 border-b border-stone-100 shrink-0">
-          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-            <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-lg bg-emerald-50 border border-emerald-200/70 flex items-center justify-center shadow-xs shrink-0 text-emerald-800">
-              {renderPotensiVectorIcon(potensi.judul, potensi.icon, 'w-6 h-6 sm:w-8 sm:h-8')}
+        {/* Header */}
+        <div className="px-5 py-4 sm:px-6 sm:py-5 flex items-start justify-between gap-3 border-b border-stone-100 shrink-0">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-emerald-50 border border-emerald-200/70 flex items-center justify-center shrink-0 text-emerald-800">
+              {renderPotensiVectorIcon(potensi.judul, potensi.icon, 'w-6 h-6')}
             </div>
             <div className="min-w-0">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800 block mb-0.5">
-                Rincian Potensi Dusun
+              <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 block mb-0.5">
+                Potensi Dusun
               </span>
               <h3
                 id="modal-potensi-title"
-                className="font-heading text-lg sm:text-2xl font-bold text-stone-950 truncate"
+                className="font-heading text-lg sm:text-xl font-bold text-stone-950 leading-tight"
               >
                 {potensi.judul}
               </h3>
-              <p className="text-xs sm:text-sm text-stone-600 mt-0.5 line-clamp-1 sm:line-clamp-none">
-                {potensi.deskripsi_singkat}
-              </p>
             </div>
           </div>
 
-          {/* Tombol Tutup */}
           <button
             type="button"
             onClick={onClose}
-            aria-label="Tutup jendela detail potensi"
-            className="p-2 sm:p-2.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors focus:outline-hidden focus:ring-2 focus:ring-emerald-600 shrink-0 border border-slate-200/60 min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
+            aria-label="Tutup"
+            className="p-2 rounded-lg text-stone-400 hover:text-stone-700 hover:bg-stone-100 transition-colors shrink-0 min-h-[40px] min-w-[40px] flex items-center justify-center cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Modal Content: 4 Data Terstruktur Sesuai Spesifikasi */}
-        <div className="p-4 sm:p-8 space-y-3.5 sm:space-y-5 overflow-y-auto modal-scroll flex-1">
+        {/* Deskripsi singkat */}
+        <div className="px-5 pt-3 pb-1 sm:px-6 shrink-0">
+          <p className="text-sm text-stone-600 leading-relaxed">{potensi.deskripsi_singkat}</p>
+        </div>
+
+        {/* Konten scroll */}
+        <div className="flex-1 min-h-0 overflow-y-auto px-5 py-3 sm:px-6 sm:py-4 space-y-3">
           {/* 1. Kegiatan Utama */}
-          <div className="bg-emerald-50/60 rounded-xl p-3.5 sm:p-5 border border-emerald-100">
-            <div className="flex items-center gap-2 mb-1 sm:mb-2">
-              <div className="p-1.5 rounded-lg bg-emerald-600 text-white shadow-2xs shrink-0">
-                <Briefcase className="w-4 h-4" />
+          <div className="rounded-lg p-4 border border-emerald-100 bg-emerald-50/60">
+            <div className="flex items-center gap-2 mb-1.5">
+              <div className="p-1.5 rounded-md bg-emerald-600 text-white shrink-0">
+                <Briefcase className="w-3.5 h-3.5" />
               </div>
-              <h4 className="font-heading font-bold text-xs sm:text-base text-emerald-950">
-                1. Kegiatan Utama
-              </h4>
+              <h4 className="font-heading font-bold text-sm text-emerald-950">Kegiatan Utama</h4>
             </div>
-            <p className="text-xs sm:text-base text-emerald-900 font-medium pl-0 sm:pl-8 leading-relaxed">
+            <p className="text-sm text-emerald-900 leading-relaxed pl-8">
               {potensi.kegiatan_utama || 'Belum ada data'}
             </p>
           </div>
 
           {/* 2. Potensi & Keunggulan */}
-          <div className="bg-amber-50/60 rounded-xl p-3.5 sm:p-5 border border-amber-100">
-            <div className="flex items-center gap-2 mb-1 sm:mb-2">
-              <div className="p-1.5 rounded-lg bg-amber-500 text-white shadow-2xs shrink-0">
-                <TrendingUp className="w-4 h-4" />
+          <div className="rounded-lg p-4 border border-amber-100 bg-amber-50/60">
+            <div className="flex items-center gap-2 mb-1.5">
+              <div className="p-1.5 rounded-md bg-amber-500 text-white shrink-0">
+                <TrendingUp className="w-3.5 h-3.5" />
               </div>
-              <h4 className="font-heading font-bold text-xs sm:text-base text-amber-950">
-                2. Potensi & Keunggulan
-              </h4>
+              <h4 className="font-heading font-bold text-sm text-amber-950">Potensi & Keunggulan</h4>
             </div>
-            <p className="text-xs sm:text-base text-amber-900 font-medium pl-0 sm:pl-8 leading-relaxed">
+            <p className="text-sm text-amber-900 leading-relaxed pl-8">
               {potensi.keunggulan_hasil || 'Belum ada data'}
             </p>
           </div>
 
-          {/* 3. Tantangan & Kendala */}
-          <div className="bg-rose-50/50 rounded-xl p-3.5 sm:p-5 border border-rose-100">
-            <div className="flex items-center gap-2 mb-1 sm:mb-2">
-              <div className="p-1.5 rounded-lg bg-rose-500 text-white shadow-2xs shrink-0">
-                <AlertCircle className="w-4 h-4" />
+          {/* 3. Tantangan */}
+          <div className="rounded-lg p-4 border border-rose-100 bg-rose-50/50">
+            <div className="flex items-center gap-2 mb-1.5">
+              <div className="p-1.5 rounded-md bg-rose-500 text-white shrink-0">
+                <AlertCircle className="w-3.5 h-3.5" />
               </div>
-              <h4 className="font-heading font-bold text-xs sm:text-base text-rose-950">
-                3. Tantangan & Kendala
-              </h4>
+              <h4 className="font-heading font-bold text-sm text-rose-950">Tantangan & Kendala</h4>
             </div>
-            <p className="text-xs sm:text-base text-rose-900 font-medium pl-0 sm:pl-8 leading-relaxed">
+            <p className="text-sm text-rose-900 leading-relaxed pl-8">
               {potensi.tantangan_kendala || 'Tidak ada kendala berarti'}
             </p>
           </div>
 
           {/* 4. Sumber Data */}
-          <div className="bg-slate-50 rounded-xl p-3.5 sm:p-5 border border-slate-200">
-            <div className="flex items-center gap-2 mb-1 sm:mb-2">
-              <div className="p-1.5 rounded-lg bg-slate-700 text-white shadow-2xs shrink-0">
-                <BadgeCheck className="w-4 h-4" />
+          <div className="rounded-lg p-4 border border-stone-200 bg-stone-50">
+            <div className="flex items-center gap-2 mb-1.5">
+              <div className="p-1.5 rounded-md bg-stone-700 text-white shrink-0">
+                <BadgeCheck className="w-3.5 h-3.5" />
               </div>
-              <h4 className="font-heading font-bold text-xs sm:text-base text-slate-900">
-                4. Sumber Data
-              </h4>
+              <h4 className="font-heading font-bold text-sm text-stone-900">Sumber Data</h4>
             </div>
-            <div className="pl-0 sm:pl-8 flex flex-wrap items-center gap-2">
-              <span className="text-xs sm:text-base text-slate-700 font-semibold">
+            <div className="pl-8 flex flex-wrap items-center gap-2">
+              <span className="text-sm text-stone-700 font-medium">
                 {potensi.sumber_data || 'Pemerintah Padukuhan Jumeneng Kidul'}
               </span>
-              <span className="text-[10px] sm:text-[11px] px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-bold">
+              <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">
                 Terverifikasi
               </span>
             </div>
           </div>
         </div>
 
-        {/* Modal Footer */}
-        <div className="p-3.5 sm:p-6 bg-slate-50 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-2.5 shrink-0">
-          <p className="hidden sm:block text-xs text-slate-500 text-center sm:text-left">
-            Tekan <kbd className="px-1.5 py-0.5 bg-white border border-slate-200 rounded text-[10px] font-mono shadow-2xs">ESC</kbd> atau klik di luar untuk menutup
+        {/* Footer */}
+        <div className="px-5 py-3 sm:px-6 sm:py-4 border-t border-stone-100 shrink-0 flex items-center justify-end gap-3">
+          <p className="hidden sm:block text-xs text-stone-400 mr-auto">
+            Tekan <kbd className="px-1 py-0.5 bg-white border border-stone-200 rounded text-[10px] font-mono">ESC</kbd> atau klik di luar untuk menutup
           </p>
           <button
             type="button"
             onClick={onClose}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-xs sm:text-sm font-semibold shadow-xs transition-colors flex items-center justify-center gap-1.5 min-h-[44px] cursor-pointer"
+            className="px-5 py-2.5 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors flex items-center gap-1.5 min-h-[40px] cursor-pointer"
           >
             <Check className="w-4 h-4" />
-            <span>Tutup Rincian</span>
+            Tutup
           </button>
         </div>
       </div>
