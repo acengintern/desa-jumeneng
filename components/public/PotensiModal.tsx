@@ -55,7 +55,7 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
       aria-labelledby="modal-potensi-title"
     >
       <div
-        className="relative w-full max-w-2xl bg-white rounded-t-3xl sm:rounded-3xl shadow-2xl border-t sm:border border-emerald-100/90 overflow-hidden transform transition-all duration-300 max-h-[88vh] sm:max-h-[90vh] flex flex-col"
+        className="relative w-full max-w-2xl bg-white rounded-t-2xl sm:rounded-xl shadow-2xl border-t sm:border border-stone-200 overflow-hidden transform transition-all duration-300 max-h-[88vh] sm:max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Mobile Pull-Down Handle Indicator */}
@@ -64,7 +64,7 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
         {/* Modal Header */}
         <div className="px-5 py-3 sm:p-8 pb-3 sm:pb-6 flex items-start justify-between gap-3 border-b border-slate-100 shrink-0">
           <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-            <div className="w-11 h-11 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center shadow-xs shrink-0">
+            <div className="w-11 h-11 sm:w-16 sm:h-16 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center shadow-xs shrink-0">
               {renderPotensiVectorIcon(potensi.judul, potensi.icon, 'w-6 h-6 sm:w-10 sm:h-10')}
             </div>
             <div className="min-w-0">
@@ -89,7 +89,7 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
             type="button"
             onClick={onClose}
             aria-label="Tutup jendela detail potensi"
-            className="p-2 sm:p-2.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors focus:outline-hidden focus:ring-2 focus:ring-emerald-600 shrink-0 border border-slate-200/60"
+            className="p-2 sm:p-2.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors focus:outline-hidden focus:ring-2 focus:ring-emerald-600 shrink-0 border border-slate-200/60 min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -98,7 +98,7 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
         {/* Modal Content: 4 Data Terstruktur Sesuai Spesifikasi */}
         <div className="p-4 sm:p-8 space-y-3.5 sm:space-y-5 overflow-y-auto modal-scroll flex-1">
           {/* 1. Kegiatan Utama */}
-          <div className="bg-emerald-50/60 rounded-2xl p-3.5 sm:p-5 border border-emerald-100">
+          <div className="bg-emerald-50/60 rounded-xl p-3.5 sm:p-5 border border-emerald-100">
             <div className="flex items-center gap-2 mb-1 sm:mb-2">
               <div className="p-1.5 rounded-lg bg-emerald-600 text-white shadow-2xs shrink-0">
                 <Briefcase className="w-4 h-4" />
@@ -113,7 +113,7 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
           </div>
 
           {/* 2. Potensi & Keunggulan */}
-          <div className="bg-amber-50/60 rounded-2xl p-3.5 sm:p-5 border border-amber-100">
+          <div className="bg-amber-50/60 rounded-xl p-3.5 sm:p-5 border border-amber-100">
             <div className="flex items-center gap-2 mb-1 sm:mb-2">
               <div className="p-1.5 rounded-lg bg-amber-500 text-white shadow-2xs shrink-0">
                 <TrendingUp className="w-4 h-4" />
@@ -128,7 +128,7 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
           </div>
 
           {/* 3. Tantangan & Kendala */}
-          <div className="bg-rose-50/50 rounded-2xl p-3.5 sm:p-5 border border-rose-100">
+          <div className="bg-rose-50/50 rounded-xl p-3.5 sm:p-5 border border-rose-100">
             <div className="flex items-center gap-2 mb-1 sm:mb-2">
               <div className="p-1.5 rounded-lg bg-rose-500 text-white shadow-2xs shrink-0">
                 <AlertCircle className="w-4 h-4" />
@@ -143,7 +143,7 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
           </div>
 
           {/* 4. Sumber Data */}
-          <div className="bg-slate-50 rounded-2xl p-3.5 sm:p-5 border border-slate-200">
+          <div className="bg-slate-50 rounded-xl p-3.5 sm:p-5 border border-slate-200">
             <div className="flex items-center gap-2 mb-1 sm:mb-2">
               <div className="p-1.5 rounded-lg bg-slate-700 text-white shadow-2xs shrink-0">
                 <BadgeCheck className="w-4 h-4" />
@@ -171,7 +171,7 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
           <button
             type="button"
             onClick={onClose}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-xs sm:text-sm font-semibold shadow-xs transition-colors flex items-center justify-center gap-1.5"
+            className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-xs sm:text-sm font-semibold shadow-xs transition-colors flex items-center justify-center gap-1.5 min-h-[44px] cursor-pointer"
           >
             <Check className="w-4 h-4" />
             <span>Tutup Rincian</span>

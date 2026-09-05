@@ -1,9 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { Newspaper, Calendar, ArrowRight } from 'lucide-react';
+import { Newspaper, ArrowRight } from 'lucide-react';
 import { Berita } from '@/lib/types';
 import { formatTanggalIndonesia } from '@/lib/date-utils';
-import { ScrollReveal } from './ScrollReveal';
 
 interface BeritaPreviewSectionProps {
   berita?: Berita[];
@@ -54,33 +53,29 @@ export function BeritaPreviewSection({ berita }: BeritaPreviewSectionProps) {
     .slice(0, 3);
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white">
+    <section className="py-12 sm:py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <ScrollReveal direction="up" className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
-            <Newspaper className="w-4 h-4 text-emerald-700" />
-            <span>Kabar Padukuhan</span>
-          </div>
-          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+        {/* Header (Left-aligned, natural copy, no capsule) */}
+        <div className="max-w-3xl mb-8 sm:mb-10">
+          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-stone-900 tracking-tight leading-tight">
             Warta & Kegiatan Warga
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 mt-3">
-            Catatan kegiatan sosial, pengumuman kelembagaan, serta kabar terkini dari Padukuhan
-            Jumeneng Kidul.
+          <p className="text-sm sm:text-base text-stone-600 mt-2">
+            Agenda kemasyarakatan, layanan posyandu, gotong royong, dan pengumuman padukuhan.
           </p>
-        </ScrollReveal>
+        </div>
 
-        {/* News Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
-          {publishedItems.map((item, idx) => (
-            <ScrollReveal key={item.id} direction="up" delay={idx * 80} className="h-full">
-              <Link
-                href="/berita"
-                className="group h-full flex flex-col rounded-2xl overflow-hidden border border-slate-200/90 bg-white hover:border-emerald-600/40 hover:shadow-md transition-all duration-200"
-              >
-                {/* Thumbnail */}
-                <div className="relative aspect-[16/10] bg-stone-100 overflow-hidden">
+        {/* News Editorial Grid / List */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-10">
+          {publishedItems.map((item) => (
+            <Link
+              key={item.id}
+              href="/berita"
+              className="group flex flex-col justify-between"
+            >
+              <div>
+                {/* Thumbnail (rounded-lg) */}
+                <div className="relative aspect-[16/10] rounded-lg bg-stone-100 overflow-hidden border border-stone-200 mb-3">
                   {item.gambar_url ? (
                     <img
                       src={item.gambar_url}
@@ -96,42 +91,36 @@ export function BeritaPreviewSection({ berita }: BeritaPreviewSectionProps) {
                   )}
                 </div>
 
-                {/* Content */}
-                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    {/* Publication Date */}
-                    <div className="flex items-center gap-1.5 text-xs text-stone-500 font-medium mb-2.5">
-                      <Calendar className="w-3.5 h-3.5 text-emerald-700" />
-                      <span>{formatTanggalIndonesia(item.tanggal_publikasi)}</span>
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="font-heading font-bold text-base sm:text-lg text-slate-900 group-hover:text-emerald-800 transition-colors line-clamp-2 leading-snug mb-2">
-                      {item.judul}
-                    </h3>
-
-                    {/* Excerpt */}
-                    <p className="text-sm text-slate-600 line-clamp-2 leading-relaxed">
-                      {item.ringkasan}
-                    </p>
-                  </div>
-
-                  {/* Read indicator */}
-                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-xs font-semibold text-emerald-800 group-hover:text-emerald-700">
-                    <span>Baca selengkapnya</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                {/* Publication Date */}
+                <div className="text-xs text-stone-500 font-medium mb-1.5">
+                  {formatTanggalIndonesia(item.tanggal_publikasi)}
                 </div>
-              </Link>
-            </ScrollReveal>
+
+                {/* Title */}
+                <h3 className="font-heading font-bold text-base sm:text-lg text-stone-900 group-hover:text-emerald-900 transition-colors line-clamp-2 leading-snug mb-1.5">
+                  {item.judul}
+                </h3>
+
+                {/* Excerpt */}
+                <p className="text-xs sm:text-sm text-stone-600 line-clamp-2 leading-relaxed">
+                  {item.ringkasan}
+                </p>
+              </div>
+
+              {/* Read indicator */}
+              <div className="mt-3 pt-2 text-xs font-semibold text-emerald-800 group-hover:text-emerald-700 inline-flex items-center gap-1">
+                <span>Baca selengkapnya</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </Link>
           ))}
         </div>
 
         {/* Bottom CTA Button */}
-        <div className="text-center">
+        <div>
           <Link
             href="/berita"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 text-white font-semibold text-sm sm:text-base shadow-xs hover:shadow-md transition-all duration-200 active:scale-[0.98]"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 text-white font-semibold text-sm shadow-xs transition-colors active:scale-[0.98] min-h-[44px]"
           >
             <span>Lihat Semua Warta Kegiatan</span>
             <ArrowRight className="w-4 h-4" />

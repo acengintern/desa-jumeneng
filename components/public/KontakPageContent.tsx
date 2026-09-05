@@ -122,9 +122,9 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
       {/* 1. KARTU RINGKASAN KONTAK UTAMA */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {/* Card 1: Alamat */}
-        <div className="bg-white rounded-2xl sm:rounded-3xl p-6 border border-stone-200/90 shadow-xs flex flex-col justify-between">
+        <div className="bg-white rounded-lg p-6 border border-stone-200/90 shadow-xs flex flex-col justify-between">
           <div>
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-3">
+            <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-3">
               <MapPin className="w-5 h-5" />
             </div>
             <h3 className="font-heading font-bold text-sm sm:text-base text-stone-900 mb-1">
@@ -140,9 +140,9 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
         </div>
 
         {/* Card 2: WhatsApp Dukuh */}
-        <div className="bg-white rounded-2xl sm:rounded-3xl p-6 border border-stone-200/90 shadow-xs flex flex-col justify-between">
+        <div className="bg-white rounded-lg p-6 border border-stone-200/90 shadow-xs flex flex-col justify-between">
           <div>
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-3">
+            <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-3">
               <MessageCircle className="w-5 h-5" />
             </div>
             <h3 className="font-heading font-bold text-sm sm:text-base text-stone-900 mb-1">
@@ -161,9 +161,9 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
         </div>
 
         {/* Card 3: Jam Layanan Administrasi */}
-        <div className="bg-white rounded-2xl sm:rounded-3xl p-6 border border-stone-200/90 shadow-xs flex flex-col justify-between">
+        <div className="bg-white rounded-lg p-6 border border-stone-200/90 shadow-xs flex flex-col justify-between">
           <div>
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-3">
+            <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-3">
               <Clock className="w-5 h-5" />
             </div>
             <h3 className="font-heading font-bold text-sm sm:text-base text-stone-900 mb-1">
@@ -182,9 +182,9 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
         </div>
 
         {/* Card 4: Form Online 24 Jam */}
-        <div className="bg-white rounded-2xl sm:rounded-3xl p-6 border border-stone-200/90 shadow-xs flex flex-col justify-between">
+        <div className="bg-white rounded-lg p-6 border border-stone-200/90 shadow-xs flex flex-col justify-between">
           <div>
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-3">
+            <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-3">
               <Sparkles className="w-5 h-5" />
             </div>
             <h3 className="font-heading font-bold text-sm sm:text-base text-stone-900 mb-1">
@@ -208,7 +208,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
         {/* Kolom Kiri (5/12): Informasi Detail Dusun, Tombol WA & Peta Google Maps */}
         <div className="lg:col-span-5 space-y-6">
           {/* Card Kontak Sekretariat */}
-          <div className="rounded-3xl bg-white border border-stone-200/90 p-6 sm:p-8 shadow-xs">
+          <div className="rounded-xl bg-white border border-stone-200/90 p-6 sm:p-8 shadow-xs">
             <h3 className="font-heading text-lg sm:text-xl font-bold text-stone-950 mb-6 flex items-center gap-2.5">
               <Building className="w-5 h-5 text-emerald-700" />
               <span>Sekretariat Padukuhan</span>
@@ -217,7 +217,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
             <div className="space-y-5 text-stone-700 text-xs sm:text-sm">
               {/* Alamat Lengkap */}
               <div className="flex items-start gap-3.5">
-                <div className="p-2 rounded-xl bg-stone-100 text-emerald-800 shrink-0 mt-0.5">
+                <div className="p-2 rounded-lg bg-stone-100 text-emerald-800 shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
@@ -233,7 +233,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
 
               {/* Telepon / WhatsApp */}
               <div className="flex items-start gap-3.5">
-                <div className="p-2 rounded-xl bg-stone-100 text-emerald-800 shrink-0 mt-0.5">
+                <div className="p-2 rounded-lg bg-stone-100 text-emerald-800 shrink-0 mt-0.5">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
@@ -251,7 +251,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
 
               {/* Jam Administrasi */}
               <div className="flex items-start gap-3.5">
-                <div className="p-2 rounded-xl bg-stone-100 text-emerald-800 shrink-0 mt-0.5">
+                <div className="p-2 rounded-lg bg-stone-100 text-emerald-800 shrink-0 mt-0.5">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
@@ -274,7 +274,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
                 href={waLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 group"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-lg min-h-[44px] bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 group"
               >
                 <MessageCircle className="w-4 h-4 fill-current" />
                 <span>Chat Langsung via WhatsApp</span>
@@ -287,7 +287,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
           </div>
 
           {/* Google Maps Embed Card */}
-          <div className="rounded-3xl bg-white border border-stone-200/90 shadow-xs overflow-hidden">
+          <div className="rounded-xl bg-white border border-stone-200/90 shadow-xs overflow-hidden">
             <div className="p-4 sm:p-5 border-b border-stone-100 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-emerald-700" />
@@ -325,7 +325,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
 
         {/* Kolom Kanan (7/12): Formulir Aspirasi Warga */}
         <div className="lg:col-span-7">
-          <div className="rounded-3xl bg-white border border-stone-200/90 shadow-xs overflow-hidden p-6 sm:p-10 relative">
+          <div className="rounded-xl bg-white border border-stone-200/90 shadow-xs overflow-hidden p-6 sm:p-10 relative">
             <div className="mb-8">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-emerald-50 border border-emerald-200/70 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-2">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
@@ -342,7 +342,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
 
             {/* Alert Pesan Sukses */}
             {status === 'success' && (
-              <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-start gap-3 animate-in fade-in duration-300">
+              <div className="mb-6 p-4 sm:p-5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-start gap-3 animate-in fade-in duration-300">
                 <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
                 <div className="flex-1 text-xs sm:text-sm">
                   <p className="font-bold text-emerald-950 mb-0.5">
@@ -358,7 +358,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
 
             {/* Alert Pesan Gagal */}
             {status === 'error' && (
-              <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-900 flex items-start gap-3 animate-in fade-in duration-300">
+              <div className="mb-6 p-4 sm:p-5 rounded-lg bg-rose-50 border border-rose-200 text-rose-900 flex items-start gap-3 animate-in fade-in duration-300">
                 <AlertCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
                 <div className="flex-1 text-xs sm:text-sm">
                   <p className="font-bold text-rose-950 mb-0.5">Gagal Mengirimkan Pesan</p>
@@ -393,7 +393,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
                   }}
                   placeholder="Masukkan nama lengkap Anda"
                   disabled={status === 'loading'}
-                  className={`w-full px-4 py-3 rounded-xl text-stone-900 bg-stone-50 border transition-all text-xs sm:text-sm focus:bg-white focus:outline-hidden focus:ring-2 ${
+                  className={`w-full px-4 py-3 rounded-lg text-stone-900 bg-stone-50 border transition-all text-xs sm:text-sm focus:bg-white focus:outline-hidden focus:ring-2 ${
                     errors.nama
                       ? 'border-rose-400 focus:ring-rose-400/30 bg-rose-50/30'
                       : 'border-stone-200 focus:border-emerald-600 focus:ring-emerald-600/20'
@@ -428,7 +428,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
                   }
                   placeholder="Contoh: 0812-3456-7890"
                   disabled={status === 'loading'}
-                  className="w-full px-4 py-3 rounded-xl text-stone-900 bg-stone-50 border border-stone-200 transition-all text-xs sm:text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:border-emerald-600 focus:ring-emerald-600/20"
+                  className="w-full px-4 py-3 rounded-lg text-stone-900 bg-stone-50 border border-stone-200 transition-all text-xs sm:text-sm focus:bg-white focus:outline-hidden focus:ring-2 focus:border-emerald-600 focus:ring-emerald-600/20"
                 />
               </div>
 
@@ -453,7 +453,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
                   }}
                   placeholder="Tuliskan pesan aspirasi, usulan kegiatan, kritik konstruktif, atau pertanyaan Anda secara rinci..."
                   disabled={status === 'loading'}
-                  className={`w-full px-4 py-3 rounded-xl text-stone-900 bg-stone-50 border transition-all text-xs sm:text-sm focus:bg-white focus:outline-hidden focus:ring-2 resize-y ${
+                  className={`w-full px-4 py-3 rounded-lg text-stone-900 bg-stone-50 border transition-all text-xs sm:text-sm focus:bg-white focus:outline-hidden focus:ring-2 resize-y ${
                     errors.pesan
                       ? 'border-rose-400 focus:ring-rose-400/30 bg-rose-50/30'
                       : 'border-stone-200 focus:border-emerald-600 focus:ring-emerald-600/20'
@@ -471,7 +471,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full py-3.5 px-6 rounded-2xl bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                className="w-full py-3.5 px-6 rounded-lg min-h-[44px] bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
               >
                 {status === 'loading' ? (
                   <>
@@ -495,7 +495,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
       </div>
 
       {/* 3. PANDUAN PELAYANAN ADMINISTRASI WARGA */}
-      <div className="bg-white rounded-3xl border border-stone-200/90 shadow-xs p-6 sm:p-10 lg:p-12 space-y-8">
+      <div className="bg-white rounded-xl border border-stone-200/90 shadow-xs p-6 sm:p-10 lg:p-12 space-y-8">
         <div>
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
             <FileText className="w-4 h-4 text-emerald-700" />
@@ -512,7 +512,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Layanan 1 */}
-          <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/70 space-y-2">
+          <div className="p-5 rounded-lg bg-stone-50 border border-stone-200/70 space-y-2">
             <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-xs">
               01
             </div>
@@ -525,7 +525,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
           </div>
 
           {/* Layanan 2 */}
-          <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/70 space-y-2">
+          <div className="p-5 rounded-lg bg-stone-50 border border-stone-200/70 space-y-2">
             <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-xs">
               02
             </div>
@@ -538,7 +538,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
           </div>
 
           {/* Layanan 3 */}
-          <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200/70 space-y-2">
+          <div className="p-5 rounded-lg bg-stone-50 border border-stone-200/70 space-y-2">
             <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-xs">
               03
             </div>
@@ -551,7 +551,7 @@ export function KontakPageContent({ profil }: KontakPageContentProps) {
           </div>
         </div>
 
-        <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200/70 flex items-start gap-3 text-xs sm:text-sm text-emerald-950">
+        <div className="p-4 rounded-lg bg-emerald-50/70 border border-emerald-200/70 flex items-start gap-3 text-xs sm:text-sm text-emerald-950">
           <HeartHandshake className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
           <p className="leading-relaxed">
             <strong>Catatan Pelayanan:</strong> Seluruh pengurusan surat pengantar di tingkat Padukuhan Jumeneng Kidul tidak dipungut biaya (bebas biaya/gratis). Apabila terdapat kendala administrasi mendesak, silakan hubungi langsung Kepala Dukuh via WhatsApp.

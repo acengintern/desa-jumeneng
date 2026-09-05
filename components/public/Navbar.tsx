@@ -36,15 +36,23 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile drawer is open
+  // Lock body scroll when mobile drawer is open and handle Escape key
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
     } else {
       document.body.style.overflow = 'unset';
     }
     return () => {
       document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen]);
 
@@ -73,19 +81,19 @@ export function Navbar() {
           {/* Left: Logo & Village Identity */}
           <Link
             href="/"
-            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 rounded-xl p-1"
+            className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 rounded-lg p-1"
             onClick={() => setIsOpen(false)}
           >
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-emerald-800 to-emerald-950 flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform duration-200 border border-emerald-700/50 shrink-0">
-              <span className="font-heading font-extrabold text-lg sm:text-xl tracking-tight text-amber-300">
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg bg-gradient-to-br from-emerald-800 to-emerald-950 flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform duration-200 border border-emerald-700/50 shrink-0">
+              <span className="font-heading font-extrabold text-base sm:text-xl tracking-tight text-amber-300">
                 JK
               </span>
             </div>
             <div className="flex flex-col min-w-0">
-              <span className="font-heading font-bold text-sm sm:text-lg text-stone-950 group-hover:text-emerald-900 transition-colors leading-tight truncate max-w-[190px] xs:max-w-[260px] sm:max-w-none">
+              <span className="font-heading font-bold text-xs xs:text-sm sm:text-base text-stone-950 group-hover:text-emerald-900 transition-colors leading-tight truncate max-w-[155px] xs:max-w-[220px] sm:max-w-none">
                 Padukuhan Jumeneng Kidul
               </span>
-              <span className="text-[11px] sm:text-xs font-medium text-emerald-800 leading-normal truncate max-w-[180px] xs:max-w-none">
+              <span className="text-[10px] xs:text-[11px] sm:text-xs text-stone-600 leading-normal truncate max-w-[150px] xs:max-w-none">
                 Kalurahan Sumberadi, Sleman
               </span>
             </div>
@@ -102,7 +110,7 @@ export function Navbar() {
                   aria-current={active ? 'page' : undefined}
                   className={`px-3 py-2 rounded-lg text-sm transition-all duration-150 border ${
                     active
-                      ? 'text-emerald-950 font-bold bg-emerald-50 border-emerald-200 shadow-sm'
+                      ? 'text-emerald-950 font-bold bg-emerald-50 border-emerald-200 shadow-2xs'
                       : 'text-stone-700 hover:text-stone-950 hover:bg-stone-50 border-transparent font-medium'
                   }`}
                 >
@@ -113,10 +121,10 @@ export function Navbar() {
           </nav>
 
           {/* Right: Quick Action & Admin Login (Desktop) */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2.5">
             <Link
               href="/kontak"
-              className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 rounded-xl shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98]"
+              className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 rounded-lg shadow-xs transition-all hover:shadow-sm active:scale-[0.98] min-h-[40px]"
             >
               <Phone className="w-4 h-4" />
               <span>Hubungi Kami</span>
@@ -126,7 +134,7 @@ export function Navbar() {
               href="/admin/login"
               title="Portal Admin Dusun"
               aria-label="Masuk ke Halaman Admin"
-              className="p-2.5 text-stone-600 hover:text-emerald-900 hover:bg-stone-100 rounded-xl transition-colors border border-stone-200/80"
+              className="p-2.5 text-stone-600 hover:text-emerald-900 hover:bg-stone-100 rounded-lg transition-colors border border-stone-200/80 min-h-[40px] min-w-[40px] flex items-center justify-center"
             >
               <Lock className="w-4 h-4" />
             </Link>
@@ -138,14 +146,14 @@ export function Navbar() {
               href="/admin/login"
               title="Login Admin"
               aria-label="Masuk Admin"
-              className="p-2 text-stone-600 hover:text-emerald-900 hover:bg-stone-100 rounded-xl transition-colors border border-stone-200/80"
+              className="p-2 text-stone-600 hover:text-emerald-900 hover:bg-stone-100 rounded-lg transition-colors border border-stone-200/80 min-h-[40px] min-w-[40px] flex items-center justify-center"
             >
               <Lock className="w-4 h-4" />
             </Link>
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2.5 rounded-xl text-stone-900 hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-emerald-700 transition-colors border border-stone-200/80"
+              className="p-2.5 rounded-lg text-stone-900 hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-emerald-700 transition-colors border border-stone-200/80 min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-expanded={isOpen}
               aria-label={isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
             >
@@ -166,7 +174,7 @@ export function Navbar() {
 
       {/* Mobile Drawer (Clean, crisp village portal aesthetic) */}
       <div
-        className={`fixed top-18 sm:top-20 right-0 bottom-0 z-50 w-full max-w-xs sm:max-w-sm bg-white text-stone-900 shadow-2xl border-l border-stone-200 flex flex-col transform transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed top-18 sm:top-20 right-0 bottom-0 z-50 w-full max-w-xs sm:max-w-sm bg-white text-stone-900 shadow-xl border-l border-stone-200 flex flex-col transform transition-transform duration-300 ease-in-out lg:hidden ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         role="dialog"
@@ -175,12 +183,9 @@ export function Navbar() {
       >
         {/* Drawer Header */}
         <div className="p-4 border-b border-stone-100 bg-stone-50/70">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-600" />
-            <span className="text-xs font-bold text-stone-900 uppercase tracking-wider">
-              Navigasi Dusun
-            </span>
-          </div>
+          <span className="text-xs font-bold text-stone-900 uppercase tracking-wider block">
+            Navigasi Padukuhan
+          </span>
           <p className="text-xs text-stone-500 mt-0.5">
             Padukuhan Jumeneng Kidul
           </p>
@@ -196,9 +201,9 @@ export function Navbar() {
                 href={item.href}
                 onClick={() => setIsOpen(false)}
                 aria-current={active ? 'page' : undefined}
-                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm transition-colors border ${
+                className={`flex items-center justify-between px-3.5 py-3 rounded-lg text-sm transition-colors border min-h-[44px] ${
                   active
-                    ? 'bg-emerald-50 text-emerald-950 font-bold border-emerald-200 shadow-sm'
+                    ? 'bg-emerald-50 text-emerald-950 font-bold border-emerald-200'
                     : 'bg-white text-stone-700 hover:text-stone-950 hover:bg-stone-50 border-stone-100 font-medium'
                 }`}
               >
@@ -218,7 +223,7 @@ export function Navbar() {
           <Link
             href="/kontak"
             onClick={() => setIsOpen(false)}
-            className="flex items-center justify-center gap-2 w-full py-2.5 text-sm font-semibold text-white bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 rounded-xl shadow-sm transition-colors"
+            className="flex items-center justify-center gap-2 w-full py-3 text-sm font-semibold text-white bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 rounded-lg shadow-xs transition-colors min-h-[44px]"
           >
             <Phone className="w-4 h-4" />
             <span>Hubungi Pengurus Dusun</span>
@@ -227,7 +232,7 @@ export function Navbar() {
           <Link
             href="/admin/login"
             onClick={() => setIsOpen(false)}
-            className="flex items-center justify-center gap-2 w-full py-2 text-xs font-medium text-stone-600 hover:text-emerald-900 bg-white hover:bg-stone-100 border border-stone-200 rounded-xl transition-colors"
+            className="flex items-center justify-center gap-2 w-full py-2.5 text-xs font-medium text-stone-600 hover:text-emerald-900 bg-white hover:bg-stone-100 border border-stone-200 rounded-lg transition-colors min-h-[40px]"
           >
             <Lock className="w-3.5 h-3.5 text-stone-500" />
             <span>Portal Admin Dusun</span>

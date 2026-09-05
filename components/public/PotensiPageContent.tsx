@@ -185,7 +185,7 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
   return (
     <div className="space-y-8">
       {/* Search & Filter Header Bar */}
-      <div className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-stone-200/90 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+      <div className="bg-white rounded-xl p-4 sm:p-6 border border-stone-200 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
         {/* Category Tabs */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
           {CATEGORY_TABS.map((tab) => {
@@ -195,7 +195,7 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
                 key={tab.key}
                 type="button"
                 onClick={() => setActiveCategory(tab.key)}
-                className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer min-h-[40px] ${
                   isActive
                     ? 'bg-emerald-800 text-white shadow-xs'
                     : 'bg-stone-100/80 text-stone-600 hover:text-stone-900 hover:bg-stone-200/70'
@@ -216,7 +216,7 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Cari komoditas atau sektor..."
             aria-label="Cari potensi dusun"
-            className="w-full pl-9.5 pr-4 py-2 text-xs sm:text-sm rounded-xl bg-stone-50 border border-stone-200 focus:outline-hidden focus:border-emerald-600 focus:bg-white text-stone-900 placeholder:text-stone-400 transition-colors"
+            className="w-full pl-9.5 pr-4 py-2 text-xs sm:text-sm rounded-lg bg-stone-50 border border-stone-200 focus:outline-hidden focus:border-emerald-600 focus:bg-white text-stone-900 placeholder:text-stone-400 transition-colors"
           />
           {searchQuery && (
             <button
@@ -232,8 +232,8 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
 
       {/* Directory Grid */}
       {items.length === 0 ? (
-        <div className="bg-white rounded-3xl border border-stone-200 p-12 text-center">
-          <div className="w-12 h-12 rounded-2xl bg-stone-100 flex items-center justify-center mx-auto mb-3 text-stone-400">
+        <div className="bg-white rounded-xl border border-stone-200 p-12 text-center">
+          <div className="w-12 h-12 rounded-lg bg-stone-100 flex items-center justify-center mx-auto mb-3 text-stone-400">
             <Info className="w-6 h-6" />
           </div>
           <h3 className="font-heading text-lg font-bold text-stone-900 mb-1">
@@ -248,7 +248,7 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
               setActiveCategory('semua');
               setSearchQuery('');
             }}
-            className="px-4 py-2 rounded-xl bg-emerald-800 text-white text-xs font-semibold hover:bg-emerald-700 transition-colors"
+            className="px-4 py-2 rounded-lg bg-emerald-800 text-white text-xs font-semibold hover:bg-emerald-700 transition-colors cursor-pointer"
           >
             Tampilkan Semua Potensi
           </button>
@@ -271,14 +271,14 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
                       handleOpenDetail(item);
                     }
                   }}
-                  className={`group bg-white rounded-3xl border border-stone-200/90 shadow-xs ${style.borderColor} hover:shadow-lg hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between p-6 sm:p-8 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-emerald-600 text-left`}
+                  className={`group bg-white rounded-xl border border-stone-200 shadow-xs ${style.borderColor} hover:shadow-lg hover:-translate-y-1 transition-all duration-200 flex flex-col justify-between p-6 sm:p-8 cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-emerald-600 text-left`}
                 >
                   <div>
                     {/* Header Bar: Icon, Badge, Arrow Indicator */}
                     <div className="flex items-start justify-between gap-3 mb-5">
                       <div className="flex items-center gap-3.5">
                         <div
-                          className={`w-14 h-14 rounded-2xl ${style.accentBg} border border-stone-200/60 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform duration-200`}
+                          className={`w-14 h-14 rounded-lg ${style.accentBg} border border-stone-200/60 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform duration-200`}
                         >
                           {renderPotensiVectorIcon(item.judul, item.icon, 'w-7 h-7')}
                         </div>
@@ -295,7 +295,7 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
                         </div>
                       </div>
 
-                      <div className="w-8 h-8 rounded-xl bg-stone-100 group-hover:bg-emerald-800 group-hover:text-white text-stone-500 flex items-center justify-center transition-colors shrink-0">
+                      <div className="w-8 h-8 rounded-md bg-stone-100 group-hover:bg-emerald-800 group-hover:text-white text-stone-500 flex items-center justify-center transition-colors shrink-0">
                         <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                       </div>
                     </div>
@@ -308,7 +308,7 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
                     {/* 4 Structured Information Snippets */}
                     <div className="space-y-2.5 pt-4 border-t border-stone-100 text-xs">
                       {/* 1. Kegiatan Utama */}
-                      <div className="p-3 rounded-xl bg-stone-50/80 border border-stone-100 flex items-start gap-2.5">
+                      <div className="p-3 rounded-lg bg-stone-50/80 border border-stone-100 flex items-start gap-2.5">
                         <Briefcase className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
                         <div className="min-w-0">
                           <span className="font-bold text-stone-500 uppercase tracking-wider text-[10px] block">
@@ -321,7 +321,7 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
                       </div>
 
                       {/* 2. Keunggulan Hasil */}
-                      <div className="p-3 rounded-xl bg-stone-50/80 border border-stone-100 flex items-start gap-2.5">
+                      <div className="p-3 rounded-lg bg-stone-50/80 border border-stone-100 flex items-start gap-2.5">
                         <TrendingUp className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
                         <div className="min-w-0">
                           <span className="font-bold text-stone-500 uppercase tracking-wider text-[10px] block">
@@ -334,7 +334,7 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
                       </div>
 
                       {/* 3. Tantangan & Kendala */}
-                      <div className="p-3 rounded-xl bg-stone-50/80 border border-stone-100 flex items-start gap-2.5">
+                      <div className="p-3 rounded-lg bg-stone-50/80 border border-stone-100 flex items-start gap-2.5">
                         <AlertCircle className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
                         <div className="min-w-0">
                           <span className="font-bold text-stone-500 uppercase tracking-wider text-[10px] block">

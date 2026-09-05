@@ -123,26 +123,13 @@ export default async function ProfilPage() {
 
           {/* Page Heading & Regional Descriptor */}
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-3">
-              <Compass className="w-3.5 h-3.5 text-emerald-700" />
-              <span>Identitas & Riwayat Padukuhan</span>
-            </div>
+            <p className="text-xs sm:text-sm font-medium text-emerald-800 tracking-wide mb-2">
+              Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, D.I. Yogyakarta
+            </p>
 
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-950 tracking-tight leading-tight">
               Profil & Sejarah Padukuhan Jumeneng Kidul
             </h1>
-
-            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs sm:text-sm text-stone-600">
-              <span className="font-medium text-emerald-900 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200/60">
-                Kalurahan Sumberadi
-              </span>
-              <span className="text-stone-300">•</span>
-              <span className="font-medium text-stone-800">Kapanewon Mlati</span>
-              <span className="text-stone-300">•</span>
-              <span className="font-medium text-stone-800">Kabupaten Sleman</span>
-              <span className="text-stone-300">•</span>
-              <span className="font-medium text-stone-800">D.I. Yogyakarta</span>
-            </div>
 
             <p className="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed max-w-3xl">
               Mengenal lebih dalam riwayat ketokohan Kyai Nur Jumeneng, asal-usul pemekaran wilayah,
@@ -157,7 +144,7 @@ export default async function ProfilPage() {
         {/* 2. SEJARAH KYAI NUR JUMENENG & ASAL-USUL */}
         <section id="sejarah" className="scroll-mt-24">
           <ScrollReveal direction="up">
-            <div className="bg-white rounded-3xl border border-stone-200/90 shadow-xs p-6 sm:p-10 lg:p-12">
+            <div className="bg-white rounded-xl border border-stone-200/90 shadow-xs p-6 sm:p-10 lg:p-12">
               <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
                 <BookOpen className="w-4 h-4 text-emerald-700" />
                 <span>Asal-Usul & Riwayat Leluhur</span>
@@ -314,12 +301,7 @@ export default async function ProfilPage() {
           <ScrollReveal direction="up">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
               {/* Kolom Visi: Tampilan Elegan & Bersih */}
-              <div className="lg:col-span-5 bg-gradient-to-br from-emerald-900 via-emerald-950 to-stone-950 text-white rounded-3xl p-8 sm:p-10 shadow-md flex flex-col justify-between relative overflow-hidden">
-                <div
-                  className="absolute -top-12 -right-12 w-44 h-44 rounded-full bg-emerald-700/20 blur-2xl pointer-events-none"
-                  aria-hidden="true"
-                />
-
+              <div className="lg:col-span-5 bg-gradient-to-br from-emerald-900 via-emerald-950 to-stone-950 text-white rounded-xl p-8 sm:p-10 shadow-md flex flex-col justify-between relative overflow-hidden">
                 <div>
                   <span className="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-amber-400/20 text-amber-300 border border-amber-400/30 uppercase tracking-wider mb-6">
                     Visi Padukuhan
@@ -340,7 +322,7 @@ export default async function ProfilPage() {
               </div>
 
               {/* Kolom Misi: 4 Butir Terstruktur Rapi */}
-              <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-stone-200/90 shadow-xs flex flex-col justify-between">
+              <div className="lg:col-span-7 bg-white rounded-xl p-6 sm:p-8 lg:p-10 border border-stone-200 shadow-xs flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800 mb-1">
                     <Layers className="w-4 h-4 text-emerald-700" />
@@ -354,9 +336,9 @@ export default async function ProfilPage() {
                     {misiList.map((misi, idx) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-3.5 p-4 rounded-xl bg-stone-50 border border-stone-200/70 hover:border-emerald-200 transition-colors"
+                        className="flex items-start gap-3.5 p-4 rounded-lg bg-stone-50 border border-stone-200/70 hover:border-emerald-200 transition-colors"
                       >
-                        <div className="w-8 h-8 rounded-lg bg-emerald-800 text-amber-300 font-heading font-bold text-xs sm:text-sm flex items-center justify-center shrink-0 mt-0.5">
+                        <div className="w-8 h-8 rounded-md bg-emerald-800 text-amber-300 font-heading font-bold text-xs sm:text-sm flex items-center justify-center shrink-0 mt-0.5">
                           0{idx + 1}
                         </div>
                         <p className="text-xs sm:text-sm font-medium text-stone-800 leading-relaxed pt-0.5">
@@ -379,7 +361,7 @@ export default async function ProfilPage() {
         {/* 5. DEMOGRAFI & RASIO GENDER PENDUDUK */}
         <section id="demografi" className="scroll-mt-24">
           <ScrollReveal direction="up">
-            <div className="bg-white rounded-3xl border border-stone-200/90 shadow-xs p-6 sm:p-10 lg:p-12">
+            <div className="bg-white rounded-xl border border-stone-200 shadow-xs p-6 sm:p-10 lg:p-12">
               <div className="max-w-3xl mb-8">
                 <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
                   <Users className="w-4 h-4 text-emerald-700" />
@@ -399,7 +381,7 @@ export default async function ProfilPage() {
 
               {/* 4 Kartu Statistik Pokok */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
-                <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/80">
+                <div className="p-4 sm:p-5 rounded-lg bg-stone-50 border border-stone-200/80">
                   <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 block mb-1">
                     Total Penduduk
                   </span>
@@ -409,7 +391,7 @@ export default async function ProfilPage() {
                   <span className="text-xs text-stone-500">Jiwa terdaftar</span>
                 </div>
 
-                <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/80">
+                <div className="p-4 sm:p-5 rounded-lg bg-stone-50 border border-stone-200/80">
                   <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 block mb-1">
                     Kepala Keluarga
                   </span>
@@ -419,7 +401,7 @@ export default async function ProfilPage() {
                   <span className="text-xs text-stone-500">Kartu Keluarga (KK)</span>
                 </div>
 
-                <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/80">
+                <div className="p-4 sm:p-5 rounded-lg bg-stone-50 border border-stone-200/80">
                   <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 block mb-1">
                     Rukun Warga (RW)
                   </span>
@@ -429,7 +411,7 @@ export default async function ProfilPage() {
                   <span className="text-xs text-stone-500">RW 19, 20, 21, 39, dst</span>
                 </div>
 
-                <div className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200/80">
+                <div className="p-4 sm:p-5 rounded-lg bg-stone-50 border border-stone-200/80">
                   <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-stone-500 block mb-1">
                     Rukun Tetangga (RT)
                   </span>
@@ -441,7 +423,7 @@ export default async function ProfilPage() {
               </div>
 
               {/* Visual Bar Proporsi Rasio Gender */}
-              <div className="rounded-2xl bg-stone-50/80 border border-stone-200 p-6 sm:p-8">
+              <div className="rounded-xl bg-stone-50/80 border border-stone-200 p-6 sm:p-8">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
                   <span className="text-xs font-bold uppercase tracking-wider text-stone-700">
                     Visualisasi Rasio Gender Penduduk
@@ -529,10 +511,10 @@ export default async function ProfilPage() {
           <ScrollReveal direction="up">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Kolom 1: Mata Pencaharian & Sosio-Ekonomi */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-stone-200/90 shadow-xs flex flex-col justify-between">
+              <div className="bg-white rounded-xl p-6 sm:p-8 lg:p-10 border border-stone-200 shadow-xs flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 rounded-2xl bg-emerald-50 text-emerald-800 border border-emerald-100">
+                    <div className="p-3 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-100">
                       <Briefcase className="w-6 h-6" />
                     </div>
                     <div>
@@ -551,7 +533,7 @@ export default async function ProfilPage() {
                   </p>
 
                   <div className="space-y-3">
-                    <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/80">
+                    <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200/80">
                       <div className="flex items-center justify-between mb-1">
                         <span className="text-xs font-bold text-stone-900">
                           Pertanian Padi & Hortikultura
@@ -565,7 +547,7 @@ export default async function ProfilPage() {
                       </p>
                     </div>
 
-                    <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/80">
+                    <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200/80">
                       <div className="flex items-center justify-between mb-1">
                         <span className="text-xs font-bold text-stone-900">
                           UMKM Sentra Emping Melinjo
@@ -579,7 +561,7 @@ export default async function ProfilPage() {
                       </p>
                     </div>
 
-                    <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/80">
+                    <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200/80">
                       <div className="flex items-center justify-between mb-1">
                         <span className="text-xs font-bold text-stone-900">
                           Pertukangan Bangunan, Jasa, & Buruh
@@ -593,7 +575,7 @@ export default async function ProfilPage() {
                       </p>
                     </div>
 
-                    <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/80">
+                    <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200/80">
                       <div className="flex items-center justify-between mb-1">
                         <span className="text-xs font-bold text-stone-900">
                           Peternakan Domba & Unggas
@@ -622,10 +604,10 @@ export default async function ProfilPage() {
               </div>
 
               {/* Kolom 2: Lembaga Pendidikan di Wilayah */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-stone-200/90 shadow-xs flex flex-col justify-between">
+              <div className="bg-white rounded-xl p-6 sm:p-8 lg:p-10 border border-stone-200 shadow-xs flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 rounded-2xl bg-amber-50 text-amber-900 border border-amber-100">
+                    <div className="p-3 rounded-lg bg-amber-50 text-amber-900 border border-amber-100">
                       <GraduationCap className="w-6 h-6" />
                     </div>
                     <div>
@@ -650,11 +632,11 @@ export default async function ProfilPage() {
                     ).map((sekolah, idx) => (
                       <div
                         key={idx}
-                        className="p-4 rounded-2xl bg-stone-50 border border-stone-200/80 hover:border-emerald-200 transition-colors"
+                        className="p-4 rounded-lg bg-stone-50 border border-stone-200/80 hover:border-emerald-200 transition-colors"
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div className="flex items-start gap-3">
-                            <div className="w-9 h-9 rounded-xl bg-emerald-800 text-amber-300 flex items-center justify-center font-heading font-bold text-sm shrink-0">
+                            <div className="w-9 h-9 rounded-md bg-emerald-800 text-amber-300 flex items-center justify-center font-heading font-bold text-sm shrink-0">
                               0{idx + 1}
                             </div>
                             <div>
@@ -705,10 +687,10 @@ export default async function ProfilPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             <Link
               href="/pemerintahan"
-              className="group p-6 rounded-2xl bg-white border border-stone-200/90 shadow-xs hover:border-emerald-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="group p-6 rounded-xl bg-white border border-stone-200 shadow-xs hover:border-emerald-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between min-h-[44px]"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <Users className="w-5 h-5" />
                 </div>
                 <h4 className="font-heading font-bold text-base text-stone-900 group-hover:text-emerald-800 transition-colors mb-1">
@@ -726,10 +708,10 @@ export default async function ProfilPage() {
 
             <Link
               href="/potensi"
-              className="group p-6 rounded-2xl bg-white border border-stone-200/90 shadow-xs hover:border-amber-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="group p-6 rounded-xl bg-white border border-stone-200 shadow-xs hover:border-amber-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between min-h-[44px]"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-900 border border-amber-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-lg bg-amber-50 text-amber-900 border border-amber-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <Sprout className="w-5 h-5" />
                 </div>
                 <h4 className="font-heading font-bold text-base text-stone-900 group-hover:text-amber-800 transition-colors mb-1">
@@ -747,10 +729,10 @@ export default async function ProfilPage() {
 
             <Link
               href="/kontak"
-              className="group p-6 rounded-2xl bg-white border border-stone-200/90 shadow-xs hover:border-teal-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="group p-6 rounded-xl bg-white border border-stone-200 shadow-xs hover:border-teal-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between min-h-[44px]"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-800 border border-teal-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-lg bg-teal-50 text-teal-800 border border-teal-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <Phone className="w-5 h-5" />
                 </div>
                 <h4 className="font-heading font-bold text-base text-stone-900 group-hover:text-teal-800 transition-colors mb-1">

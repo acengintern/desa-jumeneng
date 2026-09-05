@@ -128,7 +128,7 @@ export function GaleriLightbox({
           type="button"
           onClick={onClose}
           aria-label="Tutup penampil galeri"
-          className="p-2 sm:p-3 rounded-full bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-lg"
+          className="p-2 sm:p-2.5 rounded-lg min-w-[44px] min-h-[44px] flex items-center justify-center bg-slate-900/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-lg"
         >
           <X className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
@@ -148,7 +148,7 @@ export function GaleriLightbox({
               handlePrev();
             }}
             aria-label="Foto sebelumnya"
-            className="absolute left-2 sm:left-6 z-20 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-slate-900/80 hover:bg-emerald-800 text-white border border-slate-700/80 hover:border-emerald-600 transition-all focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-2xl group"
+            className="absolute left-2 sm:left-6 z-20 w-11 h-11 sm:w-12 sm:h-12 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg bg-slate-900/80 hover:bg-emerald-800 text-white border border-slate-700/80 hover:border-emerald-600 transition-all focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-2xl group"
           >
             <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7 group-hover:-translate-x-0.5 transition-transform" />
           </button>
@@ -163,11 +163,11 @@ export function GaleriLightbox({
               loading="lazy"
               decoding="async"
               onError={() => setImageError(true)}
-              className="max-h-[58vh] sm:max-h-[72vh] max-w-full w-auto h-auto object-contain rounded-xl sm:rounded-2xl shadow-2xl border border-slate-800/80 select-none animate-in fade-in duration-200"
+              className="max-h-[58vh] sm:max-h-[72vh] max-w-full w-auto h-auto object-contain rounded-xl shadow-2xl border border-slate-800/80 select-none animate-in fade-in duration-200"
             />
           ) : (
-            <div className="w-full max-w-lg h-60 sm:h-96 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col items-center justify-center p-4 sm:p-6 text-center">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-emerald-950 text-emerald-400 flex items-center justify-center mb-3">
+            <div className="w-full max-w-lg h-60 sm:h-96 rounded-xl bg-slate-900/90 border border-slate-800 flex flex-col items-center justify-center p-4 sm:p-6 text-center">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-emerald-950 text-emerald-400 flex items-center justify-center mb-3">
                 <ImageIcon className="w-6 h-6 sm:w-8 sm:h-8" />
               </div>
               <p className="text-white font-semibold text-sm sm:text-lg mb-1">
@@ -195,7 +195,7 @@ export function GaleriLightbox({
               handleNext();
             }}
             aria-label="Foto selanjutnya"
-            className="absolute right-2 sm:right-6 z-20 w-9 h-9 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-slate-900/80 hover:bg-emerald-800 text-white border border-slate-700/80 hover:border-emerald-600 transition-all focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-2xl group"
+            className="absolute right-2 sm:right-6 z-20 w-11 h-11 sm:w-12 sm:h-12 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg bg-slate-900/80 hover:bg-emerald-800 text-white border border-slate-700/80 hover:border-emerald-600 transition-all focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-2xl group"
           >
             <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7 group-hover:translate-x-0.5 transition-transform" />
           </button>

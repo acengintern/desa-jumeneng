@@ -1,8 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Camera, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Galeri } from '@/lib/types';
-import { ScrollReveal } from './ScrollReveal';
 
 interface GaleriPreviewSectionProps {
   galeri?: Galeri[];
@@ -66,59 +65,53 @@ export function GaleriPreviewSection({ galeri }: GaleriPreviewSectionProps) {
   const displayItems = combined.slice(0, 6);
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-stone-50/50 border-t border-slate-200/70">
+    <section className="py-12 sm:py-16 lg:py-20 bg-stone-50/50 border-t border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <ScrollReveal direction="up" className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
-            <Camera className="w-4 h-4 text-emerald-700" />
-            <span>Dokumentasi Kegiatan</span>
-          </div>
-          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Galeri Potret Jumeneng Kidul
+        {/* Header (Left-aligned, natural copy, no capsule) */}
+        <div className="max-w-3xl mb-8 sm:mb-10">
+          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-stone-900 tracking-tight leading-tight">
+            Galeri Foto Padukuhan
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 mt-3">
-            Momen kebersamaan, pelayanan posyandu, gotong royong, dan keasrian suasana padukuhan
-            kami.
+          <p className="text-sm sm:text-base text-stone-600 mt-2">
+            Dokumentasi gotong royong, posyandu, dan dinamika kemasyarakatan warga Jumeneng Kidul.
           </p>
-        </ScrollReveal>
+        </div>
 
-        {/* 6 Photo Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-12">
+        {/* 6 Photo Clean Grid (2 cols mobile, 3 cols desktop) */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-10">
           {displayItems.map((item, idx) => (
-            <ScrollReveal key={item.id || idx} direction="up" delay={idx * 60}>
-              <Link
-                href="/galeri"
-                className="group relative block aspect-[4/3] rounded-2xl overflow-hidden bg-stone-900 shadow-xs hover:shadow-md border border-slate-200/80 transition-all duration-200"
-                aria-label={`Buka foto ${item.judul_kegiatan} di halaman galeri`}
-              >
-                <img
-                  src={item.foto_url}
-                  alt={item.judul_kegiatan}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 ease-out"
-                />
+            <Link
+              key={item.id || idx}
+              href="/galeri"
+              className="group relative block aspect-[4/3] rounded-lg overflow-hidden bg-stone-100 border border-stone-200"
+              aria-label={`Buka foto ${item.judul_kegiatan} di halaman galeri`}
+            >
+              <img
+                src={item.foto_url}
+                alt={item.judul_kegiatan}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover object-center group-hover:scale-104 transition-transform duration-300 ease-out"
+              />
 
-                {/* Subtle dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-200" />
+              {/* Subtle bottom gradient for caption */}
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-stone-950/10 to-transparent" />
 
-                {/* Bottom Caption */}
-                <div className="absolute inset-x-0 bottom-0 p-3 sm:p-4 text-white z-10">
-                  <p className="font-medium text-xs sm:text-sm text-white group-hover:text-emerald-300 transition-colors line-clamp-2 leading-snug">
-                    {item.judul_kegiatan}
-                  </p>
-                </div>
-              </Link>
-            </ScrollReveal>
+              {/* Bottom Caption */}
+              <div className="absolute inset-x-0 bottom-0 p-2.5 sm:p-3.5 text-white z-10">
+                <p className="font-medium text-xs sm:text-sm text-white group-hover:text-emerald-300 transition-colors line-clamp-1 leading-snug">
+                  {item.judul_kegiatan}
+                </p>
+              </div>
+            </Link>
           ))}
         </div>
 
         {/* Bottom CTA Button */}
-        <div className="text-center">
+        <div>
           <Link
             href="/galeri"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 text-white font-semibold text-sm sm:text-base shadow-xs hover:shadow-md transition-all duration-200 active:scale-[0.98]"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 text-white font-semibold text-sm shadow-xs transition-colors active:scale-[0.98] min-h-[44px]"
           >
             <span>Buka Galeri Foto Lengkap</span>
             <ArrowRight className="w-4 h-4" />

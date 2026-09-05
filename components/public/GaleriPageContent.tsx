@@ -66,7 +66,7 @@ export function GaleriPageContent({ galeri }: GaleriPageContentProps) {
   return (
     <div className="space-y-8 sm:space-y-10">
       {/* 1. FILTER & PENCARIAN FOTO */}
-      <div className="bg-white rounded-2xl sm:rounded-3xl border border-stone-200/90 shadow-xs p-4 sm:p-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+      <div className="bg-white rounded-xl border border-stone-200/90 shadow-xs p-4 sm:p-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
         {/* Search Input Box */}
         <div className="relative flex-1 max-w-md">
           <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -75,7 +75,7 @@ export function GaleriPageContent({ galeri }: GaleriPageContentProps) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Cari foto kerja bakti, posyandu, gotong royong..."
-            className="w-full pl-10 pr-10 py-2.5 rounded-xl text-sm text-stone-900 bg-stone-50 border border-stone-200 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-600 transition-all placeholder:text-stone-400"
+            className="w-full pl-10 pr-10 py-2.5 rounded-lg text-sm text-stone-900 bg-stone-50 border border-stone-200 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-600 transition-all placeholder:text-stone-400"
           />
           {searchQuery && (
             <button
@@ -91,13 +91,13 @@ export function GaleriPageContent({ galeri }: GaleriPageContentProps) {
 
         {/* Indikator Jumlah & Petunjuk Interaksi */}
         <div className="flex items-center justify-between sm:justify-end gap-3 text-xs text-stone-500 font-medium">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-stone-100 text-stone-700 font-semibold">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-100 text-stone-700 font-semibold">
             <Camera className="w-3.5 h-3.5 text-emerald-700" />
             <span>
               {filteredPhotos.length} Dokumentasi Foto
             </span>
           </span>
-          <span className="hidden sm:inline text-stone-400">•</span>
+          <span className="hidden sm:inline text-stone-300">|</span>
           <span className="hidden sm:inline text-stone-500">
             Klik foto untuk mode layar penuh
           </span>
@@ -123,7 +123,7 @@ export function GaleriPageContent({ galeri }: GaleriPageContentProps) {
                   }
                 }}
                 aria-label={`Buka foto ${item.judul_kegiatan} dalam ukuran penuh`}
-                className="group relative aspect-[4/3] rounded-3xl overflow-hidden cursor-pointer shadow-xs hover:shadow-2xl transition-all duration-300 bg-stone-900 border border-stone-200/90 focus:outline-hidden focus:ring-4 focus:ring-emerald-600/30"
+                className="group relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer shadow-xs hover:shadow-lg transition-all duration-300 bg-stone-900 border border-stone-200/90 focus:outline-hidden focus:ring-4 focus:ring-emerald-600/30"
               >
                 {/* Image or Graceful Fallback */}
                 {!isBroken && item.foto_url ? (
@@ -137,7 +137,7 @@ export function GaleriPageContent({ galeri }: GaleriPageContentProps) {
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-emerald-950 via-stone-900 to-teal-950 flex flex-col items-center justify-center p-6 text-center">
-                    <div className="w-14 h-14 rounded-2xl bg-white/10 text-emerald-300 flex items-center justify-center mb-2">
+                    <div className="w-14 h-14 rounded-xl bg-white/10 text-emerald-300 flex items-center justify-center mb-2">
                       <ImageIcon className="w-7 h-7" />
                     </div>
                     <span className="text-white font-semibold text-sm">
@@ -154,7 +154,7 @@ export function GaleriPageContent({ galeri }: GaleriPageContentProps) {
 
                 {/* Center Hover Action Icon */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="w-12 h-12 rounded-full bg-white/25 backdrop-blur-md text-white border border-white/50 flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300">
+                  <div className="w-11 h-11 rounded-lg bg-white/25 backdrop-blur-md text-white border border-white/50 flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300">
                     <Maximize2 className="w-5 h-5 text-white" />
                   </div>
                 </div>
@@ -187,8 +187,8 @@ export function GaleriPageContent({ galeri }: GaleriPageContentProps) {
         </div>
       ) : (
         /* Empty State */
-        <div className="bg-white rounded-3xl border border-stone-200/90 p-8 sm:p-12 text-center max-w-xl mx-auto shadow-xs">
-          <div className="w-14 h-14 rounded-2xl bg-stone-100 text-stone-400 flex items-center justify-center mx-auto mb-4">
+        <div className="bg-white rounded-xl border border-stone-200/90 p-8 sm:p-12 text-center max-w-xl mx-auto shadow-xs">
+          <div className="w-14 h-14 rounded-xl bg-stone-100 text-stone-400 flex items-center justify-center mx-auto mb-4">
             <Camera className="w-7 h-7" />
           </div>
           <h3 className="font-heading font-bold text-lg text-stone-900 mb-1.5">
@@ -200,7 +200,7 @@ export function GaleriPageContent({ galeri }: GaleriPageContentProps) {
           <button
             type="button"
             onClick={() => setSearchQuery('')}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-xs sm:text-sm font-semibold transition-colors shadow-xs cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg min-h-[44px] bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-xs sm:text-sm font-semibold transition-colors shadow-xs cursor-pointer"
           >
             <Sparkles className="w-4 h-4" />
             <span>Tampilkan Seluruh Foto</span>

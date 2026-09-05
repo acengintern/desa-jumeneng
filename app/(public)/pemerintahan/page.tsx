@@ -264,26 +264,13 @@ export default async function PemerintahanPage() {
 
           {/* Page Heading & Regional Descriptor */}
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-3">
-              <Building2 className="w-3.5 h-3.5 text-emerald-700" />
-              <span>Aparatur Pamong & Fasilitas Publik</span>
-            </div>
+            <p className="text-xs sm:text-sm font-medium text-emerald-800 tracking-wide mb-2">
+              Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, D.I. Yogyakarta
+            </p>
 
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-950 tracking-tight leading-tight">
               Pemerintahan Dusun & Sarana Wilayah
             </h1>
-
-            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs sm:text-sm text-stone-600">
-              <span className="font-medium text-emerald-900 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200/60">
-                Kalurahan Sumberadi
-              </span>
-              <span className="text-stone-300">•</span>
-              <span className="font-medium text-stone-800">Kapanewon Mlati</span>
-              <span className="text-stone-300">•</span>
-              <span className="font-medium text-stone-800">Kabupaten Sleman</span>
-              <span className="text-stone-300">•</span>
-              <span className="font-medium text-stone-800">D.I. Yogyakarta</span>
-            </div>
 
             <p className="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed max-w-3xl">
               Struktur organisasi aparatur pamong dusun, ketua lingkungan RW & RT, serta fasilitas publik yang mendukung kesejahteraan warga Padukuhan Jumeneng Kidul.
@@ -334,7 +321,7 @@ export default async function PemerintahanPage() {
         {/* 2. PROFIL KEPALA DUKUH (Centerpiece Card) */}
         <section id="kepala-dukuh" className="scroll-mt-24">
           <ScrollReveal direction="up">
-            <div className="bg-white rounded-3xl border border-stone-200/90 shadow-xs overflow-hidden p-6 sm:p-10 lg:p-12">
+            <div className="bg-white rounded-xl border border-stone-200 shadow-xs overflow-hidden p-6 sm:p-10 lg:p-12">
               <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
                 <Crown className="w-4 h-4 text-emerald-700" />
                 <span>Pimpinan Wilayah Padukuhan</span>
@@ -348,7 +335,7 @@ export default async function PemerintahanPage() {
                 <div className="lg:col-span-4 flex flex-col items-center">
                   <div className="relative w-full max-w-xs">
                     {/* Frame Foto dengan Fallback Elegan di Layer Bawah */}
-                    <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden bg-stone-100 border-4 border-white shadow-md flex items-center justify-center">
+                    <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-stone-100 border-4 border-white shadow-md flex items-center justify-center">
                       {/* Fallback layer: Aktif jika gambar lambat/gagal termuat */}
                       <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-stone-100">
                         <div className="w-20 h-20 rounded-2xl bg-emerald-800 text-amber-300 flex items-center justify-center font-heading font-extrabold text-2xl shadow-inner mb-3">
@@ -440,7 +427,7 @@ export default async function PemerintahanPage() {
                       4 Nilai Utama Kepemimpinan Pamong:
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                      <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/80">
+                      <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200/80">
                         <div className="flex items-center gap-2 font-bold text-stone-950 text-sm mb-1">
                           <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center text-xs">
                             <ShieldCheck className="w-3.5 h-3.5" />
@@ -452,7 +439,7 @@ export default async function PemerintahanPage() {
                         </p>
                       </div>
 
-                      <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/80">
+                      <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200/80">
                         <div className="flex items-center gap-2 font-bold text-stone-950 text-sm mb-1">
                           <div className="w-6 h-6 rounded-md bg-amber-100 text-amber-900 flex items-center justify-center text-xs">
                             <HeartHandshake className="w-3.5 h-3.5" />
@@ -464,7 +451,7 @@ export default async function PemerintahanPage() {
                         </p>
                       </div>
 
-                      <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/80">
+                      <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200/80">
                         <div className="flex items-center gap-2 font-bold text-stone-950 text-sm mb-1">
                           <div className="w-6 h-6 rounded-md bg-teal-100 text-teal-800 flex items-center justify-center text-xs">
                             <Layers className="w-3.5 h-3.5" />
@@ -476,7 +463,7 @@ export default async function PemerintahanPage() {
                         </p>
                       </div>
 
-                      <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200/80">
+                      <div className="p-3.5 rounded-lg bg-stone-50 border border-stone-200/80">
                         <div className="flex items-center gap-2 font-bold text-stone-950 text-sm mb-1">
                           <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-800 flex items-center justify-center text-xs">
                             <CheckCircle2 className="w-3.5 h-3.5" />
@@ -523,15 +510,15 @@ export default async function PemerintahanPage() {
                 return (
                   <div
                     key={rw.id}
-                    className="bg-white rounded-2xl p-6 border border-stone-200/90 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                    className="bg-white rounded-lg p-6 border border-stone-200 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
                   >
                     <div>
                       {/* Header Badge RW */}
                       <div className="flex items-center justify-between mb-4">
-                        <span className="px-3 py-1 rounded-lg text-xs font-bold bg-teal-50 text-teal-800 border border-teal-200">
+                        <span className="px-3 py-1 rounded-md text-xs font-bold bg-teal-50 text-teal-800 border border-teal-200">
                           {rw.jabatan}
                         </span>
-                        <div className="w-8 h-8 rounded-xl bg-stone-100 text-stone-600 flex items-center justify-center text-xs font-bold">
+                        <div className="w-8 h-8 rounded-md bg-stone-100 text-stone-600 flex items-center justify-center text-xs font-bold">
                           0{idx + 1}
                         </div>
                       </div>
@@ -585,10 +572,10 @@ export default async function PemerintahanPage() {
                 return (
                   <div
                     key={rt.id}
-                    className="bg-white rounded-2xl p-5 border border-stone-200/90 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all duration-200 flex items-start gap-4"
+                    className="bg-white rounded-lg p-5 border border-stone-200 shadow-xs hover:border-emerald-300 hover:shadow-md transition-all duration-200 flex items-start gap-4"
                   >
                     {/* Badge Nomor RT Elegan */}
-                    <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-200/80 flex flex-col items-center justify-center shrink-0 shadow-xs">
+                    <div className="w-12 h-12 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200/80 flex flex-col items-center justify-center shrink-0 shadow-xs">
                       <span className="text-[10px] font-bold uppercase tracking-wider leading-none">
                         RT
                       </span>
@@ -646,18 +633,18 @@ export default async function PemerintahanPage() {
                 return (
                   <div
                     key={item.id}
-                    className={`bg-white rounded-3xl p-6 sm:p-7 border border-stone-200/90 ${item.color.borderHover} shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between`}
+                    className={`bg-white rounded-xl p-6 sm:p-7 border border-stone-200 ${item.color.borderHover} shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between`}
                   >
                     <div>
                       {/* Top Header: Icon & Quantity Badge */}
                       <div className="flex items-start justify-between gap-3 mb-5">
                         <div
-                          className={`w-12 h-12 rounded-2xl ${item.color.iconBg} flex items-center justify-center shadow-xs`}
+                          className={`w-12 h-12 rounded-lg ${item.color.iconBg} flex items-center justify-center shadow-xs`}
                         >
                           <Icon className="w-6 h-6" />
                         </div>
 
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-2xs whitespace-nowrap">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-2xs whitespace-nowrap">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                           <span>{item.jumlah}</span>
                         </span>
@@ -688,7 +675,7 @@ export default async function PemerintahanPage() {
                             key={fIdx}
                             className="flex items-center gap-1.5 text-xs text-stone-600"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0" />
+                            <span className="text-emerald-700 font-bold text-xs shrink-0 select-none">–</span>
                             <span className="truncate">{f}</span>
                           </div>
                         ))}
@@ -706,9 +693,9 @@ export default async function PemerintahanPage() {
               })}
 
               {/* Kartu Pemeliharaan & Gotong Royong Swadaya */}
-              <div className="rounded-3xl p-6 sm:p-7 bg-gradient-to-br from-emerald-900 to-stone-950 text-white flex flex-col justify-between shadow-md border border-emerald-800/80">
+              <div className="rounded-xl p-6 sm:p-7 bg-gradient-to-br from-emerald-900 to-stone-950 text-white flex flex-col justify-between shadow-md border border-emerald-800/80">
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-white/10 text-amber-300 flex items-center justify-center mb-5">
+                  <div className="w-12 h-12 rounded-lg bg-white/10 text-amber-300 flex items-center justify-center mb-5">
                     <Sparkles className="w-6 h-6" />
                   </div>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-300 block mb-1">
@@ -749,7 +736,7 @@ export default async function PemerintahanPage() {
         {/* 6. PANDUAN ALUR LAYANAN ADMINISTRASI WARGA */}
         <section id="alur-pelayanan" className="scroll-mt-24">
           <ScrollReveal direction="up">
-            <div className="bg-white rounded-3xl border border-stone-200/90 shadow-xs p-6 sm:p-10 lg:p-12">
+            <div className="bg-white rounded-xl border border-stone-200 shadow-xs p-6 sm:p-10 lg:p-12">
               <div className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
                 <FileText className="w-4 h-4 text-emerald-700" />
                 <span>Pelayanan Administrasi Terpadu</span>
@@ -762,8 +749,8 @@ export default async function PemerintahanPage() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-800 text-amber-300 font-heading font-extrabold text-base flex items-center justify-center mb-4">
+                <div className="p-6 rounded-lg bg-stone-50 border border-stone-200/80">
+                  <div className="w-10 h-10 rounded-md bg-emerald-800 text-amber-300 font-heading font-extrabold text-base flex items-center justify-center mb-4">
                     1
                   </div>
                   <h3 className="font-heading font-bold text-lg text-stone-950 mb-2">
@@ -774,8 +761,8 @@ export default async function PemerintahanPage() {
                   </p>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-800 text-amber-300 font-heading font-extrabold text-base flex items-center justify-center mb-4">
+                <div className="p-6 rounded-lg bg-stone-50 border border-stone-200/80">
+                  <div className="w-10 h-10 rounded-md bg-emerald-800 text-amber-300 font-heading font-extrabold text-base flex items-center justify-center mb-4">
                     2
                   </div>
                   <h3 className="font-heading font-bold text-lg text-stone-950 mb-2">
@@ -786,8 +773,8 @@ export default async function PemerintahanPage() {
                   </p>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-800 text-amber-300 font-heading font-extrabold text-base flex items-center justify-center mb-4">
+                <div className="p-6 rounded-lg bg-stone-50 border border-stone-200/80">
+                  <div className="w-10 h-10 rounded-md bg-emerald-800 text-amber-300 font-heading font-extrabold text-base flex items-center justify-center mb-4">
                     3
                   </div>
                   <h3 className="font-heading font-bold text-lg text-stone-950 mb-2">
@@ -799,7 +786,7 @@ export default async function PemerintahanPage() {
                 </div>
               </div>
 
-              <div className="mt-8 p-4 rounded-xl bg-emerald-50/70 border border-emerald-200/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+              <div className="mt-8 p-4 rounded-lg bg-emerald-50/70 border border-emerald-200/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                 <div className="flex items-center gap-2 text-emerald-950 font-medium">
                   <Clock className="w-4 h-4 text-emerald-700 shrink-0" />
                   <span>Pelayanan ramah, cepat, dan mengedepankan prinsip keterbukaan bagi seluruh warga dusun.</span>
@@ -830,10 +817,10 @@ export default async function PemerintahanPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             <Link
               href="/potensi"
-              className="group p-6 rounded-2xl bg-white border border-stone-200/90 shadow-xs hover:border-emerald-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="group p-6 rounded-xl bg-white border border-stone-200 shadow-xs hover:border-emerald-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between min-h-[44px]"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <Sprout className="w-5 h-5" />
                 </div>
                 <h4 className="font-heading font-bold text-base text-stone-900 group-hover:text-emerald-800 transition-colors mb-1">
@@ -851,10 +838,10 @@ export default async function PemerintahanPage() {
 
             <Link
               href="/profil"
-              className="group p-6 rounded-2xl bg-white border border-stone-200/90 shadow-xs hover:border-amber-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="group p-6 rounded-xl bg-white border border-stone-200 shadow-xs hover:border-amber-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between min-h-[44px]"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-900 border border-amber-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-lg bg-amber-50 text-amber-900 border border-amber-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <BookOpen className="w-5 h-5" />
                 </div>
                 <h4 className="font-heading font-bold text-base text-stone-900 group-hover:text-amber-800 transition-colors mb-1">
@@ -872,10 +859,10 @@ export default async function PemerintahanPage() {
 
             <Link
               href="/kontak"
-              className="group p-6 rounded-2xl bg-white border border-stone-200/90 shadow-xs hover:border-teal-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="group p-6 rounded-xl bg-white border border-stone-200 shadow-xs hover:border-teal-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between min-h-[44px]"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-800 border border-teal-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-lg bg-teal-50 text-teal-800 border border-teal-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <Phone className="w-5 h-5" />
                 </div>
                 <h4 className="font-heading font-bold text-base text-stone-900 group-hover:text-teal-800 transition-colors mb-1">

@@ -32,11 +32,11 @@ export function Footer() {
           {/* Col 1 (5/12): Identitas Padukuhan */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-600 to-emerald-800 flex items-center justify-center text-white font-heading font-extrabold text-lg shadow-sm border border-emerald-500/30 shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-700 to-emerald-900 flex items-center justify-center text-white font-heading font-extrabold text-base shadow-xs border border-emerald-500/30 shrink-0">
                 <span className="text-amber-300">JK</span>
               </div>
               <div>
-                <h3 className="font-heading font-bold text-white text-lg sm:text-xl tracking-tight leading-tight">
+                <h3 className="font-heading font-bold text-white text-base sm:text-lg tracking-tight leading-tight">
                   Padukuhan Jumeneng Kidul
                 </h3>
                 <p className="text-xs text-emerald-400 font-medium tracking-wide">
@@ -46,11 +46,11 @@ export function Footer() {
             </div>
 
             <p className="text-slate-400 text-sm leading-relaxed max-w-md pt-1">
-              Mewujudkan dusun yang mandiri, guyub rukun, dan berkemajuan berbasis
-              potensi pertanian, UMKM lokal, serta keluhuran nilai-nilai tradisi keagamaan.
+              Mewujudkan padukuhan yang mandiri, guyub rukun, dan berdaya berbasis
+              potensi lokal serta kearifan tradisi warga.
             </p>
 
-            <div className="pt-2 flex flex-col gap-2.5 text-xs text-slate-400">
+            <div className="pt-2 flex flex-col gap-2 text-xs text-slate-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                 <span>Padukuhan Jumeneng Kidul, Sumberadi, Mlati, Sleman, DIY 55288</span>
@@ -62,9 +62,9 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Col 2 (3/12): Navigasi Halaman (Direct 7 Routes) */}
+          {/* Col 2 (3/12): Navigasi Halaman (Direct 7 Routes, no decorative dots) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="font-heading font-bold text-white text-sm uppercase tracking-wider text-emerald-400">
+            <h4 className="font-heading font-bold text-white text-xs uppercase tracking-wider text-emerald-400">
               Navigasi Halaman
             </h4>
             <ul className="space-y-2 text-sm">
@@ -72,10 +72,9 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="hover:text-emerald-400 transition-colors inline-flex items-center gap-2"
+                    className="text-slate-300 hover:text-emerald-400 transition-colors inline-block py-0.5"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    <span>{item.label}</span>
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -83,13 +82,13 @@ export function Footer() {
           </div>
 
           {/* Col 3 (4/12): KKN & Kerjasama Kampus + Portal Admin */}
-          <div className="lg:col-span-4 space-y-4">
-            <h4 className="font-heading font-bold text-white text-sm uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+          <div className="lg:col-span-4 space-y-3.5">
+            <h4 className="font-heading font-bold text-white text-xs uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
               <GraduationCap className="w-4 h-4 text-amber-400" />
               <span>Kolaborasi Pengabdian</span>
             </h4>
 
-            <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300 space-y-1.5">
+            <div className="p-3.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-1">
               <p className="font-semibold text-white">
                 Universitas AKPRIND Indonesia
               </p>
@@ -104,9 +103,9 @@ export function Footer() {
             <div className="pt-1">
               <Link
                 href="/admin/login"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-emerald-300 bg-slate-900/60 hover:bg-slate-900 border border-slate-800 hover:border-emerald-700/60 transition-all group"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-emerald-300 bg-slate-900/80 hover:bg-slate-900 border border-slate-800 hover:border-emerald-700/60 transition-colors min-h-[36px]"
               >
-                <Lock className="w-3.5 h-3.5 text-slate-500 group-hover:text-emerald-400 transition-colors" />
+                <Lock className="w-3.5 h-3.5 text-slate-500" />
                 <span>Portal Admin Dusun</span>
               </Link>
             </div>
@@ -114,7 +113,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar Copyright & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p className="text-center sm:text-left">
             © 2026 Padukuhan Jumeneng Kidul. Seluruh Hak Cipta Dilindungi.
           </p>
@@ -123,7 +122,7 @@ export function Footer() {
             type="button"
             onClick={scrollToTop}
             aria-label="Kembali ke atas"
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 transition-colors focus:outline-none text-xs font-medium"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white border border-slate-800 transition-colors focus:outline-none text-xs font-medium min-h-[36px]"
           >
             <span>Kembali ke Atas</span>
             <ArrowUp className="w-3.5 h-3.5" />

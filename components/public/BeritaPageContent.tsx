@@ -186,7 +186,7 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
   return (
     <div className="space-y-8 sm:space-y-10">
       {/* 1. KONTROL FILTER & PENCARIAN */}
-      <div className="bg-white rounded-2xl sm:rounded-3xl border border-stone-200/90 shadow-xs p-4 sm:p-6 space-y-4">
+      <div className="bg-white rounded-xl border border-stone-200/90 shadow-xs p-4 sm:p-6 space-y-4">
         {/* Baris Atas: Input Pencarian & Counter */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           {/* Search Input Box */}
@@ -197,7 +197,7 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Cari warta kegiatan, posyandu, kerja bakti..."
-              className="w-full pl-10 pr-10 py-2.5 rounded-xl text-sm text-stone-900 bg-stone-50 border border-stone-200 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-600 transition-all placeholder:text-stone-400"
+              className="w-full pl-10 pr-10 py-2.5 rounded-lg text-sm text-stone-900 bg-stone-50 border border-stone-200 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-600/20 focus:border-emerald-600 transition-all placeholder:text-stone-400"
             />
             {searchQuery && (
               <button
@@ -237,7 +237,7 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
                 key={tab.key}
                 type="button"
                 onClick={() => setActiveCategory(tab.key)}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all shrink-0 cursor-pointer ${
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all shrink-0 cursor-pointer ${
                   isActive
                     ? 'bg-emerald-800 text-white shadow-xs'
                     : 'bg-stone-50 text-stone-600 hover:bg-stone-100 hover:text-stone-900 border border-stone-200/70'
@@ -246,7 +246,7 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
                 <IconComponent className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-stone-500'}`} />
                 <span>{tab.label}</span>
                 <span
-                  className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono font-medium ${
+                  className={`text-[10px] px-1.5 py-0.5 rounded font-mono font-medium ${
                     isActive ? 'bg-emerald-900 text-emerald-100' : 'bg-stone-200/70 text-stone-600'
                   }`}
                 >
@@ -270,7 +270,7 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
             return (
               <article
                 key={item.id}
-                className={`group rounded-3xl bg-white border border-stone-200/90 shadow-xs hover:shadow-xl ${visuals.borderColor} hover:border-emerald-300 transition-all duration-300 flex flex-col overflow-hidden hover:-translate-y-1 h-full`}
+                className={`group rounded-xl bg-white border border-stone-200/90 shadow-xs hover:shadow-md ${visuals.borderColor} hover:border-emerald-300 transition-all duration-300 flex flex-col overflow-hidden h-full`}
               >
                 {/* Thumbnail / Header Gambar Berita */}
                 <div className="relative h-52 w-full overflow-hidden bg-stone-100 shrink-0">
@@ -288,7 +288,7 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
                       className={`w-full h-full bg-gradient-to-br ${visuals.gradient} flex flex-col items-center justify-center p-6 border-b border-stone-100`}
                     >
                       <div
-                        className={`w-14 h-14 rounded-2xl ${visuals.iconBg} flex items-center justify-center mb-2.5 shadow-inner group-hover:scale-110 transition-transform duration-300`}
+                        className={`w-14 h-14 rounded-xl ${visuals.iconBg} flex items-center justify-center mb-2.5 shadow-inner group-hover:scale-110 transition-transform duration-300`}
                       >
                         <VisualIcon className="w-7 h-7" />
                       </div>
@@ -353,8 +353,8 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
         </div>
       ) : (
         /* Empty State */
-        <div className="bg-white rounded-3xl border border-stone-200/90 p-8 sm:p-12 text-center max-w-xl mx-auto shadow-xs">
-          <div className="w-14 h-14 rounded-2xl bg-stone-100 text-stone-400 flex items-center justify-center mx-auto mb-4">
+        <div className="bg-white rounded-xl border border-stone-200/90 p-8 sm:p-12 text-center max-w-xl mx-auto shadow-xs">
+          <div className="w-14 h-14 rounded-xl bg-stone-100 text-stone-400 flex items-center justify-center mx-auto mb-4">
             <Newspaper className="w-7 h-7" />
           </div>
           <h3 className="font-heading font-bold text-lg text-stone-900 mb-1.5">
@@ -368,7 +368,7 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
           <button
             type="button"
             onClick={handleResetFilters}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-xs sm:text-sm font-semibold transition-colors shadow-xs cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg min-h-[44px] bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-xs sm:text-sm font-semibold transition-colors shadow-xs cursor-pointer"
           >
             <Sparkles className="w-4 h-4" />
             <span>Tampilkan Semua Warta</span>

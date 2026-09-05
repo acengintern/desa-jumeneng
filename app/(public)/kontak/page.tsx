@@ -56,26 +56,13 @@ export default async function KontakPage() {
 
           {/* Page Heading & Metadata Dusun */}
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
-              <span>Pusat Informasi & Komunikasi Warga</span>
-            </div>
+            <p className="text-xs sm:text-sm font-medium text-emerald-800 tracking-wide mb-2">
+              Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, D.I. Yogyakarta
+            </p>
 
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-950 tracking-tight leading-tight">
               Kontak & Layanan Warga Dusun
             </h1>
-
-            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs sm:text-sm text-stone-600">
-              <span className="font-medium text-emerald-900 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200/60">
-                Kalurahan Sumberadi
-              </span>
-              <span className="text-stone-300">•</span>
-              <span className="font-medium text-stone-800">Kapanewon Mlati</span>
-              <span className="text-stone-300">•</span>
-              <span className="font-medium text-stone-800">Kabupaten Sleman</span>
-              <span className="text-stone-300">•</span>
-              <span className="font-medium text-stone-800">D.I. Yogyakarta</span>
-            </div>
 
             <p className="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed max-w-3xl">
               Sampaikan pertanyaan seputar surat pengantar kependudukan, koordinasi potensi lokal,
@@ -111,10 +98,10 @@ export default async function KontakPage() {
             {/* Card 1: Profil */}
             <Link
               href="/profil"
-              className="group p-6 rounded-2xl sm:rounded-3xl bg-white border border-stone-200/90 shadow-xs hover:border-emerald-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="group p-6 rounded-xl bg-white border border-stone-200/90 shadow-xs hover:border-emerald-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between min-h-[44px]"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <Compass className="w-5 h-5" />
                 </div>
                 <h4 className="font-heading font-bold text-base text-stone-900 group-hover:text-emerald-800 transition-colors mb-1.5">
@@ -133,10 +120,10 @@ export default async function KontakPage() {
             {/* Card 2: Pemerintahan */}
             <Link
               href="/pemerintahan"
-              className="group p-6 rounded-2xl sm:rounded-3xl bg-white border border-stone-200/90 shadow-xs hover:border-teal-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="group p-6 rounded-xl bg-white border border-stone-200/90 shadow-xs hover:border-teal-500/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between min-h-[44px]"
             >
               <div>
-                <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-800 border border-teal-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-lg bg-teal-50 text-teal-800 border border-teal-200/70 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
                   <Building2 className="w-5 h-5" />
                 </div>
                 <h4 className="font-heading font-bold text-base text-stone-900 group-hover:text-teal-800 transition-colors mb-1.5">

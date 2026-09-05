@@ -1,9 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Sparkles, ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { PotensiWilayah } from '@/lib/types';
-import { renderPotensiVectorIcon } from './potensi-icons';
-import { ScrollReveal } from './ScrollReveal';
 
 interface PotensiPreviewSectionProps {
   potensi?: PotensiWilayah[];
@@ -60,65 +58,85 @@ const DEFAULT_POTENSI: PotensiWilayah[] = [
   },
 ];
 
+const POTENSI_IMAGES: Record<string, string> = {
+  'Pertanian & Tanaman Pangan':
+    'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80',
+  'UMKM Kripik Melinjo':
+    'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80',
+  'Keagamaan & Tradisi Budaya':
+    'https://images.unsplash.com/photo-1590076215667-875d4ef2d7ee?auto=format&fit=crop&w=800&q=80',
+  'Peternakan Rakyat':
+    'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=800&q=80',
+};
+
 export function PotensiPreviewSection({ potensi }: PotensiPreviewSectionProps) {
   const items = potensi && potensi.length > 0 ? potensi.slice(0, 4) : DEFAULT_POTENSI;
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-stone-50/50 border-t border-slate-200/70">
+    <section className="py-12 sm:py-16 lg:py-20 bg-stone-50/50 border-t border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <ScrollReveal direction="up" className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
-            <Sparkles className="w-4 h-4 text-emerald-700" />
-            <span>Kemandirian Wilayah</span>
-          </div>
-          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+        {/* Section Header (Left-aligned, natural copy) */}
+        <div className="max-w-3xl mb-8 sm:mb-10">
+          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-stone-900 tracking-tight leading-tight">
             Potensi Unggulan Padukuhan
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 mt-3">
-            Ragam kekuatan ekonomi, sumber daya alam, dan kearifan sosial yang menjadi denyut nadi
-            kehidupan warga Jumeneng Kidul.
+          <p className="text-sm sm:text-base text-stone-600 mt-2">
+            Pertanian pangan, sentra emping melinjo, tradisi keagamaan, dan peternakan warga Jumeneng Kidul.
           </p>
-        </ScrollReveal>
+        </div>
 
-        {/* 4 Potentials Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
-          {items.map((item, idx) => (
-            <ScrollReveal key={item.id} direction="up" delay={idx * 80} className="h-full">
+        {/* 4 Image-Led Potentials Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 mb-10">
+          {items.map((item) => {
+            const fallbackImage =
+              POTENSI_IMAGES[item.judul] ||
+              'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80';
+            const imageUrl = item.gambar_url || fallbackImage;
+
+            return (
               <Link
+                key={item.id}
                 href="/potensi"
-                className="group h-full p-6 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:border-emerald-600/40 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                className="group block flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-50/80 border border-emerald-900/10 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-                      {renderPotensiVectorIcon(item.judul, item.icon, 'w-6 h-6')}
-                    </div>
-                    <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-all duration-200" />
+                  {/* Visual / Image */}
+                  <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-stone-100 border border-stone-200">
+                    <img
+                      src={imageUrl}
+                      alt={item.judul}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover object-center group-hover:scale-104 transition-transform duration-300 ease-out"
+                    />
                   </div>
-                  <h3 className="font-heading font-bold text-lg text-slate-900 group-hover:text-emerald-800 transition-colors mb-2">
+
+                  {/* Title */}
+                  <h3 className="font-heading font-bold text-base sm:text-lg text-stone-900 group-hover:text-emerald-900 transition-colors mt-3">
                     {item.judul}
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
+
+                  {/* Short description */}
+                  <p className="text-xs sm:text-sm text-stone-600 mt-1 line-clamp-2 leading-relaxed">
                     {item.deskripsi_singkat}
                   </p>
                 </div>
 
-                {item.kegiatan_utama && (
-                  <div className="mt-4 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-semibold text-emerald-800">
-                    <span className="truncate">{item.kegiatan_utama}</span>
-                  </div>
-                )}
+                {/* Simple Link */}
+                <div className="mt-3 pt-2 text-xs font-semibold text-emerald-800 group-hover:text-emerald-700 inline-flex items-center gap-1">
+                  <span>Lihat rincian potensi</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
               </Link>
-            </ScrollReveal>
-          ))}
+            );
+          })}
         </div>
 
         {/* Bottom CTA Button */}
-        <div className="text-center">
+        <div>
           <Link
             href="/potensi"
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 text-white font-semibold text-sm sm:text-base shadow-xs hover:shadow-md transition-all duration-200 active:scale-[0.98]"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 text-white font-semibold text-sm shadow-xs transition-colors active:scale-[0.98] min-h-[44px]"
           >
             <span>Lihat Seluruh Potensi Dusun</span>
             <ArrowRight className="w-4 h-4" />

@@ -72,6 +72,7 @@ export interface PotensiWilayah {
   keunggulan_hasil: string;
   tantangan_kendala: string;
   sumber_data: string;
+  gambar_url?: string | null;
   detail_konten_html?: string | null;
   urutan: number;
   created_at?: string;
