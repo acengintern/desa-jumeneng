@@ -152,7 +152,7 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
               <span className="text-sm sm:text-base text-slate-700 font-semibold">
                 {potensi.sumber_data || 'Pemerintah Padukuhan Jumeneng Kidul'}
               </span>
-              <span className="text-[11px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">
+              <span className="text-[11px] px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-bold">
                 Terverifikasi
               </span>
             </div>

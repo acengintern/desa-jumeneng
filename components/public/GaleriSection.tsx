@@ -56,10 +56,10 @@ export function GaleriSection({ galeri = [] }: GaleriSectionProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-100/70 border border-emerald-200 mb-4">
-            <Camera className="w-3.5 h-3.5 text-emerald-700" />
-            Dokumentasi Visual
-          </span>
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
+            <Camera className="w-4 h-4 text-emerald-700" />
+            <span>Dokumentasi Visual</span>
+          </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
             Galeri Kegiatan Dusun
           </h2>
@@ -134,7 +134,7 @@ export function GaleriSection({ galeri = [] }: GaleriSectionProps) {
 
                 {/* Top Corner Pill "Klik untuk Perbesar" */}
                 <div className="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold text-white bg-slate-900/80 backdrop-blur-md border border-white/20 shadow-xs">
+                  <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold text-white bg-slate-900/80 backdrop-blur-md border border-white/20 shadow-xs">
                     Perbesar
                   </span>
                 </div>

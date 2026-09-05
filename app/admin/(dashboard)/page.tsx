@@ -162,7 +162,7 @@ export default async function AdminDashboardPage() {
       <section className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-900 via-emerald-800 to-slate-900 text-white p-6 sm:p-8 shadow-md">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-700/60 border border-emerald-500/40 text-emerald-200 text-xs font-semibold mb-3">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-emerald-700/60 border border-emerald-500/40 text-emerald-200 text-xs font-semibold mb-3">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               Sistem Aktif & Terintegrasi
             </div>
@@ -225,7 +225,7 @@ export default async function AdminDashboardPage() {
                       <Icon className="w-5 h-5" />
                     </div>
                     {card.highlightBadge && (
-                      <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-500 text-white shadow-xs animate-pulse">
+                      <span className="px-2 py-0.5 rounded-md text-xs font-bold bg-rose-500 text-white shadow-xs">
                         {card.highlightBadge} Belum Dibaca
                       </span>
                     )}
@@ -272,7 +272,7 @@ export default async function AdminDashboardPage() {
                 className="group relative flex flex-col items-center text-center p-3.5 rounded-xl border border-slate-200/70 bg-slate-50/60 hover:bg-emerald-50 hover:border-emerald-200 transition-all cursor-pointer"
               >
                 {action.badge && (
-                  <span className="absolute -top-1.5 -right-1.5 px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-500 text-slate-950 shadow-xs">
+                  <span className="absolute -top-1.5 -right-1.5 px-1.5 py-0.5 rounded-md text-[10px] font-bold bg-amber-400 text-amber-950 shadow-xs">
                     {action.badge}
                   </span>
                 )}
@@ -417,7 +417,7 @@ export default async function AdminDashboardPage() {
                       <h4 className="font-bold text-xs sm:text-sm text-slate-900 line-clamp-1">
                         {item.judul}
                       </h4>
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0">
+                      <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200 shrink-0">
                         Terbit
                       </span>
                     </div>

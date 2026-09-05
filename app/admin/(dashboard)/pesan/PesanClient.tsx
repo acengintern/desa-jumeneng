@@ -168,7 +168,7 @@ export default function PesanClient({ initialPesan }: PesanClientProps) {
         </div>
 
         {countUnread > 0 && (
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-50 border border-rose-200 text-rose-800 text-xs font-bold shrink-0">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-rose-50 border border-rose-200 text-rose-800 text-xs font-bold shrink-0">
             <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
             <span>{countUnread} Pesan Belum Ditinjau</span>
           </div>
@@ -282,12 +282,12 @@ export default function PesanClient({ initialPesan }: PesanClientProps) {
                       {/* Status */}
                       <td className="py-3.5 px-4 align-top whitespace-nowrap">
                         {!item.dibaca ? (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-amber-400 text-slate-950 shadow-2xs">
-                            <span className="w-1.5 h-1.5 rounded-full bg-slate-950 animate-ping" />
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-amber-400 text-amber-950 shadow-2xs">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-950" />
                             Baru
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-600">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-slate-100 text-slate-700">
                             <Check className="w-3 h-3 text-emerald-600" />
                             Ditinjau
                           </span>

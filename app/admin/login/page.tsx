@@ -68,8 +68,8 @@ export default function AdminLoginPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-emerald-400 text-white shadow-xl shadow-emerald-900/40 mb-4 ring-4 ring-emerald-500/20">
             <ShieldCheck className="w-9 h-9" />
           </div>
-          <span className="inline-block px-3 py-1 mb-2 text-xs font-semibold tracking-wider text-emerald-300 uppercase bg-emerald-900/60 rounded-full border border-emerald-700/50">
-            Sistem CMS Terpadu
+          <span className="inline-block px-2.5 py-1 mb-2 text-xs font-bold tracking-wider text-emerald-300 uppercase bg-emerald-900/60 rounded-md border border-emerald-700/50">
+            Sistem Informasi Dusun
           </span>
           <h1 className="text-2xl sm:text-3xl font-heading font-bold text-white tracking-tight">
             Panel Administrasi Dusun

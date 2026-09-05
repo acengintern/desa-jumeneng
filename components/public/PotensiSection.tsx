@@ -77,10 +77,10 @@ export function PotensiSection({ potensi = [] }: PotensiSectionProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-100/70 border border-emerald-200 mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
-            Keunggulan & Kemandirian
-          </span>
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
+            <Sparkles className="w-4 h-4 text-emerald-700" />
+            <span>Keunggulan & Kemandirian</span>
+          </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
             Potensi Unggulan Wilayah
           </h2>
@@ -112,7 +112,7 @@ export function PotensiSection({ potensi = [] }: PotensiSectionProps) {
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-50 to-amber-50 border border-emerald-100/80 flex items-center justify-center text-3xl shadow-xs group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                     {item.icon}
                   </div>
-                  <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100">
+                  <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">
                     Potensi Dusun
                   </span>
                 </div>
@@ -144,7 +144,7 @@ export function PotensiSection({ potensi = [] }: PotensiSectionProps) {
                   <span className="inline-flex items-center gap-1.5">
                     <span>Lihat Rincian Potensi</span>
                   </span>
-                  <div className="w-7 h-7 rounded-full bg-emerald-50 group-hover:bg-emerald-800 group-hover:text-white flex items-center justify-center transition-all duration-300">
+                  <div className="w-7 h-7 rounded-lg bg-emerald-50 group-hover:bg-emerald-800 group-hover:text-white flex items-center justify-center transition-all duration-300">
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                   </div>
                 </div>

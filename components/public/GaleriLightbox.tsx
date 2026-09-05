@@ -93,7 +93,7 @@ export function GaleriLightbox({
       >
         {/* Counter Badge */}
         <div className="flex items-center gap-2">
-          <span className="px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-emerald-300 bg-emerald-950/80 border border-emerald-800/80 backdrop-blur-md flex items-center gap-1.5">
+          <span className="px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wider text-emerald-300 bg-emerald-950/80 border border-emerald-800/80 backdrop-blur-md flex items-center gap-1.5">
             <ImageIcon className="w-3.5 h-3.5 text-emerald-400" />
             <span>
               Foto {currentIndex + 1} dari {total}

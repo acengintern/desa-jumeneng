@@ -237,12 +237,12 @@ export default function SaranaClient({ initialSarana }: SaranaClientProps) {
 
       {/* Filter Tabs & Search */}
       <div className="space-y-3">
-        {/* Category Pills */}
+        {/* Category Segmented Tabs */}
         <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
           <button
             type="button"
             onClick={() => setSelectedKategori('all')}
-            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
               selectedKategori === 'all'
                 ? 'bg-emerald-700 text-white shadow-xs'
                 : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
@@ -255,7 +255,7 @@ export default function SaranaClient({ initialSarana }: SaranaClientProps) {
               key={cat}
               type="button"
               onClick={() => setSelectedKategori(cat)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                 selectedKategori.toLowerCase() === cat.toLowerCase()
                   ? 'bg-emerald-700 text-white shadow-xs'
                   : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
@@ -344,7 +344,7 @@ export default function SaranaClient({ initialSarana }: SaranaClientProps) {
                     </td>
 
                     <td className="py-3.5 px-4">
-                      <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200">
                         {item.jumlah}
                       </span>
                     </td>

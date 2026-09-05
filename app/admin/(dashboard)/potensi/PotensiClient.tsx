@@ -348,7 +348,7 @@ export default function PotensiClient({ initialPotensi }: PotensiClientProps) {
                   <BadgeCheck className="w-3.5 h-3.5 text-emerald-600" />
                   <span>Sumber: <strong>{item.sumber_data || 'Pemerintah Dusun'}</strong></span>
                 </div>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold">
+                <span className="text-[10px] px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800 font-bold">
                   Terverifikasi
                 </span>
               </div>

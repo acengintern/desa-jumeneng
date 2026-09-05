@@ -114,7 +114,7 @@ export default function AdminHeader({ onToggleSidebar }: AdminHeaderProps) {
 
           {/* User Profile Pill */}
           <div className="hidden lg:flex items-center gap-2.5 pl-3 border-l border-slate-200">
-            <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs ring-2 ring-emerald-600/20">
+            <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-xs ring-2 ring-emerald-600/20">
               <User className="w-4 h-4" />
             </div>
             <div className="text-left">

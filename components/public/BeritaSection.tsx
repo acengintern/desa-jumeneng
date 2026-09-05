@@ -127,10 +127,10 @@ export function BeritaSection({ berita = [] }: BeritaSectionProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-100/70 border border-emerald-200 mb-4">
-            <Newspaper className="w-3.5 h-3.5 text-emerald-700" />
-            Informasi Terkini Dusun
-          </span>
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
+            <Newspaper className="w-4 h-4 text-emerald-700" />
+            <span>Informasi Terkini Dusun</span>
+          </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
             Warta & Kegiatan Warga
           </h2>
@@ -179,7 +179,7 @@ export function BeritaSection({ berita = [] }: BeritaSectionProps) {
                   {/* Kategori Badge Floating */}
                   <div className="absolute top-4 left-4 z-10">
                     <span
-                      className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border shadow-2xs backdrop-blur-md bg-white/95 ${thematic.badgeColor}`}
+                      className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border shadow-2xs backdrop-blur-md bg-white/95 ${thematic.badgeColor}`}
                     >
                       <Tag className="w-3 h-3" />
                       {thematic.kategori}

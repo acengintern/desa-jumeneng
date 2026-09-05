@@ -171,7 +171,7 @@ export default function AdminSidebar({
 
                 {/* Badges / Indicators */}
                 {item.hasBadge && unreadCount > 0 && (
-                  <span className="ml-2 inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold leading-none text-amber-950 bg-amber-400 rounded-full shadow-xs">
+                  <span className="ml-2 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-amber-950 bg-amber-400 rounded-md shadow-xs">
                     {unreadCount > 99 ? '99+' : unreadCount}
                   </span>
                 )}

@@ -75,10 +75,10 @@ export function PemdesSection({ pengurus = [] }: PemdesSectionProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-100/70 border border-emerald-200 mb-4">
-            <Building2 className="w-3.5 h-3.5 text-emerald-700" />
-            Pemerintahan Dusun
-          </span>
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
+            <Building2 className="w-4 h-4 text-emerald-700" />
+            <span>Pemerintahan Dusun</span>
+          </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
             Struktur Pengurus Wilayah
           </h2>
@@ -113,7 +113,7 @@ export function PemdesSection({ pengurus = [] }: PemdesSectionProps) {
                 </div>
 
                 {/* Badge Status Terverifikasi */}
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-emerald-800 text-amber-300 text-[11px] font-bold rounded-full shadow-md flex items-center gap-1.5 whitespace-nowrap">
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-emerald-800 text-amber-300 text-[11px] font-bold rounded-md shadow-md flex items-center gap-1.5 whitespace-nowrap">
                   <ShieldCheck className="w-3.5 h-3.5" />
                   <span>Pamong Dusun</span>
                 </div>
@@ -184,7 +184,7 @@ export function PemdesSection({ pengurus = [] }: PemdesSectionProps) {
                     <span className="px-2.5 py-1 rounded-lg text-xs font-bold bg-teal-50 text-teal-800 border border-teal-200 group-hover:bg-teal-700 group-hover:text-white transition-colors duration-200">
                       {rw.jabatan}
                     </span>
-                    <div className="w-8 h-8 rounded-full bg-teal-50 text-teal-800 border border-teal-200/60 flex items-center justify-center text-xs font-semibold group-hover:bg-teal-800 group-hover:text-white transition-colors">
+                    <div className="w-8 h-8 rounded-xl bg-teal-50 text-teal-800 border border-teal-200/60 flex items-center justify-center text-xs font-semibold group-hover:bg-teal-800 group-hover:text-white transition-colors">
                       RW
                     </div>
                   </div>
@@ -259,7 +259,7 @@ export function PemdesSection({ pengurus = [] }: PemdesSectionProps) {
 
         {/* Footer info note */}
         <div className="mt-12 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-emerald-100 text-xs text-slate-600 shadow-xs">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-emerald-100 text-xs text-slate-600 shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             <span>
               Total 14 aparatur pengurus siap mendukung pelayanan dan kegiatan masyarakat.

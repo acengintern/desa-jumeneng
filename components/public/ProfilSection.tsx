@@ -69,10 +69,10 @@ export function ProfilSection({ profil, statistik }: ProfilSectionProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200/80 mb-4">
-            <Compass className="w-3.5 h-3.5 text-emerald-700" />
-            Tentang Wilayah
-          </span>
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
+            <Compass className="w-4 h-4 text-emerald-700" />
+            <span>Tentang Wilayah</span>
+          </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
             Profil & Demografi Padukuhan
           </h2>
@@ -181,7 +181,7 @@ export function ProfilSection({ profil, statistik }: ProfilSectionProps) {
               />
 
               <div>
-                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/20 text-amber-300 border border-amber-400/30 uppercase tracking-wider mb-6">
+                <span className="inline-block px-2.5 py-1 rounded-md text-xs font-semibold bg-amber-400/20 text-amber-300 border border-amber-400/30 uppercase tracking-wider mb-6">
                   Visi Padukuhan
                 </span>
                 <div className="text-amber-400 text-4xl font-serif leading-none mb-2">&ldquo;</div>
@@ -419,7 +419,7 @@ export function ProfilSection({ profil, statistik }: ProfilSectionProps) {
                       </span>
                     </div>
                   </div>
-                  <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">
+                  <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200/60">
                     Aktif
                   </span>
                 </div>

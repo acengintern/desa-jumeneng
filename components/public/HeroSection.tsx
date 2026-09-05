@@ -59,10 +59,12 @@ export function HeroSection({ profil, statistik }: HeroSectionProps) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Hero Header */}
         <div className="max-w-3xl mx-auto lg:mx-0 text-center lg:text-left">
-          {/* Authentic Location Anchor */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/90 border border-emerald-800/20 text-emerald-950 text-xs sm:text-sm font-semibold mb-6">
-            <span className="w-2 h-2 rounded-full bg-emerald-700" />
-            <span>Padukuhan Jumeneng Kidul • Kalurahan Sumberadi • Mlati • Sleman</span>
+          {/* Authentic Editorial Location Eyebrow (No capsule) */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-4 text-emerald-900 text-xs sm:text-sm font-semibold tracking-wide">
+            <MapPin className="w-4 h-4 text-emerald-700 shrink-0" />
+            <span>Padukuhan Jumeneng Kidul</span>
+            <span className="text-emerald-400 font-normal">/</span>
+            <span className="text-stone-600 font-normal">Kalurahan Sumberadi, Mlati, Sleman</span>
           </div>
 
           {/* Main Headline */}
@@ -119,7 +121,7 @@ export function HeroSection({ profil, statistik }: HeroSectionProps) {
                     <Icon className="w-5 h-5 text-emerald-800" />
                   </div>
                   <span
-                    className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full ${stat.badgeClass}`}
+                    className={`text-[11px] font-bold px-2 py-0.5 rounded-md ${stat.badgeClass}`}
                   >
                     {stat.meta}
                   </span>

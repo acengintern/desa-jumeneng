@@ -430,17 +430,17 @@ export default function StrukturClient({ initialPengurus }: StrukturClientProps)
                     {/* Kategori Badge */}
                     <td className="py-3.5 px-4">
                       {item.kategori === 'dukuh' && (
-                        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
+                        <span className="px-2 py-0.5 rounded-md text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">
                           Kepala Dukuh
                         </span>
                       )}
                       {item.kategori === 'rw' && (
-                        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800 border border-sky-200">
+                        <span className="px-2 py-0.5 rounded-md text-xs font-bold bg-sky-100 text-sky-800 border border-sky-200">
                           Rukun Warga
                         </span>
                       )}
                       {item.kategori === 'rt' && (
-                        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-800 border border-indigo-200">
+                        <span className="px-2 py-0.5 rounded-md text-xs font-bold bg-indigo-100 text-indigo-800 border border-indigo-200">
                           Rukun Tetangga
                         </span>
                       )}

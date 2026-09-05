@@ -172,10 +172,10 @@ export function SaranaSection({ sarana = [] }: SaranaSectionProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200/80 mb-4">
-              <Package className="w-3.5 h-3.5 text-emerald-700" />
-              Infrastruktur & Layanan
-            </span>
+            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
+              <Package className="w-4 h-4 text-emerald-700" />
+              <span>Infrastruktur & Layanan</span>
+            </div>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
               Sarana & Prasarana Dusun
             </h2>
@@ -204,7 +204,7 @@ export function SaranaSection({ sarana = [] }: SaranaSectionProps) {
                       </div>
 
                       {/* Quantity Tag dengan Aksen Emerald Bersih */}
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-2xs whitespace-nowrap">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-2xs whitespace-nowrap">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                         <span>{item.jumlah}</span>
                       </span>
