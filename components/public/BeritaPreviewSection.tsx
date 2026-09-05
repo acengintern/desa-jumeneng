@@ -18,6 +18,8 @@ const DEFAULT_BERITA: Berita[] = [
     konten: '',
     gambar_url:
       'https://info-jumenengkidul.site.je/uploads/berita/img_20260903_090114_d4968679.jpg',
+    gambar_alt: 'Pelayanan Posyandu Balita dan Lansia Jumeneng Kidul',
+    kategori: 'Kesehatan',
     tanggal_publikasi: '2026-07-20',
     status: 'published',
   },
@@ -30,6 +32,8 @@ const DEFAULT_BERITA: Berita[] = [
     konten: '',
     gambar_url:
       'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=800&q=80',
+    gambar_alt: 'Rapat Koordinasi Pengurus RT dan RW Jumeneng Kidul',
+    kategori: 'Pemerintahan',
     tanggal_publikasi: '2026-08-01',
     status: 'published',
   },
@@ -42,6 +46,8 @@ const DEFAULT_BERITA: Berita[] = [
     konten: '',
     gambar_url:
       'https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80',
+    gambar_alt: 'Warga Kerja Bakti Gotong Royong Kebersihan Lingkungan Dusun',
+    kategori: 'Lingkungan',
     tanggal_publikasi: '2026-08-10',
     status: 'published',
   },
@@ -70,7 +76,7 @@ export function BeritaPreviewSection({ berita }: BeritaPreviewSectionProps) {
           {publishedItems.map((item) => (
             <Link
               key={item.id}
-              href="/berita"
+              href={`/berita/${item.slug}`}
               className="group flex flex-col justify-between"
             >
               <div>
@@ -79,7 +85,7 @@ export function BeritaPreviewSection({ berita }: BeritaPreviewSectionProps) {
                   {item.gambar_url ? (
                     <img
                       src={item.gambar_url}
-                      alt={item.judul}
+                      alt={item.gambar_alt || item.judul}
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover object-center group-hover:scale-104 transition-transform duration-300 ease-out"
@@ -91,9 +97,15 @@ export function BeritaPreviewSection({ berita }: BeritaPreviewSectionProps) {
                   )}
                 </div>
 
-                {/* Publication Date */}
-                <div className="text-xs text-stone-500 font-medium mb-1.5">
-                  {formatTanggalIndonesia(item.tanggal_publikasi)}
+                {/* Publication Date & Category */}
+                <div className="flex items-center gap-1.5 text-xs text-stone-500 font-medium mb-1.5">
+                  <time dateTime={item.tanggal_publikasi}>
+                    {formatTanggalIndonesia(item.tanggal_publikasi)}
+                  </time>
+                  <span className="text-stone-300">·</span>
+                  <span className="text-emerald-800 font-semibold">
+                    {item.kategori || 'Warta Dusun'}
+                  </span>
                 </div>
 
                 {/* Title */}

@@ -512,8 +512,49 @@ export async function getBerita(): Promise<Berita[]> {
 }
 
 export async function getBeritaBySlug(slug: string): Promise<Berita | null> {
+  const supabase = getSupabase();
+  if (supabase) {
+    try {
+      const { data, error } = await supabase
+        .from('berita')
+        .select('*')
+        .eq('slug', slug)
+        .maybeSingle();
+
+      if (!error && data) {
+        return data as Berita;
+      }
+    } catch {
+      // fallback to memory
+    }
+  }
+
   const allBerita = await getBerita();
   return allBerita.find((b) => b.slug === slug) || null;
+}
+
+export async function getRelatedBerita(
+  currentId: string,
+  kategori?: string | null,
+  limit: number = 3
+): Promise<Berita[]> {
+  const allBerita = await getBerita();
+  const filtered = allBerita.filter(
+    (b) => b.id !== currentId && (b.status === 'published' || !b.status)
+  );
+
+  if (!kategori) {
+    return filtered.slice(0, limit);
+  }
+
+  const sameCategory = filtered.filter(
+    (b) => b.kategori?.toLowerCase() === kategori.toLowerCase()
+  );
+  const others = filtered.filter(
+    (b) => b.kategori?.toLowerCase() !== kategori.toLowerCase()
+  );
+
+  return [...sameCategory, ...others].slice(0, limit);
 }
 
 export async function createBerita(

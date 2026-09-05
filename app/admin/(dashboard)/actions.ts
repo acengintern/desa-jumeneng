@@ -27,14 +27,14 @@ import { KategoriPengurus, StatusBerita } from '@/lib/types';
 /**
  * Helper untuk membuat slug ramah URL dari judul
  */
-function createSlug(title: string): string {
+function sanitizeSlug(title: string): string {
   const base = title
     .toLowerCase()
     .trim()
     .replace(/[^\w\s-]/g, '')
     .replace(/[\s_-]+/g, '-')
     .replace(/^-+|-+$/g, '');
-  return `${base || 'berita'}-${Date.now().toString(36).slice(-4)}`;
+  return base || `berita-${Date.now().toString(36)}`;
 }
 
 // ============================================================
@@ -47,6 +47,7 @@ export async function tambahBeritaAction(formData: FormData) {
     const ringkasan = (formData.get('ringkasan') as string) || '';
     const konten = (formData.get('konten') as string) || '';
     const gambar_url = (formData.get('gambar_url') as string) || null;
+    const kategori = (formData.get('kategori') as string) || 'Warta Dusun';
     const tanggal_publikasi =
       (formData.get('tanggal_publikasi') as string) ||
       new Date().toISOString().split('T')[0];
@@ -59,7 +60,8 @@ export async function tambahBeritaAction(formData: FormData) {
       return { success: false, error: 'Isi konten berita wajib diisi.' };
     }
 
-    const slug = createSlug(judul);
+    const inputSlug = (formData.get('slug') as string) || '';
+    const slug = sanitizeSlug(inputSlug || judul);
 
     const result = await createBerita({
       judul: judul.trim(),
@@ -67,6 +69,7 @@ export async function tambahBeritaAction(formData: FormData) {
       ringkasan: ringkasan.trim() || judul.trim(),
       konten: konten.trim(),
       gambar_url: gambar_url?.trim() || null,
+      kategori: kategori.trim(),
       tanggal_publikasi,
       status,
     });
@@ -91,6 +94,8 @@ export async function updateBeritaAction(id: string, formData: FormData) {
     const gambar_url = (formData.get('gambar_url') as string) || null;
     const tanggal_publikasi = (formData.get('tanggal_publikasi') as string) || '';
     const status = (formData.get('status') as string) as StatusBerita;
+    const inputSlug = formData.get('slug') as string | null;
+    const kategori = formData.get('kategori') as string | null;
 
     if (!id) {
       return { success: false, error: 'ID berita tidak valid.' };
@@ -108,11 +113,14 @@ export async function updateBeritaAction(id: string, formData: FormData) {
 
     if (tanggal_publikasi) payload.tanggal_publikasi = tanggal_publikasi;
     if (status) payload.status = status;
+    if (inputSlug && inputSlug.trim()) payload.slug = sanitizeSlug(inputSlug);
+    if (kategori && kategori.trim()) payload.kategori = kategori.trim();
 
     const result = await updateBerita(id, payload);
 
     revalidatePath('/');
     revalidatePath('/berita');
+    if (payload.slug) revalidatePath(`/berita/${payload.slug}`);
     revalidatePath('/admin');
     revalidatePath('/admin/berita');
 

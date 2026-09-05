@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Link from 'next/link';
 import {
   Newspaper,
   Calendar,
@@ -15,7 +16,6 @@ import {
   Filter,
 } from 'lucide-react';
 import { Berita } from '@/lib/types';
-import { BeritaModal } from './BeritaModal';
 import { formatTanggalIndonesia } from '@/lib/date-utils';
 
 interface BeritaPageContentProps {
@@ -39,10 +39,29 @@ export const BERITA_CATEGORIES: CategoryTab[] = [
 ];
 
 /**
- * Mendeteksi kategori berita berdasarkan kata kunci dalam teks
+ * Mendeteksi kategori warta secara akurat dengan prioritas field kategori,
+ * lalu kata kunci tematik yang mengevaluasi lingkungan sebelum kesehatan.
  */
 export function getBeritaCategory(item: Berita): BeritaCategory {
+  if (item.kategori) {
+    const k = item.kategori.toLowerCase();
+    if (k.includes('lingkungan') || k.includes('kebersihan') || k.includes('bersih')) return 'lingkungan';
+    if (k.includes('kesehatan') || k.includes('posyandu')) return 'kesehatan';
+    if (k.includes('pemerintahan') || k.includes('rt') || k.includes('rw') || k.includes('pamong')) return 'pemerintahan';
+    return 'warta-dusun';
+  }
+
   const text = `${item.judul} ${item.ringkasan || ''} ${item.konten || ''}`.toLowerCase();
+  if (
+    text.includes('kerja bakti') ||
+    text.includes('lingkungan') ||
+    text.includes('kebersihan') ||
+    text.includes('gotong royong') ||
+    text.includes('selokan') ||
+    text.includes('sampah')
+  ) {
+    return 'lingkungan';
+  }
   if (
     text.includes('posyandu') ||
     text.includes('kesehatan') ||
@@ -63,16 +82,6 @@ export function getBeritaCategory(item: Berita): BeritaCategory {
     text.includes('musyawarah')
   ) {
     return 'pemerintahan';
-  }
-  if (
-    text.includes('kerja bakti') ||
-    text.includes('lingkungan') ||
-    text.includes('bersih') ||
-    text.includes('gotong royong') ||
-    text.includes('selokan') ||
-    text.includes('sampah')
-  ) {
-    return 'lingkungan';
   }
   return 'warta-dusun';
 }
@@ -125,8 +134,6 @@ export function getBeritaVisuals(category: BeritaCategory) {
 export function BeritaPageContent({ berita }: BeritaPageContentProps) {
   const [activeCategory, setActiveCategory] = useState<BeritaCategory>('semua');
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedBerita, setSelectedBerita] = useState<Berita | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
 
   // Hitung jumlah artikel per kategori
@@ -169,11 +176,6 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
     });
   }, [berita, activeCategory, searchQuery]);
 
-  const handleOpenBerita = (item: Berita) => {
-    setSelectedBerita(item);
-    setIsModalOpen(true);
-  };
-
   const handleImageError = (id: string) => {
     setFailedImages((prev) => ({ ...prev, [id]: true }));
   };
@@ -204,7 +206,7 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
                 type="button"
                 onClick={() => setSearchQuery('')}
                 aria-label="Hapus kata kunci pencarian"
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 p-0.5 rounded-md hover:bg-stone-200/60 transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 p-0.5 rounded-md hover:bg-stone-200/60 transition-colors cursor-pointer"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -266,18 +268,23 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
             const visuals = getBeritaVisuals(category);
             const VisualIcon = visuals.icon;
             const hasValidImage = item.gambar_url && !failedImages[item.id];
+            const detailUrl = `/berita/${item.slug}`;
 
             return (
               <article
                 key={item.id}
                 className={`group rounded-xl bg-white border border-stone-200/90 shadow-xs hover:shadow-md ${visuals.borderColor} hover:border-emerald-300 transition-all duration-300 flex flex-col overflow-hidden h-full`}
               >
-                {/* Thumbnail / Header Gambar Berita */}
-                <div className="relative h-52 w-full overflow-hidden bg-stone-100 shrink-0">
+                {/* Thumbnail Gambar Berita: Klik langsung mengarah ke detail artikel */}
+                <Link
+                  href={detailUrl}
+                  className="relative h-52 w-full overflow-hidden bg-stone-100 shrink-0 block"
+                  aria-label={`Buka berita: ${item.judul}`}
+                >
                   {hasValidImage ? (
                     <img
                       src={item.gambar_url!}
-                      alt={item.judul}
+                      alt={item.gambar_alt || item.judul}
                       loading="lazy"
                       decoding="async"
                       onError={() => handleImageError(item.id)}
@@ -293,21 +300,21 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
                         <VisualIcon className="w-7 h-7" />
                       </div>
                       <span className="text-xs font-semibold text-stone-500 tracking-wide">
-                        Dokumentasi Resmi Jumeneng Kidul
+                        Dokumentasi Resmi Dusun
                       </span>
                     </div>
                   )}
 
                   {/* Kategori Badge Floating */}
-                  <div className="absolute top-4 left-4 z-10">
+                  <div className="absolute top-4 left-4 z-10 pointer-events-none">
                     <span
                       className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border shadow-2xs backdrop-blur-md bg-white/95 ${visuals.badgeColor}`}
                     >
                       <Tag className="w-3 h-3" />
-                      {visuals.label}
+                      {item.kategori || visuals.label}
                     </span>
                   </div>
-                </div>
+                </Link>
 
                 {/* Body Konten Kartu */}
                 <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between">
@@ -318,14 +325,17 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
                       <time dateTime={item.tanggal_publikasi}>
                         {formatTanggalIndonesia(item.tanggal_publikasi)}
                       </time>
+                      <span className="text-stone-300">·</span>
+                      <span className="text-emerald-800 font-semibold">
+                        {item.kategori || visuals.label}
+                      </span>
                     </div>
 
-                    {/* Judul Berita */}
-                    <h2
-                      onClick={() => handleOpenBerita(item)}
-                      className="font-heading font-bold text-lg sm:text-xl text-stone-950 group-hover:text-emerald-800 transition-colors line-clamp-2 cursor-pointer mb-2.5 leading-snug"
-                    >
-                      {item.judul}
+                    {/* Judul Berita: Klik langsung mengarah ke detail artikel */}
+                    <h2 className="font-heading font-bold text-lg sm:text-xl text-stone-950 group-hover:text-emerald-800 transition-colors line-clamp-2 mb-2.5 leading-snug">
+                      <Link href={detailUrl} className="hover:underline">
+                        {item.judul}
+                      </Link>
                     </h2>
 
                     {/* Ringkasan Cuplikan */}
@@ -334,16 +344,15 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
                     </p>
                   </div>
 
-                  {/* Footer Aksi Kartu */}
+                  {/* Footer Aksi Kartu: Tombol Baca Selengkapnya mengarah ke detail artikel */}
                   <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
-                    <button
-                      type="button"
-                      onClick={() => handleOpenBerita(item)}
-                      className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-emerald-800 hover:text-emerald-950 group/btn transition-colors cursor-pointer"
+                    <Link
+                      href={detailUrl}
+                      className="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-emerald-800 hover:text-emerald-950 group/btn transition-colors"
                     >
                       <span>Baca Selengkapnya</span>
                       <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
+                    </Link>
                     <span className="text-[11px] text-stone-400 font-medium">Jumeneng Kidul</span>
                   </div>
                 </div>
@@ -375,13 +384,6 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
           </button>
         </div>
       )}
-
-      {/* 3. MODAL ARTIKEL LENGKAP */}
-      <BeritaModal
-        berita={selectedBerita}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </div>
   );
 }

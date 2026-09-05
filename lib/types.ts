@@ -88,6 +88,8 @@ export interface Berita {
   ringkasan: string;
   konten: string;
   gambar_url?: string | null;
+  gambar_alt?: string | null;
+  kategori?: string | null;
   tanggal_publikasi: string;
   status: StatusBerita;
   created_at?: string;

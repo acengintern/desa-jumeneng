@@ -323,9 +323,11 @@ export const initialBerita: Berita[] = [
     ringkasan:
       'Pelayanan kesehatan rutin bagi balita dan lansia yang diselenggarakan oleh kader kesehatan setempat.',
     konten:
-      'Pelayanan kesehatan rutin bagi balita dan lansia diselenggarakan secara konsisten oleh para kader kesehatan Padukuhan Jumeneng Kidul. Kegiatan ini mencakup penimbangan berat badan balita, imunisasi dasar, penyuluhan gizi seimbang, serta pemeriksaan tensi darah dan kesehatan umum bagi para lansia.',
+      'Pelayanan kesehatan rutin bagi balita dan lansia diselenggarakan secara konsisten oleh para kader kesehatan Padukuhan Jumeneng Kidul. Kegiatan ini mencakup penimbangan berat badan balita, imunisasi dasar, penyuluhan gizi seimbang, serta pemeriksaan tensi darah dan kesehatan umum bagi para lansia.\n\nDengan adanya agenda posyandu berkala setiap bulan, tumbuh kembang anak-anak balita dapat terpantau secara optimal sedini mungkin, sekaligus memberikan pendampingan kesehatan preventif bagi para warga lanjut usia agar tetap bugar dan produktif.',
     gambar_url:
       'https://info-jumenengkidul.site.je/uploads/berita/img_20260903_090114_d4968679.jpg',
+    gambar_alt: 'Pelayanan Posyandu Balita dan Lansia Padukuhan Jumeneng Kidul',
+    kategori: 'Kesehatan',
     tanggal_publikasi: '2026-07-20',
     status: 'published',
     created_at: '2026-07-20T00:00:00.000Z',
@@ -337,8 +339,11 @@ export const initialBerita: Berita[] = [
     ringkasan:
       'Pertemuan rutin pengurus wilayah membahas program kerja dan kegiatan warga untuk periode mendatang.',
     konten:
-      'Pertemuan rutin pengurus wilayah RT 01 s/d RT 09 bersama para ketua RW (RW 19, RW 20, RW 21, dan RW 39) serta Kepala Dukuh Bapak Edhy Purwanta bertempat di Balai Dusun. Agenda rapat mencakup evaluasi kegiatan gotong royong, pemeliharaan sarana umum, dan persiapan peringatan hari besar kemasyarakatan.',
-    gambar_url: null,
+      'Pertemuan rutin pengurus wilayah RT 01 s/d RT 09 bersama para ketua RW (RW 19, RW 20, RW 21, dan RW 39) serta Kepala Dukuh Bapak Edhy Purwanta bertempat di Balai Dusun. Agenda rapat mencakup evaluasi kegiatan gotong royong, pemeliharaan sarana umum, dan persiapan peringatan hari besar kemasyarakatan.\n\nMusyawarah mufakat ini menegaskan komitmen seluruh jajaran pamong padukuhan untuk senantiasa hadir melayani kebutuhan administrasi warga secara transparan, akuntabel, dan mengutamakan kerukunan antarlingkungan.',
+    gambar_url:
+      'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=800&q=80',
+    gambar_alt: 'Rapat Koordinasi Pengurus RT dan RW Jumeneng Kidul di Balai Dusun',
+    kategori: 'Pemerintahan',
     tanggal_publikasi: '2026-08-01',
     status: 'published',
     created_at: '2026-08-01T00:00:00.000Z',
@@ -348,10 +353,13 @@ export const initialBerita: Berita[] = [
     judul: 'Kerja Bakti Bersih Lingkungan Dusun',
     slug: 'kerja-bakti-bersih-lingkungan-dusun',
     ringkasan:
-      'Warga bergotong royong membersihkan lingkungan dusun dalam rangka menjaga kebersihan dan kesehatan bersama.',
+      'Warga bergotong royong membersihkan lingkungan dusun dalam rangka menjaga kebersihan dan kelestarian alam bersama.',
     konten:
-      'Seluruh elemen warga Padukuhan Jumeneng Kidul melaksanakan agenda kerja bakti massal membersihkan selokan, merapikan bahu jalan dusun, serta membersihkan area fasilitas umum. Tradisi gotong royong ini terus dipelihara sebagai wujud kebersamaan dan kepedulian terhadap kelestarian lingkungan.',
-    gambar_url: null,
+      'Seluruh elemen warga Padukuhan Jumeneng Kidul melaksanakan agenda kerja bakti massal membersihkan saluran irigasi, merapikan bahu jalan dusun, serta membersihkan area fasilitas publik. Tradisi gotong royong ini terus dipelihara sebagai wujud kebersamaan dan kepedulian terhadap kelestarian lingkungan hidup pedesaan.\n\nPartisipasi aktif dari bapak-bapak, pemuda Karang Taruna, hingga ibu-ibu PKK yang menyediakan konsumsi swadaya mencerminkan guyub rukun warga Jumeneng Kidul yang tetap terjaga lestari di era modern saat ini.',
+    gambar_url:
+      'https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=800&q=80',
+    gambar_alt: 'Warga Padukuhan Jumeneng Kidul Gotong Royong Kerja Bakti Lingkungan',
+    kategori: 'Lingkungan',
     tanggal_publikasi: '2026-08-10',
     status: 'published',
     created_at: '2026-08-10T00:00:00.000Z',

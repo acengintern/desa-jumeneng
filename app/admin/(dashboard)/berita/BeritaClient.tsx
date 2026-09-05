@@ -56,6 +56,8 @@ export default function BeritaClient({ initialBerita }: BeritaClientProps) {
 
   // Form Field States
   const [formJudul, setFormJudul] = useState('');
+  const [formSlug, setFormSlug] = useState('');
+  const [formKategori, setFormKategori] = useState('Warta Dusun');
   const [formRingkasan, setFormRingkasan] = useState('');
   const [formKonten, setFormKonten] = useState('');
   const [formGambarUrl, setFormGambarUrl] = useState('');
@@ -66,6 +68,8 @@ export default function BeritaClient({ initialBerita }: BeritaClientProps) {
   const handleOpenCreate = () => {
     setEditingItem(null);
     setFormJudul('');
+    setFormSlug('');
+    setFormKategori('Warta Dusun');
     setFormRingkasan('');
     setFormKonten('');
     setFormGambarUrl('');
@@ -78,6 +82,8 @@ export default function BeritaClient({ initialBerita }: BeritaClientProps) {
   const handleOpenEdit = (item: Berita) => {
     setEditingItem(item);
     setFormJudul(item.judul);
+    setFormSlug(item.slug || '');
+    setFormKategori(item.kategori || 'Warta Dusun');
     setFormRingkasan(item.ringkasan || '');
     setFormKonten(item.konten || '');
     setFormGambarUrl(item.gambar_url || '');
@@ -104,6 +110,8 @@ export default function BeritaClient({ initialBerita }: BeritaClientProps) {
 
     const formData = new FormData();
     formData.append('judul', formJudul);
+    formData.append('slug', formSlug);
+    formData.append('kategori', formKategori);
     formData.append('ringkasan', formRingkasan || formJudul);
     formData.append('konten', formKonten);
     formData.append('gambar_url', formGambarUrl);
@@ -121,6 +129,8 @@ export default function BeritaClient({ initialBerita }: BeritaClientProps) {
                 ? {
                     ...b,
                     judul: formJudul,
+                    slug: formSlug || b.slug,
+                    kategori: formKategori,
                     ringkasan: formRingkasan,
                     konten: formKonten,
                     gambar_url: formGambarUrl || null,
@@ -471,6 +481,44 @@ export default function BeritaClient({ initialBerita }: BeritaClientProps) {
                   onChange={(e) => setFormJudul(e.target.value)}
                   className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
                 />
+              </div>
+
+              {/* Kategori Berita & Kustomisasi Slug */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    Kategori Berita <span className="text-rose-600">*</span>
+                  </label>
+                  <select
+                    value={formKategori}
+                    onChange={(e) => setFormKategori(e.target.value)}
+                    className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 bg-white"
+                  >
+                    <option value="Lingkungan">Lingkungan (Kerja bakti, kebersihan)</option>
+                    <option value="Kesehatan">Kesehatan (Posyandu, imunisasi, lansia)</option>
+                    <option value="Pemerintahan">Pemerintahan (Rapat RT/RW, pamong)</option>
+                    <option value="Warta Dusun">Warta Dusun (Kegiatan umum, pengumuman)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    Slug URL Permanen{' '}
+                    <span className="text-[11px] font-normal text-slate-400">
+                      (Opsional / otomatis)
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="kegiatan-posyandu-balita-lansia"
+                    value={formSlug}
+                    onChange={(e) => setFormSlug(e.target.value)}
+                    className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 font-mono text-xs"
+                  />
+                  <p className="text-[10px] text-slate-400 mt-1">
+                    Akan diakses pada: <code className="text-emerald-700 font-mono">/berita/{'{slug}'}</code>
+                  </p>
+                </div>
               </div>
 
               {/* URL Cover Image */}
