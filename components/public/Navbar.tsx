@@ -7,7 +7,6 @@ import {
   Menu,
   X,
   Phone,
-  Lock,
   ChevronRight,
 } from 'lucide-react';
 
@@ -120,7 +119,7 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Right: Quick Action & Admin Login (Desktop) */}
+          {/* Right: Quick Action (Desktop) */}
           <div className="hidden lg:flex items-center gap-2.5">
             <Link
               href="/kontak"
@@ -129,27 +128,10 @@ export function Navbar() {
               <Phone className="w-4 h-4" />
               <span>Hubungi Kami</span>
             </Link>
-
-            <Link
-              href="/admin/login"
-              title="Portal Admin Dusun"
-              aria-label="Masuk ke Halaman Admin"
-              className="p-2.5 text-stone-600 hover:text-emerald-900 hover:bg-stone-100 rounded-lg transition-colors border border-stone-200/80 min-h-[40px] min-w-[40px] flex items-center justify-center"
-            >
-              <Lock className="w-4 h-4" />
-            </Link>
           </div>
 
-          {/* Mobile Right Bar: Admin Lock & Hamburger Toggle */}
+          {/* Mobile Right Bar: Hamburger Toggle */}
           <div className="flex items-center gap-2 lg:hidden">
-            <Link
-              href="/admin/login"
-              title="Login Admin"
-              aria-label="Masuk Admin"
-              className="p-2 text-stone-600 hover:text-emerald-900 hover:bg-stone-100 rounded-lg transition-colors border border-stone-200/80 min-h-[40px] min-w-[40px] flex items-center justify-center"
-            >
-              <Lock className="w-4 h-4" />
-            </Link>
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
@@ -219,7 +201,7 @@ export function Navbar() {
         </nav>
 
         {/* Drawer Footer Actions */}
-        <div className="p-4 border-t border-stone-200 bg-stone-50/80 space-y-2.5">
+        <div className="p-4 border-t border-stone-200 bg-stone-50/80">
           <Link
             href="/kontak"
             onClick={() => setIsOpen(false)}
@@ -227,15 +209,6 @@ export function Navbar() {
           >
             <Phone className="w-4 h-4" />
             <span>Hubungi Pengurus Dusun</span>
-          </Link>
-
-          <Link
-            href="/admin/login"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center justify-center gap-2 w-full py-2.5 text-xs font-medium text-stone-600 hover:text-emerald-900 bg-white hover:bg-stone-100 border border-stone-200 rounded-lg transition-colors min-h-[40px]"
-          >
-            <Lock className="w-3.5 h-3.5 text-stone-500" />
-            <span>Portal Admin Dusun</span>
           </Link>
         </div>
       </div>

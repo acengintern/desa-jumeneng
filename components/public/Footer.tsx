@@ -5,7 +5,6 @@ import Link from 'next/link';
 import {
   MapPin,
   Phone,
-  Lock,
   ArrowUp,
   GraduationCap,
 } from 'lucide-react';
@@ -81,7 +80,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Col 3 (4/12): KKN & Kerjasama Kampus + Portal Admin */}
+          {/* Col 3 (4/12): KKN & Kerjasama Kampus */}
           <div className="lg:col-span-4 space-y-3.5">
             <h4 className="font-heading font-bold text-white text-xs uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
               <GraduationCap className="w-4 h-4 text-amber-400" />
@@ -97,17 +96,6 @@ export function Footer() {
                 program Kuliah Kerja Nyata (KKN) Mahasiswa Universitas AKPRIND Indonesia tahun 2026
                 untuk Padukuhan Jumeneng Kidul.
               </p>
-            </div>
-
-            {/* Portal Admin Dusun Link */}
-            <div className="pt-1">
-              <Link
-                href="/admin/login"
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-emerald-300 bg-slate-900/80 hover:bg-slate-900 border border-slate-800 hover:border-emerald-700/60 transition-colors min-h-[36px]"
-              >
-                <Lock className="w-3.5 h-3.5 text-slate-500" />
-                <span>Portal Admin Dusun</span>
-              </Link>
             </div>
           </div>
         </div>
