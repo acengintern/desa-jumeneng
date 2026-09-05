@@ -11,6 +11,7 @@ import {
   Check,
 } from 'lucide-react';
 import { PotensiWilayah } from '@/lib/types';
+import { renderPotensiVectorIcon } from './potensi-icons';
 
 interface PotensiModalProps {
   potensi: PotensiWilayah | null;
@@ -60,11 +61,11 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
         {/* Modal Header */}
         <div className="p-6 sm:p-8 pb-4 sm:pb-6 flex items-start justify-between gap-4 border-b border-slate-100 shrink-0">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-3xl sm:text-4xl shadow-inner shrink-0">
-              {potensi.icon}
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center shadow-xs shrink-0">
+              {renderPotensiVectorIcon(potensi.judul, potensi.icon, 'w-8 h-8 sm:w-10 sm:h-10')}
             </div>
             <div>
-              <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-md mb-1.5">
+              <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-md mb-1.5">
                 <Sparkles className="w-3 h-3 text-emerald-600" />
                 Potensi Wilayah Dusun
               </span>
@@ -80,12 +81,12 @@ export function PotensiModal({ potensi, isOpen, onClose }: PotensiModalProps) {
             </div>
           </div>
 
-          {/* Tombol Tutup Silang ✕ */}
+          {/* Tombol Tutup */}
           <button
             type="button"
             onClick={onClose}
             aria-label="Tutup jendela detail potensi"
-            className="p-2.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors focus:outline-hidden focus:ring-2 focus:ring-emerald-600 shrink-0"
+            className="p-2.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors focus:outline-hidden focus:ring-2 focus:ring-emerald-600 shrink-0 border border-slate-200/60"
           >
             <X className="w-5 h-5" />
           </button>

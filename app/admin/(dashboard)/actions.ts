@@ -409,7 +409,7 @@ export async function hapusSaranaAction(id: string) {
 export async function tambahPotensiAction(formData: FormData) {
   try {
     const judul = (formData.get('judul') as string) || '';
-    const icon = (formData.get('icon') as string) || '🌟';
+    const icon = (formData.get('icon') as string) || 'sparkles';
     const deskripsi_singkat = (formData.get('deskripsi_singkat') as string) || '';
     const kegiatan_utama = (formData.get('kegiatan_utama') as string) || '';
     const keunggulan_hasil = (formData.get('keunggulan_hasil') as string) || '';
@@ -422,7 +422,7 @@ export async function tambahPotensiAction(formData: FormData) {
 
     const result = await createPotensi({
       judul: judul.trim(),
-      icon: icon.trim() || '🌟',
+      icon: icon.trim() || 'sparkles',
       deskripsi_singkat: deskripsi_singkat.trim(),
       kegiatan_utama: kegiatan_utama.trim(),
       keunggulan_hasil: keunggulan_hasil.trim(),
@@ -445,7 +445,7 @@ export async function tambahPotensiAction(formData: FormData) {
 export async function updatePotensiAction(id: string, formData: FormData) {
   try {
     const judul = (formData.get('judul') as string) || '';
-    const icon = (formData.get('icon') as string) || '🌟';
+    const icon = (formData.get('icon') as string) || 'sparkles';
     const deskripsi_singkat = (formData.get('deskripsi_singkat') as string) || '';
     const kegiatan_utama = (formData.get('kegiatan_utama') as string) || '';
     const keunggulan_hasil = (formData.get('keunggulan_hasil') as string) || '';
@@ -458,7 +458,7 @@ export async function updatePotensiAction(id: string, formData: FormData) {
 
     const payload: Record<string, any> = {
       judul: judul.trim(),
-      icon: icon.trim() || '🌟',
+      icon: icon.trim() || 'sparkles',
       deskripsi_singkat: deskripsi_singkat.trim(),
       kegiatan_utama: kegiatan_utama.trim(),
       keunggulan_hasil: keunggulan_hasil.trim(),

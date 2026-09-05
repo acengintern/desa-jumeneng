@@ -260,7 +260,7 @@ export const initialPotensi: PotensiWilayah[] = [
   {
     id: 'e5000000-0000-0000-0000-000000000001',
     judul: 'Pertanian',
-    icon: '🌾',
+    icon: 'sprout',
     deskripsi_singkat: 'Sebagian warga bermata pencaharian sebagai petani dan pekebun.',
     kegiatan_utama: 'Jagung, Padi, kacang tanah',
     keunggulan_hasil: 'lahan jagung luas',
@@ -273,7 +273,7 @@ export const initialPotensi: PotensiWilayah[] = [
   {
     id: 'e5000000-0000-0000-0000-000000000002',
     judul: 'UMKM Rumahan',
-    icon: '🏠',
+    icon: 'store',
     deskripsi_singkat: 'Usaha kecil menengah warga seperti kuliner dan kerajinan.',
     kegiatan_utama: 'Kripik Melinjo',
     keunggulan_hasil: 'produksi cepat',
@@ -286,7 +286,7 @@ export const initialPotensi: PotensiWilayah[] = [
   {
     id: 'e5000000-0000-0000-0000-000000000003',
     judul: 'Kehidupan Keagamaan',
-    icon: '🕌',
+    icon: 'landmark',
     deskripsi_singkat: 'Tradisi dan kegiatan keagamaan yang masih kuat di tengah warga.',
     kegiatan_utama: 'Pengajian Rutin, Tarian Badui',
     keunggulan_hasil: "Masih melestarikan tradisi adzan Jum'at 4 orang",
@@ -299,7 +299,7 @@ export const initialPotensi: PotensiWilayah[] = [
   {
     id: 'e5000000-0000-0000-0000-000000000004',
     judul: 'Peternakan',
-    icon: '🐄',
+    icon: 'beef',
     deskripsi_singkat:
       'Skala rumah tangga: kambing, sapi kecil, ayam kampung; potensi untuk pengembangan pakan dan pemasaran lokal.',
     kegiatan_utama: 'Beternak Sapi, Kambing, Ayam',

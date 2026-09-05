@@ -13,6 +13,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { SaranaPrasarana } from '@/lib/types';
+import { ScrollReveal } from './ScrollReveal';
 
 interface SaranaSectionProps {
   sarana?: SaranaPrasarana[];
@@ -163,36 +164,36 @@ export function SaranaSection({ sarana = [] }: SaranaSectionProps) {
   });
 
   return (
-    <>
-      {/* Anchor pendukung untuk navigasi #sarana */}
-      <div id="sarana" className="scroll-mt-20" />
-
-      {/* Main Section dengan ID fasilitas sesuai brief */}
-      <section id="fasilitas" className="py-20 lg:py-28 bg-white scroll-mt-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
-              <Package className="w-4 h-4 text-emerald-700" />
-              <span>Infrastruktur & Layanan</span>
-            </div>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
-              Sarana & Prasarana Dusun
-            </h2>
-            <p className="text-base sm:text-lg text-slate-600 mt-4 max-w-2xl mx-auto">
-              Fasilitas publik dan kelembagaan penunjang kegiatan sosial, pendidikan,
-              kesehatan, serta keagamaan masyarakat Padukuhan Jumeneng Kidul.
-            </p>
+    <section id="sarana" className="py-16 sm:py-20 lg:py-28 bg-white scroll-mt-24 sm:scroll-mt-28 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <ScrollReveal direction="up" className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
+            <Package className="w-4 h-4 text-emerald-700" />
+            <span>Infrastruktur & Layanan</span>
           </div>
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-emerald-950 tracking-tight">
+            Sarana & Prasarana Dusun
+          </h2>
+          <p className="text-base sm:text-lg text-slate-600 mt-4 max-w-2xl mx-auto">
+            Fasilitas publik dan kelembagaan penunjang kegiatan sosial, pendidikan,
+            kesehatan, serta keagamaan masyarakat Padukuhan Jumeneng Kidul.
+          </p>
+        </ScrollReveal>
 
-          {/* 7 Kategori Grid Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {items.map((item, index) => {
-              const Icon = item.icon;
-              return (
+        {/* 7 Kategori Grid Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {items.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <ScrollReveal
+                key={item.id}
+                direction="up"
+                delay={(index % 4) * 80}
+                className="h-full"
+              >
                 <div
-                  key={item.id}
-                  className={`group relative bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 ${item.colorClass.border} shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between`}
+                  className={`group relative bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 ${item.colorClass.border} shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full`}
                 >
                   <div>
                     {/* Header Card: Icon + Category Badge */}
@@ -235,11 +236,13 @@ export function SaranaSection({ sarana = [] }: SaranaSectionProps) {
                     <span className="text-[11px] text-slate-400">Dusun Jumeneng Kidul</span>
                   </div>
                 </div>
-              );
-            })}
+              </ScrollReveal>
+            );
+          })}
 
-            {/* Quick Summary Card to balance the 7-item grid */}
-            <div className="rounded-3xl p-6 sm:p-7 bg-gradient-to-br from-emerald-800 to-emerald-950 text-white flex flex-col justify-between shadow-lg shadow-emerald-950/15 border border-emerald-700">
+          {/* Quick Summary Card to balance the 7-item grid */}
+          <ScrollReveal direction="up" delay={240} className="h-full">
+            <div className="rounded-3xl p-6 sm:p-7 bg-gradient-to-br from-emerald-800 to-emerald-950 text-white flex flex-col justify-between shadow-lg shadow-emerald-950/15 border border-emerald-700 h-full">
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-white/10 text-amber-300 flex items-center justify-center mb-5">
                   <Sparkles className="w-6 h-6" />
@@ -261,9 +264,9 @@ export function SaranaSection({ sarana = [] }: SaranaSectionProps) {
                 <span>Tersebar di wilayah RT 01 s/d RT 09</span>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

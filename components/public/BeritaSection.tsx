@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { Berita } from '@/lib/types';
 import { BeritaModal } from './BeritaModal';
+import { ScrollReveal } from './ScrollReveal';
 import { formatTanggalIndonesia } from '@/lib/date-utils';
 
 interface BeritaSectionProps {
@@ -120,13 +121,13 @@ export function BeritaSection({ berita = [] }: BeritaSectionProps) {
   };
 
   return (
-    <section id="berita" className="py-20 lg:py-28 bg-white scroll-mt-20 relative">
+    <section id="berita" className="py-20 lg:py-28 bg-white scroll-mt-24 sm:scroll-mt-28 relative">
       {/* Background Subtle Accent */}
       <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-slate-50/80 to-transparent pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+        <ScrollReveal direction="up" className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
             <Newspaper className="w-4 h-4 text-emerald-700" />
             <span>Informasi Terkini Dusun</span>
@@ -138,94 +139,100 @@ export function BeritaSection({ berita = [] }: BeritaSectionProps) {
             Publikasi resmi seputar agenda kemasyarakatan, layanan kesehatan terpadu,
             kebijakan dusun, dan dinamika kebersamaan warga Padukuhan Jumeneng Kidul.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Berita Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {items.map((item) => {
+          {items.map((item, idx) => {
             const thematic = getBeritaThematic(item.judul);
             const ThematicIcon = thematic.icon;
             const hasValidImage = item.gambar_url && !failedImages[item.id];
 
             return (
-              <article
+              <ScrollReveal
                 key={item.id}
-                className="group rounded-3xl bg-white border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-emerald-300 transition-all duration-300 flex flex-col overflow-hidden hover:-translate-y-1"
+                direction="up"
+                delay={idx * 100}
+                className="h-full"
               >
-                {/* Card Thumbnail / Header Visual */}
-                <div className="relative h-52 w-full overflow-hidden bg-slate-100 shrink-0">
-                  {hasValidImage ? (
-                    <img
-                      src={item.gambar_url!}
-                      alt={item.judul}
-                      onError={() => handleImageError(item.id)}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div
-                      className={`w-full h-full bg-gradient-to-br ${thematic.gradient} flex flex-col items-center justify-center p-6 border-b border-slate-100`}
-                    >
+                <article
+                  className="group rounded-3xl bg-white border border-slate-200/90 shadow-xs hover:shadow-xl hover:border-emerald-300 transition-all duration-300 flex flex-col overflow-hidden hover:-translate-y-1 h-full"
+                >
+                  {/* Card Thumbnail / Header Visual */}
+                  <div className="relative h-52 w-full overflow-hidden bg-slate-100 shrink-0">
+                    {hasValidImage ? (
+                      <img
+                        src={item.gambar_url!}
+                        alt={item.judul}
+                        onError={() => handleImageError(item.id)}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
                       <div
-                        className={`w-16 h-16 rounded-2xl ${thematic.iconBg} flex items-center justify-center mb-3 shadow-inner group-hover:scale-110 transition-transform duration-300`}
+                        className={`w-full h-full bg-gradient-to-br ${thematic.gradient} flex flex-col items-center justify-center p-6 border-b border-slate-100`}
                       >
-                        <ThematicIcon className="w-8 h-8" />
+                        <div
+                          className={`w-16 h-16 rounded-2xl ${thematic.iconBg} flex items-center justify-center mb-3 shadow-inner group-hover:scale-110 transition-transform duration-300`}
+                        >
+                          <ThematicIcon className="w-8 h-8" />
+                        </div>
+                        <span className="text-xs font-semibold text-slate-500 tracking-wide">
+                          Dokumentasi Kegiatan Dusun
+                        </span>
                       </div>
-                      <span className="text-xs font-semibold text-slate-500 tracking-wide">
-                        Dokumentasi Kegiatan Dusun
+                    )}
+
+                    {/* Kategori Badge Floating */}
+                    <div className="absolute top-4 left-4 z-10">
+                      <span
+                        className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border shadow-2xs backdrop-blur-md bg-white/95 ${thematic.badgeColor}`}
+                      >
+                        <Tag className="w-3 h-3" />
+                        {thematic.kategori}
                       </span>
                     </div>
-                  )}
-
-                  {/* Kategori Badge Floating */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <span
-                      className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border shadow-2xs backdrop-blur-md bg-white/95 ${thematic.badgeColor}`}
-                    >
-                      <Tag className="w-3 h-3" />
-                      {thematic.kategori}
-                    </span>
                   </div>
-                </div>
 
-                {/* Card Content Body */}
-                <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between">
-                  <div>
-                    {/* Tanggal Terbit Berformat Indonesia */}
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mb-3">
-                      <Calendar className="w-3.5 h-3.5 text-emerald-700" />
-                      <time dateTime={item.tanggal_publikasi}>
-                        {formatTanggalIndonesia(item.tanggal_publikasi)}
-                      </time>
+                  {/* Card Content Body */}
+                  <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between">
+                    <div>
+                      {/* Tanggal Terbit Berformat Indonesia */}
+                      <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium mb-3">
+                        <Calendar className="w-3.5 h-3.5 text-emerald-700" />
+                        <time dateTime={item.tanggal_publikasi}>
+                          {formatTanggalIndonesia(item.tanggal_publikasi)}
+                        </time>
+                      </div>
+
+                      {/* Judul Berita */}
+                      <h3
+                        onClick={() => handleOpenBerita(item)}
+                        className="font-heading font-bold text-lg sm:text-xl text-emerald-950 group-hover:text-emerald-700 transition-colors line-clamp-2 cursor-pointer mb-3 leading-snug"
+                      >
+                        {item.judul}
+                      </h3>
+
+                      {/* Ringkasan Cuplikan */}
+                      <p className="text-sm text-slate-600 line-clamp-3 leading-relaxed mb-6">
+                        {item.ringkasan}
+                      </p>
                     </div>
 
-                    {/* Judul Berita */}
-                    <h3
-                      onClick={() => handleOpenBerita(item)}
-                      className="font-heading font-bold text-lg sm:text-xl text-emerald-950 group-hover:text-emerald-700 transition-colors line-clamp-2 cursor-pointer mb-3 leading-snug"
-                    >
-                      {item.judul}
-                    </h3>
-
-                    {/* Ringkasan Cuplikan */}
-                    <p className="text-sm text-slate-600 line-clamp-3 leading-relaxed mb-6">
-                      {item.ringkasan}
-                    </p>
+                    {/* Card Action: Tombol Baca Selengkapnya */}
+                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                      <button
+                        type="button"
+                        onClick={() => handleOpenBerita(item)}
+                        className="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-800 hover:text-emerald-900 group/btn transition-colors focus:outline-hidden"
+                      >
+                        <span>Baca Selengkapnya</span>
+                        <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      </button>
+                      <span className="text-[11px] text-slate-400 font-medium">Jumeneng Kidul</span>
+                    </div>
                   </div>
-
-                  {/* Card Action: Tombol Baca Selengkapnya */}
-                  <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <button
-                      type="button"
-                      onClick={() => handleOpenBerita(item)}
-                      className="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-800 hover:text-emerald-900 group/btn transition-colors focus:outline-hidden"
-                    >
-                      <span>Baca Selengkapnya</span>
-                      <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
-                    <span className="text-[11px] text-slate-400 font-medium">Jumeneng Kidul</span>
-                  </div>
-                </div>
-              </article>
+                </article>
+              </ScrollReveal>
             );
           })}
         </div>

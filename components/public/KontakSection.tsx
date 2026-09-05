@@ -16,6 +16,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { ProfilDesa } from '@/lib/types';
+import { ScrollReveal } from './ScrollReveal';
 
 interface KontakSectionProps {
   profil?: ProfilDesa;
@@ -110,10 +111,10 @@ export function KontakSection({ profil }: KontakSectionProps) {
   };
 
   return (
-    <section id="kontak" className="py-20 lg:py-28 bg-white scroll-mt-20 relative">
+    <section id="kontak" className="py-20 lg:py-28 bg-white scroll-mt-24 sm:scroll-mt-28 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+        <ScrollReveal direction="up" className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
           <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-800 mb-3">
             <Phone className="w-4 h-4 text-emerald-700" />
             <span>Layanan & Komunikasi Warga</span>
@@ -125,12 +126,12 @@ export function KontakSection({ profil }: KontakSectionProps) {
             Sampaikan pertanyaan, permohonan informasi, maupun aspirasi pembangunan dusun.
             Pemerintah Padukuhan Jumeneng Kidul siap melayani warga dengan tulus dan terbuka.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* 2 Kolom Layout Utama */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Kolom Kiri (5/12): Informasi Dusun, Tombol WA & Peta Google Maps */}
-          <div className="lg:col-span-5 space-y-6">
+          <ScrollReveal direction="right" className="lg:col-span-5 space-y-6">
             {/* Card Informasi Dusun */}
             <div className="rounded-3xl bg-slate-50/80 border border-slate-200/90 p-6 sm:p-8 shadow-xs">
               <h3 className="font-heading text-xl font-bold text-emerald-950 mb-6 flex items-center gap-2.5">
@@ -245,10 +246,10 @@ export function KontakSection({ profil }: KontakSectionProps) {
                 />
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Kolom Kanan (7/12): Interactive Contact Form */}
-          <div className="lg:col-span-7">
+          <ScrollReveal direction="left" delay={150} className="lg:col-span-7">
             <div className="rounded-3xl bg-white border-2 border-emerald-100 shadow-xl shadow-emerald-950/5 overflow-hidden p-6 sm:p-10 relative">
               {/* Decorative Accent Top Bar */}
               <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-emerald-600 via-teal-500 to-amber-500" />
@@ -418,7 +419,7 @@ export function KontakSection({ profil }: KontakSectionProps) {
                 </p>
               </form>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

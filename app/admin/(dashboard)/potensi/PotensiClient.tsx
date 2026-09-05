@@ -24,6 +24,7 @@ import {
   updatePotensiAction,
   hapusPotensiAction,
 } from '../actions';
+import { renderPotensiVectorIcon } from '@/components/public/potensi-icons';
 
 interface PotensiClientProps {
   initialPotensi: PotensiWilayah[];
@@ -54,7 +55,7 @@ export default function PotensiClient({ initialPotensi }: PotensiClientProps) {
 
   // Form Fields (termasuk 4 field terstruktur)
   const [formJudul, setFormJudul] = useState('');
-  const [formIcon, setFormIcon] = useState('🌾');
+  const [formIcon, setFormIcon] = useState('sprout');
   const [formDeskripsi, setFormDeskripsi] = useState('');
   const [formKegiatanUtama, setFormKegiatanUtama] = useState('');
   const [formKeunggulan, setFormKeunggulan] = useState('');
@@ -66,7 +67,7 @@ export default function PotensiClient({ initialPotensi }: PotensiClientProps) {
   const handleOpenCreate = () => {
     setEditingItem(null);
     setFormJudul('');
-    setFormIcon('🌾');
+    setFormIcon('sprout');
     setFormDeskripsi('');
     setFormKegiatanUtama('');
     setFormKeunggulan('');
@@ -80,7 +81,7 @@ export default function PotensiClient({ initialPotensi }: PotensiClientProps) {
   const handleOpenEdit = (item: PotensiWilayah) => {
     setEditingItem(item);
     setFormJudul(item.judul);
-    setFormIcon(item.icon || '🌾');
+    setFormIcon(item.icon || 'sprout');
     setFormDeskripsi(item.deskripsi_singkat || '');
     setFormKegiatanUtama(item.kegiatan_utama || '');
     setFormKeunggulan(item.keunggulan_hasil || '');
@@ -100,7 +101,7 @@ export default function PotensiClient({ initialPotensi }: PotensiClientProps) {
 
     const formData = new FormData();
     formData.append('judul', formJudul.trim());
-    formData.append('icon', formIcon.trim() || '🌾');
+    formData.append('icon', formIcon.trim() || 'sprout');
     formData.append('deskripsi_singkat', formDeskripsi.trim());
     formData.append('kegiatan_utama', formKegiatanUtama.trim());
     formData.append('keunggulan_hasil', formKeunggulan.trim());
@@ -119,7 +120,7 @@ export default function PotensiClient({ initialPotensi }: PotensiClientProps) {
                 ? {
                     ...p,
                     judul: formJudul.trim(),
-                    icon: formIcon.trim() || '🌾',
+                    icon: formIcon.trim() || 'sprout',
                     deskripsi_singkat: formDeskripsi.trim(),
                     kegiatan_utama: formKegiatanUtama.trim(),
                     keunggulan_hasil: formKeunggulan.trim(),
@@ -265,8 +266,8 @@ export default function PotensiClient({ initialPotensi }: PotensiClientProps) {
                 {/* Header Card */}
                 <div className="flex items-start justify-between gap-3 pb-3 border-b border-slate-100 mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-2xl shadow-inner shrink-0">
-                      {item.icon || '🌾'}
+                    <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center shadow-inner shrink-0 text-emerald-800">
+                      {renderPotensiVectorIcon(item.icon, 'w-6 h-6')}
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
@@ -411,15 +412,15 @@ export default function PotensiClient({ initialPotensi }: PotensiClientProps) {
 
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">
-                    Simbol / Emoji Icon <span className="text-rose-600">*</span>
+                    Kode Ikon Vektor <span className="text-rose-600">*</span>
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="🌾, 🏠, 🕌, 🐄, dsb"
+                    placeholder="sprout, store, landmark, beef, sparkles"
                     value={formIcon}
                     onChange={(e) => setFormIcon(e.target.value)}
-                    className="w-full px-3.5 py-2.5 text-sm text-center text-lg rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
+                    className="w-full px-3.5 py-2.5 text-sm text-center font-mono rounded-xl border border-slate-300 focus:outline-hidden focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600"
                   />
                 </div>
               </div>

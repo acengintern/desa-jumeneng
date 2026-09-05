@@ -1,4 +1,4 @@
-# 🌾 Portal Profil & Sistem Informasi Padukuhan Jumeneng Kidul
+# Portal Profil & Sistem Informasi Padukuhan Jumeneng Kidul
 
 > **Portal web profil resmi dan Content Management System (CMS) interaktif untuk Padukuhan Jumeneng Kidul, Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta.**
 
@@ -6,21 +6,21 @@ Aplikasi web modern yang dirancang untuk mendigitalisasi informasi dusun, mening
 
 ---
 
-## 📑 Daftar Isi
-1. [Ringkasan & Identitas Dusun](#-identitas-padukuhan)
-2. [Fitur Unggulan](#-fitur-unggulan)
+## Daftar Isi
+1. [Ringkasan & Identitas Dusun](#identitas-padukuhan)
+2. [Fitur Unggulan](#fitur-unggulan)
    - [8 Menu Portal Publik](#1-portal-publik-warga--tamu)
    - [7 Modul Admin CMS Pengurus](#2-panel-admin-cms-pengurus-dusun)
-3. [Tech Stack & Arsitektur](#-tech-stack--arsitektur)
-4. [Panduan Menjalankan Secara Lokal (Quickstart)](#-panduan-menjalankan-secara-lokal-quickstart)
-5. [Panduan Setup Database Supabase](#-panduan-setup-database-supabase-opsional-untuk-produksi)
-6. [Panduan Deployment ke Vercel (100% Gratis)](#-panduan-deployment-ke-vercel-100-gratis)
-7. [Panduan Akun Pengelola Admin](#-panduan-akses-admin-cms)
-8. [Struktur Proyek](#-struktur-direktori-proyek)
+3. [Tech Stack & Arsitektur](#tech-stack--arsitektur)
+4. [Panduan Menjalankan Secara Lokal (Quickstart)](#panduan-menjalankan-secara-lokal-quickstart)
+5. [Panduan Setup Database Supabase](#panduan-setup-database-supabase-opsional-untuk-produksi)
+6. [Panduan Deployment ke Vercel (100% Gratis)](#panduan-deployment-ke-vercel-100-gratis)
+7. [Panduan Akun Pengelola Admin](#panduan-akses-admin-cms)
+8. [Struktur Proyek](#struktur-direktori-proyek)
 
 ---
 
-## 📍 Identitas Padukuhan
+## Identitas Padukuhan
 
 - **Nama Wilayah:** Padukuhan Jumeneng Kidul
 - **Kalurahan:** Sumberadi
@@ -31,7 +31,7 @@ Aplikasi web modern yang dirancang untuk mendigitalisasi informasi dusun, mening
 
 ---
 
-## ✨ Fitur Unggulan
+## Fitur Unggulan
 
 Sistem ini terbagi menjadi dua bagian utama: **Portal Publik** yang dapat diakses siapa saja, dan **Panel CMS Pengurus** yang diamankan dengan otentikasi login.
 
@@ -90,20 +90,20 @@ Panel manajemen modern di rute `/admin` khusus untuk perangkat dusun:
 
 ---
 
-## 🛠 Tech Stack & Arsitektur
+## Tech Stack & Arsitektur
 
 - **Framework:** [Next.js 14](https://nextjs.org/) (App Router, Server Components & Server Actions, Route Handlers)
 - **Bahasa:** [TypeScript 5](https://www.typescriptlang.org/) (Strict typing, safe data contracts)
 - **Styling & UI:** [Tailwind CSS](https://tailwindcss.com/) & [Lucide React Icons](https://lucide.dev/)
 - **Database & Auth:** [Supabase](https://supabase.com/) (PostgreSQL Database, Supabase Auth, Row Level Security, Storage Bucket `desa-media`)
 - **Pola Arsitektur Data (*Dual-Engine Repository Pattern*):**
-  - **Zero-Friction Fallback:** Aplikasi dirancang cerdas — jika kredensial Supabase belum diisi, sistem secara otomatis beralih ke *In-Memory Mock Repository* berisi data autentik Padukuhan Jumeneng Kidul. Website dan panel admin tetap 100% berfungsi normal tanpa risiko error *crash*.
-  - **Live Database Mode:** Begitu *Environment Variables* Supabase terisi, sistem otomatis melakukan sinkronisasi dua arah ke database cloud Supabase.
+   - **Zero-Friction Fallback:** Aplikasi dirancang cerdas — jika kredensial Supabase belum diisi, sistem secara otomatis beralih ke *In-Memory Mock Repository* berisi data autentik Padukuhan Jumeneng Kidul. Website dan panel admin tetap 100% berfungsi normal tanpa risiko error *crash*.
+   - **Live Database Mode:** Begitu *Environment Variables* Supabase terisi, sistem otomatis melakukan sinkronisasi dua arah ke database cloud Supabase.
 - **Hosting & Deployment:** [Vercel](https://vercel.com/) (Serverless compute, edge caching, HTTPS gratis, continuous deployment dari GitHub).
 
 ---
 
-## 🚀 Panduan Menjalankan Secara Lokal (Quickstart)
+## Panduan Menjalankan Secara Lokal (Quickstart)
 
 Aplikasi dapat langsung dijalankan di komputer lokal dalam hitungan menit tanpa perlu instalasi database tambahan:
 
@@ -128,11 +128,11 @@ Buka browser Anda dan akses:
 - **Portal Publik:** [http://localhost:3000](http://localhost:3000)
 - **Panel Admin CMS:** [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
 
-> 💡 **Info:** Dalam mode lokal tanpa Supabase, Anda dapat langsung menguji semua fitur membaca konten publik dan mengelola CMS menggunakan akun demo bawaan.
+> **Info:** Dalam mode lokal tanpa Supabase, Anda dapat langsung menguji semua fitur membaca konten publik dan mengelola CMS menggunakan akun demo bawaan.
 
 ---
 
-## 🗄 Panduan Setup Database Supabase (Opsional untuk Produksi)
+## Panduan Setup Database Supabase (Opsional untuk Produksi)
 
 Jika Anda ingin menghubungkan website ke database online permanen Supabase (Free Tier):
 
@@ -168,7 +168,7 @@ Jika Anda ingin menghubungkan website ke database online permanen Supabase (Free
 
 ---
 
-## ☁ Panduan Deployment ke Vercel (100% Gratis)
+## Panduan Deployment ke Vercel (100% Gratis)
 
 Aplikasi ini 100% kompatibel dengan hosting gratis di Vercel:
 
@@ -201,10 +201,10 @@ git push origin main
 
 ---
 
-## 🔐 Panduan Akses Admin CMS
+## Panduan Akses Admin CMS
 
 Untuk mengelola konten, pengurus dapat mengunjungi rute login admin di:
-👉 **`https://domain-anda.vercel.app/admin/login`**
+Akses URL: **`https://domain-anda.vercel.app/admin/login`**
 
 ### Kredensial Akses Bawaan (Mode Demo / Mock)
 Jika Supabase belum dikonfigurasi, sistem menyediakan kredensial pengurus bawaan:
@@ -223,7 +223,7 @@ Setelah menghubungkan Supabase, Anda dapat masuk menggunakan alamat email dan ka
 
 ---
 
-## 📁 Struktur Direktori Proyek
+## Struktur Direktori Proyek
 
 ```plaintext
 desa-jumeneng/
@@ -263,7 +263,7 @@ desa-jumeneng/
 
 ---
 
-## 📜 Lisensi & Kontribusi
+## Lisensi & Kontribusi
 
 Dikembangkan dengan dedikasi untuk kemajuan masyarakat **Padukuhan Jumeneng Kidul, Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, D.I. Yogyakarta**.
 

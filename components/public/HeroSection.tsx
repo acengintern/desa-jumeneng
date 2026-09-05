@@ -9,6 +9,7 @@ import {
   ShieldCheck,
 } from 'lucide-react';
 import { ProfilDesa, StatistikKependudukan } from '@/lib/types';
+import { ScrollReveal } from './ScrollReveal';
 
 interface HeroSectionProps {
   profil: ProfilDesa;
@@ -54,11 +55,11 @@ export function HeroSection({ profil, statistik }: HeroSectionProps) {
   return (
     <section
       id="beranda"
-      className="relative overflow-hidden bg-gradient-to-b from-emerald-50/50 via-white to-slate-50/40 pt-10 pb-16 lg:pt-20 lg:pb-24 border-b border-emerald-950/10"
+      className="relative overflow-hidden bg-gradient-to-b from-emerald-50/50 via-white to-slate-50/40 pt-10 pb-16 lg:pt-20 lg:pb-24 border-b border-emerald-950/10 scroll-mt-24 sm:scroll-mt-28"
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Hero Header */}
-        <div className="max-w-3xl mx-auto lg:mx-0 text-center lg:text-left">
+        <ScrollReveal direction="up" className="max-w-3xl mx-auto lg:mx-0 text-center lg:text-left">
           {/* Authentic Editorial Location Eyebrow (No capsule) */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-4 text-emerald-900 text-xs sm:text-sm font-semibold tracking-wide">
             <MapPin className="w-4 h-4 text-emerald-700 shrink-0" />
@@ -105,40 +106,44 @@ export function HeroSection({ profil, statistik }: HeroSectionProps) {
             <ShieldCheck className="w-4 h-4 text-emerald-700" />
             <span>Portal Informasi & Pelayanan Administrasi Warga Terpadu</span>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* 4 Demography Metric Ledger */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
           {statMetrics.map((stat, idx) => {
             const Icon = stat.icon;
             return (
-              <div
+              <ScrollReveal
                 key={idx}
-                className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-xs hover:border-emerald-700/40 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+                direction="up"
+                delay={idx * 100}
+                className="h-full"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center border border-emerald-900/10">
-                    <Icon className="w-5 h-5 text-emerald-800" />
+                <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-xs hover:border-emerald-700/40 hover:shadow-md transition-all duration-200 flex flex-col justify-between h-full">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center border border-emerald-900/10">
+                      <Icon className="w-5 h-5 text-emerald-800" />
+                    </div>
+                    <span
+                      className={`text-[11px] font-bold px-2 py-0.5 rounded-md ${stat.badgeClass}`}
+                    >
+                      {stat.meta}
+                    </span>
                   </div>
-                  <span
-                    className={`text-[11px] font-bold px-2 py-0.5 rounded-md ${stat.badgeClass}`}
-                  >
-                    {stat.meta}
-                  </span>
-                </div>
 
-                <div>
-                  <div className="font-heading font-extrabold text-3xl sm:text-4xl text-emerald-950 tracking-tight leading-none mb-1.5">
-                    {stat.value}
-                  </div>
-                  <div className="font-bold text-sm text-slate-800">
-                    {stat.label}
-                  </div>
-                  <div className="text-xs text-slate-500 mt-0.5 font-medium">
-                    {stat.unit}
+                  <div>
+                    <div className="font-heading font-extrabold text-3xl sm:text-4xl text-emerald-950 tracking-tight leading-none mb-1.5">
+                      {stat.value}
+                    </div>
+                    <div className="font-bold text-sm text-slate-800">
+                      {stat.label}
+                    </div>
+                    <div className="text-xs text-slate-500 mt-0.5 font-medium">
+                      {stat.unit}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>

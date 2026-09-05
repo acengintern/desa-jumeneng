@@ -150,7 +150,14 @@ export function Navbar() {
     const targetId = href.substring(1);
     const element = document.getElementById(targetId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navOffset = 88; // Height of sticky navbar + breathing clearance
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -196,11 +203,11 @@ export function Navbar() {
                 JK
               </span>
             </div>
-            <div className="flex flex-col">
-              <span className="font-heading font-bold text-base sm:text-lg text-stone-950 group-hover:text-emerald-900 transition-colors leading-tight">
+            <div className="flex flex-col min-w-0">
+              <span className="font-heading font-bold text-sm sm:text-lg text-stone-950 group-hover:text-emerald-900 transition-colors leading-tight truncate max-w-[190px] xs:max-w-[260px] sm:max-w-none">
                 Padukuhan Jumeneng Kidul
               </span>
-              <span className="text-xs font-medium text-emerald-800 leading-normal">
+              <span className="text-[11px] sm:text-xs font-medium text-emerald-800 leading-normal truncate max-w-[180px] xs:max-w-none">
                 Kalurahan Sumberadi, Sleman
               </span>
             </div>
