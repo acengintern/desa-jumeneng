@@ -29,13 +29,19 @@ INSERT INTO profil_desa (
   'Sleman',
   'Daerah Istimewa Yogyakarta',
   'Padukuhan Jumeneng Kidul, Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta. Menyajikan informasi seputar wilayah, pemerintahan, potensi, dan kegiatan warga.',
-  'Padukuhan Jumeneng Kidul merupakan pemekaran dari padukuhan besar bernama Jumeneng Gedhe, yang seiring perkembangan zaman dan kebijakan pemerintahan kalurahan kemudian dibagi menjadi dua, yaitu Jumeneng Lor dan Jumeneng Kidul.
-
-Nama "Jumeneng" berasal dari sosok tokoh perintis wilayah ini, yakni Kyai Nur Jumeneng, yang pengaruhnya terhadap kehidupan sosial dan keagamaan warga masih terasa hingga sekarang. Padukuhan ini berada di wilayah administratif Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta.',
+  E'Padukuhan Jumeneng Kidul merupakan pemekaran dari padukuhan besar bernama Jumeneng Gedhe, yang seiring perkembangan zaman dan kebijakan pemerintahan kalurahan kemudian dibagi menjadi dua, yaitu Jumeneng Lor dan Jumeneng Kidul.\n\nNama "Jumeneng" berasal dari sosok tokoh perintis wilayah ini, yakni Kyai Nur Jumeneng, yang pengaruhnya terhadap kehidupan sosial dan keagamaan warga masih terasa hingga sekarang. Padukuhan ini berada di wilayah administratif Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta.',
   'Menjadi dusun yang mandiri, guyub, dan berkemajuan berbasis potensi lokal dan nilai-nilai keagamaan.',
-  '["Mengembangkan potensi pertanian dan usaha lokal warga.", "Meningkatkan kualitas pendidikan dan kesehatan masyarakat.", "Melestarikan tradisi dan budaya dusun.", "Mendorong partisipasi aktif warga dalam pembangunan."]'::jsonb,
+  jsonb_build_array(
+    'Mengembangkan potensi pertanian dan usaha lokal warga.',
+    'Meningkatkan kualitas pendidikan dan kesehatan masyarakat.',
+    'Melestarikan tradisi dan budaya dusun.',
+    'Mendorong partisipasi aktif warga dalam pembangunan.'
+  ),
   'Sebagian besar warga bermata pencaharian sebagai petani, buruh, dan pelaku UMKM.',
-  '["TK / PAUD", "Sekolah Dasar Jumeneng"]'::jsonb,
+  jsonb_build_array(
+    'TK / PAUD',
+    'Sekolah Dasar Jumeneng'
+  ),
   '0878-3906-4121',
   'Padukuhan Jumeneng Kidul, Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, DIY',
   'https://www.google.com/maps?q=Jumeneng+Kidul,+Sumberadi,+Mlati,+Sleman&output=embed',
