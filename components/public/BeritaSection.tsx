@@ -164,6 +164,8 @@ export function BeritaSection({ berita = [] }: BeritaSectionProps) {
                       <img
                         src={item.gambar_url!}
                         alt={item.judul}
+                        loading="lazy"
+                        decoding="async"
                         onError={() => handleImageError(item.id)}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />

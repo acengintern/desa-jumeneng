@@ -384,12 +384,12 @@ export default function PesanClient({ initialPesan }: PesanClientProps) {
       {/* Modal Detail Pesan */}
       {selectedPesan && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-950/70 backdrop-blur-xs"
           role="dialog"
           aria-modal="true"
         >
           <div
-            className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[90vh]"
+            className="relative w-full max-w-lg bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl border-t sm:border border-slate-200 overflow-hidden flex flex-col max-h-[88vh] sm:max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}

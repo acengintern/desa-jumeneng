@@ -100,6 +100,8 @@ export function GaleriSection({ galeri = [] }: GaleriSectionProps) {
                     <img
                       src={item.foto_url}
                       alt={item.judul_kegiatan}
+                      loading="lazy"
+                      decoding="async"
                       onError={() => handleImageError(item.id)}
                       className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-500 ease-out"
                     />

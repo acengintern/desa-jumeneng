@@ -80,4 +80,10 @@
       transition: none !important;
     }
   }
+
+  /* Modal touch scrolling for mobile browsers */
+  .modal-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
 }

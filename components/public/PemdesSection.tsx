@@ -100,6 +100,8 @@ export function PemdesSection({ pengurus = [] }: PemdesSectionProps) {
                     <img
                       src={dukuh.foto_url}
                       alt={dukuh.nama}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-top"
                       onError={() => setImageError(true)}
                     />
