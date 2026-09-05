@@ -363,7 +363,7 @@ export const initialBerita: Berita[] = [
  */
 export const initialGaleri: Galeri[] = [
   {
-    id: 'g7000000-0000-0000-0000-000000000001',
+    id: '77000000-0000-0000-0000-000000000001',
     judul_kegiatan: 'Kerja Bakti Warga',
     foto_url:
       'https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80',
@@ -372,7 +372,7 @@ export const initialGaleri: Galeri[] = [
     created_at: '2026-08-10T00:00:00.000Z',
   },
   {
-    id: 'g7000000-0000-0000-0000-000000000002',
+    id: '77000000-0000-0000-0000-000000000002',
     judul_kegiatan: 'Kegiatan Posyandu',
     foto_url:
       'https://info-jumenengkidul.site.je/uploads/galeri/img_20260903_090702_36036d62.jpg',
@@ -387,7 +387,7 @@ export const initialGaleri: Galeri[] = [
  */
 export const initialPesanKontak: PesanKontak[] = [
   {
-    id: 'h8000000-0000-0000-0000-000000000001',
+    id: '88000000-0000-0000-0000-000000000001',
     nama_pengirim: 'Budi Santoso',
     pesan: 'Mohon info terkait jadwal kerja bakti serentak untuk wilayah RT 03.',
     no_telepon: '081234567890',

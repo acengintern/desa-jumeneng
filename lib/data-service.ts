@@ -623,7 +623,7 @@ export async function getGaleri(): Promise<Galeri[]> {
 export async function createGaleri(
   galeri: Omit<Galeri, 'id' | 'created_at'>
 ): Promise<{ success: boolean; data?: Galeri; error?: string }> {
-  const newId = `g7000000-0000-0000-0000-${Date.now().toString(16).padStart(12, '0')}`;
+  const newId = `77000000-0000-0000-0000-${Date.now().toString(16).padStart(12, '0')}`;
   const newItem: Galeri = {
     ...galeri,
     id: newId,
@@ -738,7 +738,7 @@ export async function getPesanKontak(): Promise<PesanKontak[]> {
 export async function kirimPesanKontak(
   pesan: Omit<PesanKontak, 'id' | 'created_at' | 'dibaca'>
 ): Promise<{ success: boolean; message: string }> {
-  const newId = `h8000000-0000-0000-0000-${Date.now().toString(16).padStart(12, '0')}`;
+  const newId = `88000000-0000-0000-0000-${Date.now().toString(16).padStart(12, '0')}`;
   const newItem: PesanKontak = {
     ...pesan,
     id: newId,

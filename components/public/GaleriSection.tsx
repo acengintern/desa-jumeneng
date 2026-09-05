@@ -18,7 +18,7 @@ interface GaleriSectionProps {
 
 const DEFAULT_GALERI: Galeri[] = [
   {
-    id: 'g7000000-0000-0000-0000-000000000001',
+    id: '77000000-0000-0000-0000-000000000001',
     judul_kegiatan: 'Kerja Bakti Warga',
     foto_url:
       'https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80',
@@ -26,7 +26,7 @@ const DEFAULT_GALERI: Galeri[] = [
     urutan: 1,
   },
   {
-    id: 'g7000000-0000-0000-0000-000000000002',
+    id: '77000000-0000-0000-0000-000000000002',
     judul_kegiatan: 'Kegiatan Posyandu',
     foto_url:
       'https://info-jumenengkidul.site.je/uploads/galeri/img_20260903_090702_36036d62.jpg',

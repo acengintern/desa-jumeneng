@@ -124,11 +124,11 @@ ON CONFLICT (id) DO NOTHING;
 
 -- 7. GALERI KEGIATAN (2 FOTO)
 INSERT INTO galeri (id, judul_kegiatan, foto_url, tanggal_kegiatan, urutan) VALUES
-('g7000000-0000-0000-0000-000000000001', 'Kerja Bakti Warga', 'https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80', '2026-08-10', 1),
-('g7000000-0000-0000-0000-000000000002', 'Kegiatan Posyandu', 'https://info-jumenengkidul.site.je/uploads/galeri/img_20260903_090702_36036d62.jpg', '2026-07-20', 2)
+('77000000-0000-0000-0000-000000000001', 'Kerja Bakti Warga', 'https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80', '2026-08-10', 1),
+('77000000-0000-0000-0000-000000000002', 'Kegiatan Posyandu', 'https://info-jumenengkidul.site.je/uploads/galeri/img_20260903_090702_36036d62.jpg', '2026-07-20', 2)
 ON CONFLICT (id) DO NOTHING;
 
 -- 8. PESAN MASUK KONTAK (1 CONTOH)
 INSERT INTO pesan_kontak (id, nama_pengirim, pesan, no_telepon, dibaca, created_at) VALUES
-('h8000000-0000-0000-0000-000000000001', 'Budi Santoso', 'Mohon info terkait jadwal kerja bakti serentak untuk wilayah RT 03.', '081234567890', false, '2026-09-01 10:00:00+07')
+('88000000-0000-0000-0000-000000000001', 'Budi Santoso', 'Mohon info terkait jadwal kerja bakti serentak untuk wilayah RT 03.', '081234567890', false, '2026-09-01 10:00:00+07')
 ON CONFLICT (id) DO NOTHING;
