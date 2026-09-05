@@ -8,6 +8,7 @@ import {
   ArrowUp,
   GraduationCap,
 } from 'lucide-react';
+import { VillageEmblem } from './VillageEmblem';
 
 const FOOTER_NAV = [
   { label: 'Beranda', href: '/' },
@@ -31,8 +32,8 @@ export function Footer() {
           {/* Col 1 (5/12): Identitas Padukuhan */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-emerald-900 flex items-center justify-center text-white font-heading font-extrabold text-base shadow-xs border border-emerald-700/50 shrink-0">
-                <span className="text-amber-300">JK</span>
+              <div className="w-10 h-10 rounded-lg bg-emerald-900 flex items-center justify-center text-white shadow-xs border border-emerald-700/50 shrink-0">
+                <VillageEmblem className="w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-heading font-bold text-white text-base sm:text-lg tracking-tight leading-tight">

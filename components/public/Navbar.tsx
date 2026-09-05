@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Phone } from 'lucide-react';
+import { VillageEmblem } from './VillageEmblem';
 
 const NAV_LINKS = [
   { label: 'Beranda', href: '/' },
@@ -73,25 +74,18 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Height: 56px-64px on mobile, 64px-72px on desktop */}
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-18">
-          {/* Left: Logo & Village Identity */}
+          {/* Left: Logo & Village Identity (Illustration + Jumeneng Kidul) */}
           <Link
             href="/"
             className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 rounded-lg py-1"
             onClick={() => setIsOpen(false)}
           >
-            <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-emerald-900 flex items-center justify-center text-white shadow-2xs group-hover:scale-102 transition-transform duration-200 border border-emerald-800 shrink-0">
-              <span className="font-heading font-extrabold text-sm sm:text-base lg:text-lg tracking-tight text-amber-300">
-                JK
-              </span>
+            <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-emerald-900 flex items-center justify-center text-white shadow-2xs group-hover:scale-105 transition-transform duration-200 border border-emerald-800 shrink-0">
+              <VillageEmblem className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
-            <div className="flex flex-col min-w-0">
-              <span className="font-heading font-bold text-xs sm:text-sm lg:text-base text-stone-950 group-hover:text-emerald-900 transition-colors leading-tight truncate max-w-[170px] xs:max-w-[220px] sm:max-w-none">
-                Padukuhan Jumeneng Kidul
-              </span>
-              <span className="text-[10px] sm:text-xs text-stone-500 leading-normal truncate max-w-[160px] xs:max-w-none">
-                Kalurahan Sumberadi, Sleman
-              </span>
-            </div>
+            <span className="font-heading font-bold text-base sm:text-lg lg:text-xl text-stone-950 group-hover:text-emerald-900 transition-colors tracking-tight">
+              Jumeneng Kidul
+            </span>
           </Link>
 
           {/* Center: 7 Direct Route Links (Desktop) */}
@@ -206,10 +200,10 @@ export function Navbar() {
           <span className="text-xs font-bold text-stone-700 uppercase tracking-wider block">
             Menu Padukuhan
           </span>
-          <span className="text-[11px] text-emerald-800 font-medium">Jumeneng Kidul</span>
+          <span className="text-xs text-emerald-900 font-bold">Jumeneng Kidul</span>
         </div>
 
-        {/* 7 Clean Text Links */}
+        {/* 7 Clean Text Links (No left border AI slop, clean rounded highlight) */}
         <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1" aria-label="Navigasi Mobile">
           {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
@@ -221,7 +215,7 @@ export function Navbar() {
                 aria-current={active ? 'page' : undefined}
                 className={`flex items-center px-3.5 py-3 rounded-lg text-sm transition-colors min-h-[44px] ${
                   active
-                    ? 'text-emerald-900 font-bold bg-emerald-50/70 border-l-2 border-emerald-800'
+                    ? 'text-emerald-950 font-bold bg-emerald-50/80'
                     : 'text-stone-700 hover:text-stone-950 hover:bg-stone-50 font-medium'
                 }`}
               >

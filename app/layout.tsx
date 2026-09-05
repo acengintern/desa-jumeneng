@@ -22,8 +22,10 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
 };
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://info-jumenengkidul.vercel.app';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://desa-jumeneng.vercel.app'),
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'Profil Padukuhan Jumeneng Kidul - Sumberadi, Mlati, Sleman',
     template: '%s - Padukuhan Jumeneng Kidul',
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
     title: 'Profil Padukuhan Jumeneng Kidul - Sumberadi, Mlati, Sleman',
     description:
       'Portal Resmi Profil dan Informasi Padukuhan Jumeneng Kidul, Kalurahan Sumberadi, Kapanewon Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta.',
-    url: 'https://desa-jumeneng.vercel.app',
+    url: siteUrl,
     locale: 'id_ID',
     type: 'website',
   },
