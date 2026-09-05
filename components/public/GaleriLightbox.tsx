@@ -80,6 +80,7 @@ export function GaleriLightbox({
         container: {
           backgroundColor: 'rgba(12, 10, 9, 0.96)',
           backdropFilter: 'blur(8px)',
+          zIndex: 9999,
         },
         captionsTitle: {
           textAlign: 'center',

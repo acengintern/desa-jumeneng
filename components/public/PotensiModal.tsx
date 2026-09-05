@@ -89,9 +89,9 @@ export function PotensiModal({ potensi, isOpen, onClose, imageUrl }: PotensiModa
 
   return (
     <>
-      {/* Backdrop Modal Utama — Overflow-y-auto memastikan seluruh modal dapat di-scroll di layar pendek/mobile */}
+      {/* Backdrop Modal Utama — z-[100] berada di atas lapisan navbar (z-50) & items-start memposisikan modal nyaman di bagian atas layar */}
       <div
-        className="fixed inset-0 z-50 overflow-y-auto overscroll-contain flex items-center justify-center p-3 sm:p-6 select-none animate-in fade-in duration-200"
+        className="fixed inset-0 z-[100] overflow-y-auto overscroll-contain flex items-start justify-center p-3 sm:p-5 pt-3 sm:pt-6 md:pt-8 select-none animate-in fade-in duration-200"
         style={{
           background: 'rgba(12, 10, 9, 0.85)',
           backdropFilter: 'blur(6px)',
@@ -102,9 +102,9 @@ export function PotensiModal({ potensi, isOpen, onClose, imageUrl }: PotensiModa
         aria-modal="true"
         aria-labelledby="modal-potensi-title"
       >
-        {/* Panel Modal — Card terpusat dengan scroll internal yang halus di semua area */}
+        {/* Panel Modal — Card berada di bagian atas dengan margin bawah yang pas */}
         <div
-          className="relative w-full max-w-xl bg-white rounded-xl sm:rounded-2xl shadow-2xl border border-stone-200 overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200 select-text my-auto"
+          className="relative w-full max-w-xl bg-white rounded-xl sm:rounded-2xl shadow-2xl border border-stone-200 overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200 select-text mb-6 sm:mb-10"
           style={{
             maxHeight: 'min(92vh, 760px)',
           }}
@@ -292,6 +292,7 @@ export function PotensiModal({ potensi, isOpen, onClose, imageUrl }: PotensiModa
           container: {
             backgroundColor: 'rgba(12, 10, 9, 0.96)',
             backdropFilter: 'blur(8px)',
+            zIndex: 9999,
           },
           captionsTitle: {
             textAlign: 'center',
