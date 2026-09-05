@@ -10,6 +10,6 @@
 - [x] Task 3: Portal Publik - Header, Hero, and Profil & Demografi (commits 8139f5f..118876b, clean) (verified: build 0 errors)
 - [x] Task 4: Portal Publik - Pemerintahan, Sarana Prasarana & Potensi (Modal Pop-up) (commit 00e83ee, clean) (verified: build 0 errors)
 - [x] Task 5: Portal Publik - Berita, Galeri (Lightbox), Kontak & Footer (commits bef8b36..28b3dd1, clean)
-- [x] Task 6: Admin CMS - Autentikasi & Dashboard Shell (verified: build 0 errors, middleware protected)
-- [ ] Task 7: Admin CMS - Modul Kelola Konten & Kotak Masuk
-- [ ] Task 8: Build Verification, Optimasi, dan Panduan Deployment Vercel
+- [x] Task 6: Admin CMS - Autentikasi & Dashboard Shell (commits 28b3dd1..9ac825e, clean)
+- [x] Task 7: Admin CMS - Modul Kelola Konten & Kotak Masuk (commits 9ac825e..e89160a, clean)
+- [x] Task 8: Build Verification, Optimasi, dan Panduan Deployment Vercel (verified: 14/14 routes build 0 errors, comprehensive README & deployment guide)
