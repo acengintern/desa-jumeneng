@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   MapPin,
   HeartHandshake,
@@ -164,13 +165,14 @@ export default async function ProfilPage() {
 
                 {/* Kolom Kanan: Foto Arsip Dusun */}
                 <div className="lg:col-span-5 space-y-3">
-                  <div className="rounded-lg overflow-hidden border border-stone-200 bg-stone-100 aspect-[4/3]">
-                    <img
+                  <div className="rounded-lg overflow-hidden border border-stone-200 bg-stone-100 aspect-[4/3] relative">
+                    <Image
                       src="https://info-jumenengkidul.site.je/img/jumeneng.jpg"
                       alt="Pemandangan dan gerbang Padukuhan Jumeneng Kidul"
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover object-center"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      quality={80}
+                      className="object-cover object-center"
                     />
                   </div>
                   <p className="text-xs text-stone-500 italic">

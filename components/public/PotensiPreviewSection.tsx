@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { PotensiWilayah } from '@/lib/types';
 
@@ -102,12 +103,13 @@ export function PotensiPreviewSection({ potensi }: PotensiPreviewSectionProps) {
                 <div>
                   {/* Visual / Image */}
                   <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-stone-100 border border-stone-200">
-                    <img
+                    <Image
                       src={imageUrl}
                       alt={item.judul}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover object-center group-hover:scale-104 transition-transform duration-300 ease-out"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                      quality={75}
+                      className="object-cover object-center group-hover:scale-104 transition-transform duration-300 ease-out"
                     />
                   </div>
 

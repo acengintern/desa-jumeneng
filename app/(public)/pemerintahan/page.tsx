@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Building2,
   Users,
@@ -231,13 +232,14 @@ export default async function PemerintahanPage() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
                 {/* Kolom Foto Dukuh */}
                 <div className="lg:col-span-4 flex flex-col items-center">
-                  <div className="w-full max-w-[240px] sm:max-w-[260px] rounded-lg overflow-hidden border border-stone-200 bg-stone-100 aspect-[4/5] shadow-xs">
-                    <img
+                  <div className="w-full max-w-[240px] sm:max-w-[260px] rounded-lg overflow-hidden border border-stone-200 bg-stone-100 aspect-[4/5] shadow-xs relative">
+                    <Image
                       src={dukuhPhotoUrl}
                       alt={`Bapak ${dukuh.nama} - Kepala Dukuh Jumeneng Kidul`}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover object-top"
+                      fill
+                      sizes="260px"
+                      quality={80}
+                      className="object-cover object-top"
                     />
                   </div>
 

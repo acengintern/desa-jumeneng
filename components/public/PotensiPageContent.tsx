@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Image from 'next/image';
 import {
   ChevronRight,
   Briefcase,
@@ -289,12 +290,13 @@ export function PotensiPageContent({ potensi }: PotensiPageContentProps) {
                   <div>
                     {/* Image Header with Photography */}
                     <div className="relative aspect-[16/10] bg-stone-100 overflow-hidden">
-                      <img
+                      <Image
                         src={imageUrl}
                         alt={item.judul}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 500px"
+                        quality={75}
+                        className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent pointer-events-none" />
 

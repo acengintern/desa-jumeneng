@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import NextImage from 'next/image';
 import {
   Image as ImageIcon,
   Maximize2,
@@ -128,13 +129,14 @@ export function GaleriPageContent({ galeri }: GaleriPageContentProps) {
               >
                 {/* Image or Graceful Fallback */}
                 {!isBroken && item.foto_url ? (
-                  <img
+                  <NextImage
                     src={item.foto_url}
                     alt={item.judul_kegiatan}
-                    loading="lazy"
-                    decoding="async"
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 400px"
+                    quality={75}
                     onError={() => handleImageError(item.id)}
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                   />
                 ) : (
                   <div className="w-full h-full bg-stone-900 flex flex-col items-center justify-center p-4 text-center">

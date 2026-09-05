@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import {
   Home,
@@ -179,13 +180,17 @@ export default async function BeritaDetailPage({ params }: BeritaDetailPageProps
           {/* Foto Dokumentasi Utama (Figure) */}
           {berita.gambar_url ? (
             <figure className="my-8 rounded-xl overflow-hidden border border-stone-200/90 bg-stone-100 shadow-2xs">
-              <img
-                src={berita.gambar_url}
-                alt={berita.gambar_alt || berita.judul}
-                loading="eager"
-                decoding="async"
-                className="w-full max-h-[480px] object-cover"
-              />
+              <div className="relative w-full aspect-[16/9] max-h-[480px]">
+                <Image
+                  src={berita.gambar_url}
+                  alt={berita.gambar_alt || berita.judul}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  quality={80}
+                  className="object-cover"
+                />
+              </div>
               <figcaption className="px-4 py-2.5 bg-stone-50 border-t border-stone-200/70 text-xs text-stone-500 font-medium italic">
                 Dokumentasi Kegiatan: {berita.gambar_alt || berita.judul}
               </figcaption>
@@ -272,12 +277,13 @@ export default async function BeritaDetailPage({ params }: BeritaDetailPageProps
                   <div>
                     {item.gambar_url && (
                       <div className="relative aspect-[16/10] rounded-lg bg-stone-100 overflow-hidden mb-3 border border-stone-200/80">
-                        <img
+                        <Image
                           src={item.gambar_url}
                           alt={item.gambar_alt || item.judul}
-                          loading="lazy"
-                          decoding="async"
-                          className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          quality={70}
+                          className="object-cover group-hover:scale-104 transition-transform duration-300"
                         />
                       </div>
                     )}

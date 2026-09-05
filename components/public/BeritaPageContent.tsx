@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   Newspaper,
   Calendar,
@@ -282,13 +283,14 @@ export function BeritaPageContent({ berita }: BeritaPageContentProps) {
                   aria-label={`Buka berita: ${item.judul}`}
                 >
                   {hasValidImage ? (
-                    <img
+                    <Image
                       src={item.gambar_url!}
                       alt={item.gambar_alt || item.judul}
-                      loading="lazy"
-                      decoding="async"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 500px"
+                      quality={75}
                       onError={() => handleImageError(item.id)}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
                     <div

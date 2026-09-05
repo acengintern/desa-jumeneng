@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import {
   ShieldCheck,
   Building2,
@@ -97,12 +98,13 @@ export function PemdesSection({ pengurus = [] }: PemdesSectionProps) {
               <div className="relative shrink-0">
                 <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden bg-gradient-to-br from-emerald-100 to-amber-100 border-4 border-white shadow-lg flex items-center justify-center">
                   {!imageError && dukuh.foto_url ? (
-                    <img
+                    <Image
                       src={dukuh.foto_url}
                       alt={dukuh.nama}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover object-top"
+                      fill
+                      sizes="176px"
+                      quality={80}
+                      className="object-cover object-top"
                       onError={() => setImageError(true)}
                     />
                   ) : (

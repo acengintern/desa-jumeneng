@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Newspaper, ArrowRight } from 'lucide-react';
 import { Berita } from '@/lib/types';
 import { formatTanggalIndonesia } from '@/lib/date-utils';
@@ -83,12 +84,13 @@ export function BeritaPreviewSection({ berita }: BeritaPreviewSectionProps) {
                 {/* Thumbnail (rounded-lg) */}
                 <div className="relative aspect-[16/10] rounded-lg bg-stone-100 overflow-hidden border border-stone-200 mb-3">
                   {item.gambar_url ? (
-                    <img
+                    <Image
                       src={item.gambar_url}
                       alt={item.gambar_alt || item.judul}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover object-center group-hover:scale-104 transition-transform duration-300 ease-out"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                      quality={75}
+                      className="object-cover object-center group-hover:scale-104 transition-transform duration-300 ease-out"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center bg-stone-100 text-stone-400">

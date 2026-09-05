@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Phone } from 'lucide-react';
 import { ProfilDesa } from '@/lib/types';
 import { ScrollReveal } from './ScrollReveal';
@@ -17,12 +18,14 @@ export function HeroSection({ profil }: HeroSectionProps) {
     <section className="relative overflow-hidden bg-stone-950 text-white min-h-[380px] sm:min-h-[460px] lg:min-h-[520px] flex items-center">
       {/* Authentic Village Background Photo with Eager LCP Loading */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src={bgImageUrl}
           alt="Pemandangan Padukuhan Jumeneng Kidul"
-          loading="eager"
-          decoding="async"
-          className="w-full h-full object-cover object-center opacity-30 filter saturate-90"
+          fill
+          priority
+          sizes="100vw"
+          quality={80}
+          className="object-cover object-center opacity-30 saturate-90"
         />
         {/* Soft authentic gradient overlay - dark emerald & stone tint */}
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/85 to-stone-950/70" />
